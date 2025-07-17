@@ -1,0 +1,32 @@
+sensors:
+  - thor_camera
+  - default_sensor
+
+# Configuration for your Thor arm camera
+thor_camera:
+  far_clipping_plane_distance: 3.0
+  filtered_cloud_topic: /thor_arm/camera/filtered_cloud
+  image_topic: /thor_arm/camera/image_raw
+  max_update_rate: 10.0
+  near_clipping_plane_distance: 0.05
+  padding_offset: 0.02
+  padding_scale: 2.0
+  queue_size: 5
+  sensor_plugin: occupancy_map_monitor/DepthImageOctomapUpdater
+  shadow_threshold: 0.2
+  point_cloud_topic: /thor_arm/camera/points
+  point_subsample: 1
+  max_range: 2.0
+
+# Default fallback sensor
+default_sensor:
+  far_clipping_plane_distance: 5.0
+  filtered_cloud_topic: filtered_cloud
+  image_topic: /thor_arm/camera/image_raw
+  max_update_rate: 1.0
+  near_clipping_plane_distance: 0.1
+  padding_offset: 0.03
+  padding_scale: 4.0
+  queue_size: 5
+  sensor_plugin: occupancy_map_monitor/DepthImageOctomapUpdater
+  shadow_threshold: 0.2

@@ -1,0 +1,908 @@
+# #!/usr/bin/env python3
+
+# import rclpy
+# from rclpy.node import Node
+# import numpy as np
+# import time
+# from moveit_msgs.msg import PlanningScene, CollisionObject, RobotState
+# from moveit_msgs.srv import GetPlanningScene
+# from geometry_msgs.msg import PoseStamped, Point, Quaternion, Pose
+# from std_msgs.msg import Bool, Header
+# from std_srvs.srv import Empty
+# from thor_perception.msg import DetectedObjectArray
+# from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
+# from control_msgs.action import FollowJointTrajectory
+# from rclpy.action import ActionClient
+# import tf2_ros
+# from tf2_ros import TransformListener, Buffer
+# import tf2_geometry_msgs
+# from shape_msgs.msg import SolidPrimitive
+# from moveit_msgs.action import MoveGroup
+# from builtin_interfaces.msg import Duration
+
+
+# class PickPlaceController(Node):
+#     def __init__(self):
+#         super().__init__('pick_place_controller')
+        
+#         # TF2 buffer and listener
+#         self.tf_buffer = Buffer()
+#         self.tf_listener = TransformListener(self.tf_buffer, self)
+        
+#         # MoveIt interface
+#         self.move_group_client = ActionClient(self, MoveGroup, '/move_action')
+        
+#         # Joint trajectory controller
+#         self.joint_trajectory_client = ActionClient(
+#             self, 
+#             FollowJointTrajectory, 
+#             '/joint_trajectory_controller/follow_joint_trajectory'
+#         )
+        
+#         # Publishers
+#         self.electromagnet_pub = self.create_publisher(Bool, '/electromagnet_control', 10)
+#         self.planning_scene_pub = self.create_publisher(PlanningScene, '/planning_scene', 10)
+        
+#         # Subscribers
+#         self.detected_objects_sub = self.create_subscription(
+#             DetectedObjectArray,
+#             '/detected_objects',
+#             self.detected_objects_callback,
+#             10
+#         )
+        
+#         # Services
+#         self.pick_place_service = self.create_service(
+#             Empty,
+#             '/start_pick_place',
+#             self.start_pick_place_callback
+#         )
+        
+#         # State variables
+#         self.detected_objects = []
+#         self.current_task = None
+#         self.is_busy = False
+        
+#         # Robot configuration
+#         self.joint_names = [
+#             'joint_1', 'joint_2', 'joint_3', 
+#             'joint_4', 'joint_5', 'joint_6'
+#         ]
+        
+#         # Predefined poses
+#         self.home_pose = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+#         self.observe_pose = [0.0, -0.5, 0.5, 0.0, 1.0, 0.0]
+        
+#         # Drop locations for different objects
+#         self.drop_locations = {
+#             'red': {'x': 0.4, 'y': 0.3, 'z': 0.15},
+#             'blue': {'x': 0.4, 'y': 0.0, 'z': 0.15},
+#             'green': {'x': 0.4, 'y': -0.3, 'z': 0.15},
+#             'yellow': {'x': 0.5, 'y': 0.2, 'z': 0.15}
+#         }
+        
+#         # Wait for services
+#         self.get_logger().info("Waiting for action servers...")
+#         self.move_group_client.wait_for_server()
+#         self.joint_trajectory_client.wait_for_server()
+        
+#         # Timer for periodic updates
+#         self.timer = self.create_timer(0.1, self.update_planning_scene)
+        
+#         self.get_logger().info("Pick and Place controller initialized")
+    
+#     def detected_objects_callback(self, msg):
+#         """Update detected objects list"""
+#         self.detected_objects = msg.objects
+#         self.get_logger().debug(f"Detected {len(self.detected_objects)} objects")
+    
+#     def start_pick_place_callback(self, request, response):
+#         """Start pick and place operation"""
+#         if self.is_busy:
+#             self.get_logger().warn("Already busy with pick and place operation")
+#             return response
+        
+#         self.is_busy = True
+#         self.get_logger().info("Starting pick and place operation")
+        
+#         # Run pick and place in a separate thread
+#         self.create_timer(0.1, self.execute_pick_place_sequence, one_shot=True)
+        
+#         return response
+    
+#     def execute_pick_place_sequence(self):
+#         """Execute the complete pick and place sequence"""
+#         try:
+#             # 1. Move to observation pose
+#             self.get_logger().info("Moving to observation pose...")
+#             if not self.move_to_joint_pose(self.observe_pose):
+#                 self.get_logger().error("Failed to move to observation pose")
+#                 self.is_busy = False
+#                 return
+            
+#             # Wait for perception to update
+#             time.sleep(2.0)
+            
+#             # 2. Pick and place each detected object
+#             for obj in self.detected_objects:
+#                 self.get_logger().info(f"Processing object: {obj.shape} {obj.color}")
+                
+#                 if not self.pick_object(obj):
+#                     self.get_logger().error(f"Failed to pick object {obj.id}")
+#                     continue
+                
+#                 if not self.place_object(obj):
+#                     self.get_logger().error(f"Failed to place object {obj.id}")
+#                     continue
+                
+#                 self.get_logger().info(f"Successfully handled object {obj.id}")
+            
+#             # 3. Return to home position
+#             self.get_logger().info("Returning to home position...")
+#             self.move_to_joint_pose(self.home_pose)
+            
+#         except Exception as e:
+#             self.get_logger().error(f"Pick and place sequence failed: {e}")
+#         finally:
+#             self.is_busy = False
+#             self.get_logger().info("Pick and place sequence completed")
+    
+#     def pick_object(self, obj):
+#         """Pick up an object"""
+#         try:
+#             # 1. Plan approach pose (above object)
+#             approach_pose = self.calculate_approach_pose(obj.pose)
+            
+#             # 2. Move to approach pose
+#             if not self.move_to_cartesian_pose(approach_pose):
+#                 return False
+            
+#             # 3. Move down to grasp pose
+#             grasp_pose = self.calculate_grasp_pose(obj.pose)
+#             if not self.move_to_cartesian_pose(grasp_pose):
+#                 return False
+            
+#             # 4. Activate electromagnet
+#             self.control_electromagnet(True)
+#             time.sleep(1.0)  # Wait for magnetic attachment
+            
+#             # 5. Move back to approach pose
+#             if not self.move_to_cartesian_pose(approach_pose):
+#                 return False
+            
+#             return True
+            
+#         except Exception as e:
+#             self.get_logger().error(f"Pick operation failed: {e}")
+#             return False
+    
+#     def place_object(self, obj):
+#         """Place an object at designated location"""
+#         try:
+#             # 1. Get drop location for this object
+#             drop_location = self.get_drop_location(obj.color)
+            
+#             # 2. Plan approach pose for drop location
+#             approach_pose = self.create_pose_stamped(
+#                 drop_location['x'], 
+#                 drop_location['y'], 
+#                 drop_location['z'] + 0.1
+#             )
+            
+#             # 3. Move to approach pose
+#             if not self.move_to_cartesian_pose(approach_pose):
+#                 return False
+            
+#             # 4. Move down to place pose
+#             place_pose = self.create_pose_stamped(
+#                 drop_location['x'], 
+#                 drop_location['y'], 
+#                 drop_location['z']
+#             )
+            
+#             if not self.move_to_cartesian_pose(place_pose):
+#                 return False
+            
+#             # 5. Deactivate electromagnet
+#             self.control_electromagnet(False)
+#             time.sleep(0.5)
+            
+#             # 6. Move back to approach pose
+#             if not self.move_to_cartesian_pose(approach_pose):
+#                 return False
+            
+#             return True
+            
+#         except Exception as e:
+#             self.get_logger().error(f"Place operation failed: {e}")
+#             return False
+    
+#     def calculate_approach_pose(self, object_pose):
+#         """Calculate approach pose (above object)"""
+#         approach_pose = PoseStamped()
+#         approach_pose.header.frame_id = "base_link"
+#         approach_pose.header.stamp = self.get_clock().now().to_msg()
+        
+#         # Copy position and add offset in Z
+#         approach_pose.pose.position.x = object_pose.pose.position.x
+#         approach_pose.pose.position.y = object_pose.pose.position.y
+#         approach_pose.pose.position.z = object_pose.pose.position.z + 0.1
+        
+#         # Set orientation (pointing down)
+#         approach_pose.pose.orientation.x = 1.0
+#         approach_pose.pose.orientation.y = 0.0
+#         approach_pose.pose.orientation.z = 0.0
+#         approach_pose.pose.orientation.w = 0.0
+        
+#         return approach_pose
+    
+#     def calculate_grasp_pose(self, object_pose):
+#         """Calculate grasp pose (at object level)"""
+#         grasp_pose = PoseStamped()
+#         grasp_pose.header.frame_id = "base_link"
+#         grasp_pose.header.stamp = self.get_clock().now().to_msg()
+        
+#         # Copy position with small offset above object
+#         grasp_pose.pose.position.x = object_pose.pose.position.x
+#         grasp_pose.pose.position.y = object_pose.pose.position.y
+#         grasp_pose.pose.position.z = object_pose.pose.position.z + 0.03
+        
+#         # Set orientation (pointing down)
+#         grasp_pose.pose.orientation.x = 1.0
+#         grasp_pose.pose.orientation.y = 0.0
+#         grasp_pose.pose.orientation.z = 0.0
+#         grasp_pose.pose.orientation.w = 0.0
+        
+#         return grasp_pose
+    
+#     def get_drop_location(self, color):
+#         """Get drop location for object color"""
+#         return self.drop_locations.get(color, self.drop_locations['blue'])
+    
+#     def create_pose_stamped(self, x, y, z):
+#         """Create a PoseStamped message"""
+#         pose = PoseStamped()
+#         pose.header.frame_id = "base_link"
+#         pose.header.stamp = self.get_clock().now().to_msg()
+#         pose.pose.position.x = x
+#         pose.pose.position.y = y
+#         pose.pose.position.z = z
+#         pose.pose.orientation.x = 1.0
+#         pose.pose.orientation.y = 0.0
+#         pose.pose.orientation.z = 0.0
+#         pose.pose.orientation.w = 0.0
+#         return pose
+    
+#     def move_to_joint_pose(self, joint_positions):
+#         """Move robot to joint positions"""
+#         try:
+#             # Create joint trajectory message
+#             trajectory = JointTrajectory()
+#             trajectory.joint_names = self.joint_names
+            
+#             # Create trajectory point
+#             point = JointTrajectoryPoint()
+#             point.positions = joint_positions
+#             point.velocities = [0.0] * len(joint_positions)
+#             point.time_from_start = Duration(sec=3, nanosec=0)
+            
+#             trajectory.points.append(point)
+            
+#             # Create action goal
+#             goal = FollowJointTrajectory.Goal()
+#             goal.trajectory = trajectory
+            
+#             # Send goal
+#             future = self.joint_trajectory_client.send_goal_async(goal)
+#             rclpy.spin_until_future_complete(self, future)
+            
+#             goal_handle = future.result()
+#             if not goal_handle.accepted:
+#                 self.get_logger().error("Joint trajectory goal rejected")
+#                 return False
+            
+#             # Wait for result
+#             result_future = goal_handle.get_result_async()
+#             rclpy.spin_until_future_complete(self, result_future)
+            
+#             result = result_future.result()
+#             if result.result.error_code == 0:
+#                 self.get_logger().info("Joint trajectory executed successfully")
+#                 return True
+#             else:
+#                 self.get_logger().error(f"Joint trajectory failed: {result.result.error_code}")
+#                 return False
+                
+#         except Exception as e:
+#             self.get_logger().error(f"Joint movement failed: {e}")
+#             return False
+    
+#     def move_to_cartesian_pose(self, pose_stamped):
+#         """Move robot to cartesian pose using MoveIt"""
+#         try:
+#             # Create MoveGroup goal
+#             goal = MoveGroup.Goal()
+#             goal.request.group_name = "thor_arm"
+#             goal.request.num_planning_attempts = 10
+#             goal.request.allowed_planning_time = 5.0
+#             goal.request.max_velocity_scaling_factor = 0.5
+#             goal.request.max_acceleration_scaling_factor = 0.5
+            
+#             # Set pose target
+#             goal.request.goal_constraints.append(self.create_position_constraint(pose_stamped))
+#             goal.request.goal_constraints.append(self.create_orientation_constraint(pose_stamped))
+            
+#             # Send goal
+#             future = self.move_group_client.send_goal_async(goal)
+#             rclpy.spin_until_future_complete(self, future)
+            
+#             goal_handle = future.result()
+#             if not goal_handle.accepted:
+#                 self.get_logger().error("MoveGroup goal rejected")
+#                 return False
+            
+#             # Wait for result
+#             result_future = goal_handle.get_result_async()
+#             rclpy.spin_until_future_complete(self, result_future)
+            
+#             result = result_future.result()
+#             if result.result.error_code.val == 1:  # SUCCESS
+#                 self.get_logger().info("Cartesian movement executed successfully")
+#                 return True
+#             else:
+#                 self.get_logger().error(f"Cartesian movement failed: {result.result.error_code.val}")
+#                 return False
+                
+#         except Exception as e:
+#             self.get_logger().error(f"Cartesian movement failed: {e}")
+#             return False
+    
+#     def create_position_constraint(self, pose_stamped):
+#         """Create position constraint for MoveIt"""
+#         from moveit_msgs.msg import Constraints, PositionConstraint
+#         from shape_msgs.msg import SolidPrimitive
+        
+#         constraint = Constraints()
+#         position_constraint = PositionConstraint()
+#         position_constraint.header = pose_stamped.header
+#         position_constraint.link_name = "electromagnet_plate"
+#         position_constraint.target_point_offset.x = 0.0
+#         position_constraint.target_point_offset.y = 0.0
+#         position_constraint.target_point_offset.z = 0.0
+        
+#         # Create bounding region
+#         primitive = SolidPrimitive()
+#         primitive.type = SolidPrimitive.SPHERE
+#         primitive.dimensions = [0.01]  # 1cm tolerance
+        
+#         position_constraint.constraint_region.primitives.append(primitive)
+#         position_constraint.constraint_region.primitive_poses.append(pose_stamped.pose)
+#         position_constraint.weight = 1.0
+        
+#         constraint.position_constraints.append(position_constraint)
+#         return constraint
+    
+#     def create_orientation_constraint(self, pose_stamped):
+#         """Create orientation constraint for MoveIt"""
+#         from moveit_msgs.msg import Constraints, OrientationConstraint
+        
+#         constraint = Constraints()
+#         orientation_constraint = OrientationConstraint()
+#         orientation_constraint.header = pose_stamped.header
+#         orientation_constraint.link_name = "electromagnet_plate"
+#         orientation_constraint.orientation = pose_stamped.pose.orientation
+#         orientation_constraint.absolute_x_axis_tolerance = 0.1
+#         orientation_constraint.absolute_y_axis_tolerance = 0.1
+#         orientation_constraint.absolute_z_axis_tolerance = 0.1
+#         orientation_constraint.weight = 1.0
+        
+#         constraint.orientation_constraints.append(orientation_constraint)
+#         return constraint
+    
+#     def control_electromagnet(self, activate):
+#         """Control electromagnet on/off"""
+#         msg = Bool()
+#         msg.data = activate
+#         self.electromagnet_pub.publish(msg)
+        
+#         action = "activated" if activate else "deactivated"
+#         self.get_logger().info(f"Electromagnet {action}")
+    
+#     def update_planning_scene(self):
+#         """Update planning scene with detected objects"""
+#         if not self.detected_objects:
+#             return
+        
+#         scene = PlanningScene()
+#         scene.is_diff = True
+#         scene.robot_state.is_diff = True
+        
+#         # Add detected objects as collision objects
+#         for obj in self.detected_objects:
+#             collision_obj = CollisionObject()
+#             collision_obj.id = f"object_{obj.id}"
+#             collision_obj.header.frame_id = "base_link"
+#             collision_obj.header.stamp = self.get_clock().now().to_msg()
+            
+#             # Create primitive shape
+#             primitive = SolidPrimitive()
+#             if obj.shape == "cube":
+#                 primitive.type = SolidPrimitive.BOX
+#                 primitive.dimensions = [0.05, 0.05, 0.05]  # Default cube size
+#             elif obj.shape == "cylinder":
+#                 primitive.type = SolidPrimitive.CYLINDER
+#                 primitive.dimensions = [0.06, 0.03]  # height, radius
+#             else:
+#                 primitive.type = SolidPrimitive.BOX
+#                 primitive.dimensions = [0.05, 0.05, 0.05]
+            
+#             collision_obj.primitives.append(primitive)
+#             collision_obj.primitive_poses.append(obj.pose.pose)
+#             collision_obj.operation = CollisionObject.ADD
+            
+#             scene.world.collision_objects.append(collision_obj)
+        
+#         # Add table as collision object
+#         table_obj = CollisionObject()
+#         table_obj.id = "table"
+#         table_obj.header.frame_id = "base_link"
+#         table_obj.header.stamp = self.get_clock().now().to_msg()
+        
+#         table_primitive = SolidPrimitive()
+#         table_primitive.type = SolidPrimitive.BOX
+#         table_primitive.dimensions = [1.0, 1.0, 0.02]  # Large thin table
+        
+#         table_pose = Pose()
+#         table_pose.position.x = 0.5
+#         table_pose.position.y = 0.0
+#         table_pose.position.z = -0.01
+#         table_pose.orientation.w = 1.0
+        
+#         table_obj.primitives.append(table_primitive)
+#         table_obj.primitive_poses.append(table_pose)
+#         table_obj.operation = CollisionObject.ADD
+        
+#         scene.world.collision_objects.append(table_obj)
+        
+#         # Publish scene
+#         self.planning_scene_pub.publish(scene)
+
+
+# def main(args=None):
+#     rclpy.init(args=args)
+#     node = PickPlaceController()
+    
+#     try:
+#         rclpy.spin(node)
+#     except KeyboardInterrupt:
+#         pass
+#     finally:
+#         node.destroy_node()
+#         rclpy.shutdown()
+
+
+# if __name__ == '__main__':
+#     main()
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+# #!/usr/bin/env python3
+
+# import rclpy
+# from rclpy.node import Node
+# import numpy as np
+# import cv2
+# from cv_bridge import CvBridge
+# import open3d as o3d
+# from sensor_msgs.msg import Image, PointCloud2, CameraInfo
+# from geometry_msgs.msg import PoseStamped, Point, Quaternion
+# from std_msgs.msg import Header, ColorRGBA
+# from visualization_msgs.msg import Marker, MarkerArray
+# from thor_perception.msg import DetectedObject, DetectedObjectArray
+# import tf2_ros
+# import tf2_geometry_msgs
+# from tf2_ros import TransformListener, Buffer
+# import sensor_msgs_py.point_cloud2 as pc2
+# from sklearn.cluster import DBSCAN
+
+
+# class PerceptionNode(Node):
+#     def __init__(self):
+#         super().__init__('perception_node')
+        
+#         # Initialize components
+#         self.bridge = CvBridge()
+#         self.tf_buffer = Buffer()
+#         self.tf_listener = TransformListener(self.tf_buffer, self)
+        
+#         # Camera parameters
+#         self.camera_info = None
+#         self.depth_image = None
+#         self.rgb_image = None
+        
+#         # Point cloud processing
+#         self.point_cloud = None
+#         self.processed_cloud = None
+        
+#         # Object detection results
+#         self.detected_objects = []
+        
+#         # Subscribers
+#         self.rgb_sub = self.create_subscription(
+#             Image,
+#             '/camera/image_raw',
+#             self.rgb_callback,
+#             10
+#         )
+        
+#         self.depth_sub = self.create_subscription(
+#             Image,
+#             '/camera/depth/image_raw',
+#             self.depth_callback,
+#             10
+#         )
+        
+#         self.camera_info_sub = self.create_subscription(
+#             CameraInfo,
+#             '/camera/camera_info',
+#             self.camera_info_callback,
+#             10
+#         )
+        
+#         self.pointcloud_sub = self.create_subscription(
+#             PointCloud2,
+#             '/camera/depth/points',
+#             self.pointcloud_callback,
+#             10
+#         )
+        
+#         # Publishers
+#         self.detected_objects_pub = self.create_publisher(
+#             DetectedObjectArray,
+#             '/detected_objects',
+#             10
+#         )
+        
+#         self.processed_cloud_pub = self.create_publisher(
+#             PointCloud2,
+#             '/processed_point_cloud',
+#             10
+#         )
+        
+#         self.marker_pub = self.create_publisher(
+#             MarkerArray,
+#             '/object_markers',
+#             10
+#         )
+        
+#         # Timer for processing
+#         self.timer = self.create_timer(0.1, self.process_perception)
+        
+#         # Processing parameters
+#         self.declare_parameter('voxel_size', 0.005)
+#         self.declare_parameter('plane_threshold', 0.01)
+#         self.declare_parameter('plane_ransac_n', 3)
+#         self.declare_parameter('plane_num_iterations', 1000)
+#         self.declare_parameter('cluster_tolerance', 0.02)
+#         self.declare_parameter('min_cluster_size', 100)
+#         self.declare_parameter('max_cluster_size', 25000)
+        
+#         self.get_logger().info("Perception node initialized")
+    
+#     def rgb_callback(self, msg):
+#         """Process RGB image"""
+#         try:
+#             self.rgb_image = self.bridge.imgmsg_to_cv2(msg, "bgr8")
+#         except Exception as e:
+#             self.get_logger().error(f"RGB image conversion failed: {e}")
+    
+#     def depth_callback(self, msg):
+#         """Process depth image"""
+#         try:
+#             self.depth_image = self.bridge.imgmsg_to_cv2(msg, "passthrough")
+#         except Exception as e:
+#             self.get_logger().error(f"Depth image conversion failed: {e}")
+    
+#     def camera_info_callback(self, msg):
+#         """Store camera calibration info"""
+#         self.camera_info = msg
+    
+#     def pointcloud_callback(self, msg):
+#         """Process point cloud data"""
+#         try:
+#             # Convert ROS PointCloud2 to numpy array
+#             points = []
+#             for point in pc2.read_points(msg, field_names=("x", "y", "z"), skip_nans=True):
+#                 points.append([point[0], point[1], point[2]])
+            
+#             if len(points) > 0:
+#                 self.point_cloud = np.array(points)
+#             else:
+#                 self.point_cloud = None
+                
+#         except Exception as e:
+#             self.get_logger().error(f"Point cloud processing failed: {e}")
+    
+#     def process_perception(self):
+#         """Main perception processing loop"""
+#         if self.point_cloud is None:
+#             return
+        
+#         try:
+#             # Process point cloud
+#             self.process_point_cloud()
+            
+#             # Detect objects
+#             self.detect_objects()
+            
+#             # Publish results
+#             self.publish_results()
+            
+#         except Exception as e:
+#             self.get_logger().error(f"Perception processing failed: {e}")
+    
+#     def process_point_cloud(self):
+#         """Process point cloud for object detection"""
+#         if self.point_cloud is None:
+#             return
+        
+#         # Convert to Open3D format
+#         pcd = o3d.geometry.PointCloud()
+#         pcd.points = o3d.utility.Vector3dVector(self.point_cloud)
+        
+#         # Downsample
+#         voxel_size = self.get_parameter('voxel_size').value
+#         pcd = pcd.voxel_down_sample(voxel_size)
+        
+#         # Remove statistical outliers
+#         pcd, _ = pcd.remove_statistical_outlier(nb_neighbors=20, std_ratio=2.0)
+        
+#         # Segment plane (table surface)
+#         plane_model, inliers = pcd.segment_plane(
+#             distance_threshold=self.get_parameter('plane_threshold').value,
+#             ransac_n=self.get_parameter('plane_ransac_n').value,
+#             num_iterations=self.get_parameter('plane_num_iterations').value
+#         )
+        
+#         # Extract objects above the plane
+#         objects_pcd = pcd.select_by_index(inliers, invert=True)
+        
+#         # Filter by height (objects should be above table)
+#         if len(objects_pcd.points) > 0:
+#             points = np.asarray(objects_pcd.points)
+#             height_filter = points[:, 2] > plane_model[3] + 0.01  # 1cm above plane
+#             if np.any(height_filter):
+#                 objects_pcd = objects_pcd.select_by_index(np.where(height_filter)[0])
+        
+#         self.processed_cloud = objects_pcd
+    
+#     def detect_objects(self):
+#         """Detect and classify objects from processed point cloud"""
+#         if self.processed_cloud is None or len(self.processed_cloud.points) == 0:
+#             self.detected_objects = []
+#             return
+        
+#         # Cluster objects using DBSCAN
+#         points = np.asarray(self.processed_cloud.points)
+        
+#         if len(points) < 10:
+#             self.detected_objects = []
+#             return
+        
+#         clustering = DBSCAN(
+#             eps=self.get_parameter('cluster_tolerance').value,
+#             min_samples=10
+#         ).fit(points)
+        
+#         labels = clustering.labels_
+#         unique_labels = set(labels)
+        
+#         self.detected_objects = []
+        
+#         for label in unique_labels:
+#             if label == -1:  # Noise
+#                 continue
+            
+#             # Get cluster points
+#             cluster_mask = (labels == label)
+#             cluster_points = points[cluster_mask]
+            
+#             if len(cluster_points) < self.get_parameter('min_cluster_size').value:
+#                 continue
+#             if len(cluster_points) > self.get_parameter('max_cluster_size').value:
+#                 continue
+            
+#             # Analyze cluster
+#             obj_info = self.analyze_cluster(cluster_points)
+#             if obj_info:
+#                 self.detected_objects.append(obj_info)
+    
+#     def analyze_cluster(self, points):
+#         """Analyze a cluster to determine object properties"""
+#         # Calculate bounding box
+#         min_bound = np.min(points, axis=0)
+#         max_bound = np.max(points, axis=0)
+#         center = (min_bound + max_bound) / 2
+#         size = max_bound - min_bound
+        
+#         # Simple shape classification based on dimensions
+#         width, depth, height = size
+        
+#         # Classify shape
+#         if abs(width - depth) < 0.02 and abs(width - height) < 0.02:
+#             shape = "cube"
+#             color = self.estimate_color_from_size(size)
+#         elif width > depth and width > height:
+#             shape = "rectangular"
+#             color = "green"
+#         elif abs(width - depth) < 0.02 and height > width:
+#             shape = "cylinder"
+#             color = self.estimate_color_from_size(size)
+#         else:
+#             shape = "unknown"
+#             color = "gray"
+        
+#         return {
+#             'id': len(self.detected_objects),
+#             'shape': shape,
+#             'color': color,
+#             'center': center,
+#             'size': size,
+#             'points': points
+#         }
+    
+#     def estimate_color_from_size(self, size):
+#         """Estimate color based on object size (simple heuristic)"""
+#         volume = size[0] * size[1] * size[2]
+#         if volume < 0.001:  # Small objects are red
+#             return "red"
+#         elif volume < 0.01:  # Medium objects are blue
+#             return "blue"
+#         else:  # Large objects are green
+#             return "green"
+    
+#     def publish_results(self):
+#         """Publish detection results"""
+#         # Publish detected objects
+#         self.publish_detected_objects()
+        
+#         # Publish processed point cloud
+#         self.publish_processed_cloud()
+        
+#         # Publish visualization markers
+#         self.publish_markers()
+    
+#     def publish_detected_objects(self):
+#         """Publish detected objects message"""
+#         msg = DetectedObjectArray()
+#         msg.header.stamp = self.get_clock().now().to_msg()
+#         msg.header.frame_id = "camera_optical_frame"
+        
+#         for obj in self.detected_objects:
+#             obj_msg = DetectedObject()
+#             obj_msg.id = obj['id']
+#             obj_msg.shape = obj['shape']
+#             obj_msg.color = obj['color']
+            
+#             # Convert center to pose
+#             pose = PoseStamped()
+#             pose.header = msg.header
+#             pose.pose.position.x = float(obj['center'][0])
+#             pose.pose.position.y = float(obj['center'][1])
+#             pose.pose.position.z = float(obj['center'][2])
+#             pose.pose.orientation.w = 1.0
+            
+#             # Transform to base_link frame
+#             try:
+#                 transformed_pose = self.tf_buffer.transform(pose, "base_link")
+#                 obj_msg.pose = transformed_pose
+#             except Exception as e:
+#                 self.get_logger().warn(f"Transform failed: {e}")
+#                 obj_msg.pose = pose
+            
+#             msg.objects.append(obj_msg)
+        
+#         self.detected_objects_pub.publish(msg)
+    
+#     def publish_processed_cloud(self):
+#         """Publish processed point cloud"""
+#         if self.processed_cloud is None:
+#             return
+        
+#         points = np.asarray(self.processed_cloud.points)
+#         if len(points) == 0:
+#             return
+        
+#         # Convert to ROS PointCloud2
+#         header = Header()
+#         header.stamp = self.get_clock().now().to_msg()
+#         header.frame_id = "camera_optical_frame"
+        
+#         cloud_msg = pc2.create_cloud_xyz32(header, points.tolist())
+#         self.processed_cloud_pub.publish(cloud_msg)
+    
+#     def publish_markers(self):
+#         """Publish visualization markers"""
+#         marker_array = MarkerArray()
+        
+#         for i, obj in enumerate(self.detected_objects):
+#             marker = Marker()
+#             marker.header.frame_id = "base_link"
+#             marker.header.stamp = self.get_clock().now().to_msg()
+#             marker.ns = "detected_objects"
+#             marker.id = i
+#             marker.type = Marker.CUBE
+#             marker.action = Marker.ADD
+            
+#             # Set pose
+#             if hasattr(obj, 'pose'):
+#                 marker.pose = obj.pose.pose
+#             else:
+#                 marker.pose.position.x = float(obj['center'][0])
+#                 marker.pose.position.y = float(obj['center'][1])
+#                 marker.pose.position.z = float(obj['center'][2])
+#                 marker.pose.orientation.w = 1.0
+            
+#             # Set scale
+#             marker.scale.x = float(obj['size'][0])
+#             marker.scale.y = float(obj['size'][1])
+#             marker.scale.z = float(obj['size'][2])
+            
+#             # Set color
+#             color_map = {
+#                 'red': (1.0, 0.0, 0.0),
+#                 'blue': (0.0, 0.0, 1.0),
+#                 'green': (0.0, 1.0, 0.0),
+#                 'yellow': (1.0, 1.0, 0.0)
+#             }
+            
+#             color = color_map.get(obj['color'], (0.5, 0.5, 0.5))
+#             marker.color.r = color[0]
+#             marker.color.g = color[1]
+#             marker.color.b = color[2]
+#             marker.color.a = 0.8
+            
+#             marker_array.markers.append(marker)
+        
+#         self.marker_pub.publish(marker_array)
+
+
+# def main(args=None):
+#     rclpy.init(args=args)
+#     node = PerceptionNode()
+    
+#     try:
+#         rclpy.spin(node)
+#     except KeyboardInterrupt:
+#         pass
+#     finally:
+#         node.destroy_node()
+#         rclpy.shutdown()
+
+
+# if __name__ == '__main__':
+#     main()
+
+
+
+

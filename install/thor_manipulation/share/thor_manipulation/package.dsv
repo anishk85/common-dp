@@ -1,0 +1,8 @@
+source;share/thor_manipulation/hook/cmake_prefix_path.ps1
+source;share/thor_manipulation/hook/cmake_prefix_path.dsv
+source;share/thor_manipulation/hook/cmake_prefix_path.sh
+source;share/thor_manipulation/local_setup.bash
+source;share/thor_manipulation/local_setup.dsv
+source;share/thor_manipulation/local_setup.ps1
+source;share/thor_manipulation/local_setup.sh
+source;share/thor_manipulation/local_setup.zsh

@@ -1,0 +1,8 @@
+electromagnet_controller:
+  ros__parameters:
+    demo_mode: true
+    pickup_sequence_delay: 2.0
+    hold_duration: 5.0
+    max_pickup_distance: 0.1
+    electromagnet_strength: 50.0
+    debug_mode: false

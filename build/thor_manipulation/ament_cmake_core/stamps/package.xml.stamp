@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>thor_manipulation</name>
+  <version>0.1.0</version>
+  <description>Object detection and pick-place manipulation for Thor arm</description>
+  
+  <maintainer email="your.email@example.com">Your Name</maintainer>
+  <license>Apache-2.0</license>
+  
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>ament_cmake_python</buildtool_depend>
+  <build_depend>rclpy</build_depend>
+<build_export_depend>rclpy</build_export_depend>
+<exec_depend>rclpy</exec_depend>
+  
+  <!-- ROS2 core dependencies -->
+  <!-- <depend>rclpy</depend> -->
+  <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>shape_msgs</depend>
+  
+  <!-- MoveIt dependencies -->
+  <depend>moveit_msgs</depend>
+  <depend>moveit_core</depend>
+  <depend>moveit_ros_planning_interface</depend>
+  <depend>moveit_ros_planning</depend>
+  
+  <!-- TF2 dependencies -->
+  <depend>tf2_ros</depend>
+  <depend>tf2_geometry_msgs</depend>
+  <depend>tf2_sensor_msgs</depend>
+  
+  <!-- Computer vision dependencies -->
+  <depend>cv_bridge</depend>
+  <depend>image_transport</depend>
+  <depend>image_geometry</depend>
+  
+  <!-- Action and service dependencies -->
+  <depend>action_msgs</depend>
+  <!-- <depend>rclpy</depend> -->
+  
+  <!-- Python dependencies -->
+  <exec_depend>python3-opencv</exec_depend>
+  <exec_depend>python3-numpy</exec_depend>
+  
+  <!-- Testing dependencies -->
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+  
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

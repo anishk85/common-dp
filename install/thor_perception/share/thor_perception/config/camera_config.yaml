@@ -1,0 +1,22 @@
+# config/camera_config.yaml
+camera_node:
+  ros__parameters:
+    # Camera intrinsics (example values)
+    camera_matrix:
+      rows: 3
+      cols: 3
+      data: [525.0, 0.0, 320.0, 0.0, 525.0, 240.0, 0.0, 0.0, 1.0]
+    
+    distortion_coefficients:
+      rows: 1
+      cols: 5
+      data: [0.0, 0.0, 0.0, 0.0, 0.0]
+    
+    # Image dimensions
+    image_width: 640
+    image_height: 480
+    
+    # Depth camera parameters
+    depth_scale: 1000.0  # Convert mm to meters
+    depth_max: 5.0       # Max depth in meters
+

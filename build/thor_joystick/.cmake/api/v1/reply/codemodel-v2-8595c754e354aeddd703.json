@@ -1,0 +1,97 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-8d7c67258dc998735f9c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "thor_joystick",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "joystick_joint_controller::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-joystick_joint_controller-b6f636033b22c1f53c7f.json",
+					"name" : "joystick_joint_controller",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "joystick_moveit_controller::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-joystick_moveit_controller-c8a536e3a0da1a12fd6c.json",
+					"name" : "joystick_moveit_controller",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "joystick_pose_controller::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-joystick_pose_controller-625980cb984a9b5cf256.json",
+					"name" : "joystick_pose_controller",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "thor_joystick_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-thor_joystick_uninstall-bb7f0beedae0827cdce7.json",
+					"name" : "thor_joystick_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-af481d07a906cd111725.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_joystick",
+		"source" : "/home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_joystick"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

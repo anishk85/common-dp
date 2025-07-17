@@ -1,0 +1,34 @@
+# config/pick_place_params.yaml
+pick_place_controller:
+  ros__parameters:
+    # Motion planning
+    planning_time: 5.0
+    max_velocity_scaling: 0.3
+    max_acceleration_scaling: 0.3
+    
+    # Grasp parameters
+    approach_distance: 0.1
+    grasp_offset: 0.03
+    
+    # Drop locations
+    drop_locations:
+      red:
+        x: 0.4
+        y: 0.3
+        z: 0.15
+      blue:
+        x: 0.4
+        y: 0.0
+        z: 0.15
+      green:
+        x: 0.4
+        y: -0.3
+        z: 0.15
+      yellow:
+        x: 0.5
+        y: 0.2
+        z: 0.15
+    
+    # Electromagnet timing
+    magnet_activation_time: 1.0
+    magnet_deactivation_time: 0.5

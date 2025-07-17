@@ -1,0 +1,7 @@
+{
+  "package_name": "thor_server",
+  "non_idl_tuples": [
+    "/home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_server:action/JointTask.action",
+    "/home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_server:action/PoseTask.action"
+  ]
+}

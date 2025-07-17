@@ -1,0 +1,383 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="thor_arm">
+
+    <!-- Load Simulated or Real Hardware Interfaces -->
+    <xacro:arg name="is_sim" default="true"/>
+
+    <!-- Include Gazebo Parameters -->
+    <xacro:include filename="$(find thor_urdf)/urdf/thor_gazebo.xacro" />
+
+    <!-- Include ros2_control Plugins -->
+    <xacro:include filename="$(find thor_urdf)/urdf/thor_arm.ros2_control.xacro" />
+
+    <!-- Useful XACRO Variables (Properties) -->
+    <xacro:property name="PI" value="3.14159265359" />
+    <xacro:property name="effort" value="4.0" />
+    <xacro:property name="velocity" value="1.0" />
+
+    <!-- Useful Macros -->
+    <xacro:macro name="default_inertial" params="mass">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="${mass}" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+                     iyy="1.0" iyz="0.0"
+                     izz="1.0" />
+        </inertial>
+    </xacro:macro>
+
+    <!-- Links -->
+    <link name="world"/>
+
+    <link name="base_link">
+        <xacro:default_inertial mass="1.0"/>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 -${PI / 2}"/>
+            <geometry>
+              <mesh filename="package://thor_urdf/meshes/Base.dae" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0.049" rpy="0 0 -${PI / 2}"/>
+            <geometry>
+                <cylinder radius="0.075" length="0.098"/>
+            </geometry>
+        </collision>
+        <collision>
+            <origin xyz="0 -0.1312686 0.035250" rpy="0 0 -${PI / 2}"/>
+            <geometry>
+                <box size="0.176 0.180 0.0705"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="link_1">
+        <xacro:default_inertial mass="1.0"/>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 -${PI / 2}"/>
+            <geometry>
+              <mesh filename="package://thor_urdf/meshes/Art1.dae" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0.0765" rpy="0 0 -${PI / 2}"/>
+            <geometry>
+                <cylinder radius="0.075" length="0.179"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="link_2">
+        <xacro:default_inertial mass="1.0"/>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 -${PI / 2}"/>
+            <geometry>
+              <mesh filename="package://thor_urdf/meshes/Art2.dae" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="${PI / 2} 0 -${PI / 2}"/>
+            <geometry>
+                <cylinder radius="0.065" length="0.140"/>
+            </geometry>
+        </collision>
+        <collision>
+            <origin xyz="0 0 0.080" rpy="${PI / 2} 0 -${PI / 2}"/>
+            <geometry>
+                <box size="0.130 0.160 0.140"/>
+            </geometry>
+        </collision>
+        <collision>
+            <origin xyz="0 0 0.160" rpy="${PI / 2} 0 -${PI / 2}"/>
+            <geometry>
+                <cylinder radius="0.065" length="0.140"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="link_3">
+        <xacro:default_inertial mass="1.0"/>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 -${PI / 2}"/>
+            <geometry>
+              <mesh filename="package://thor_urdf/meshes/Art3.dae" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0.01225" rpy="0 0 -${PI / 2}"/>
+            <geometry>
+                <cylinder radius="0.055" length="0.1525"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="link_4">
+        <xacro:default_inertial mass="1.0"/>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 -${PI / 2}"/>
+            <geometry>
+              <mesh filename="package://thor_urdf/meshes/Art4.dae" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0.1045" rpy="0 0 -${PI / 2}"/>
+            <geometry>
+                <sphere radius="0.055"/>
+            </geometry>
+        </collision>
+        <collision>
+            <origin xyz="0 0 0.05525" rpy="0 0 -${PI / 2}"/>
+            <geometry>
+                <cylinder radius="0.055" length="0.1045"/>
+            </geometry>
+        </collision>
+        <collision>
+            <origin xyz="0 0 0.0295" rpy="0 0 -${PI / 2}"/>
+            <geometry>
+                <box size="0.050 0.132 0.050"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="link_5">
+        <xacro:default_inertial mass="1.0"/>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 -${PI / 2}"/>
+            <geometry>
+                <mesh filename="package://thor_urdf/meshes/Art5.dae" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="${PI / 2} 0 -${PI / 2}"/>
+            <geometry>
+                <cylinder radius="0.047" length="0.03"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="link_6">
+        <xacro:default_inertial mass="1.0"/>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 -${PI / 2}"/>
+        <geometry>
+            <mesh filename="package://thor_urdf/meshes/Art6.dae" scale="0.001 0.001 0.001" />
+        </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0.025" rpy="0 0 -${PI / 2}"/>
+            <geometry>
+                <cylinder radius="0.015" length="0.05"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <!-- Electromagnet End Effector -->
+    <link name="electromagnet_mount">
+        <xacro:default_inertial mass="0.2"/>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.025" length="0.015"/>
+            </geometry>
+            <material name="mount_material">
+                <color rgba="0.3 0.3 0.3 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.025" length="0.015"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="electromagnet_plate">
+        <xacro:default_inertial mass="0.4"/>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.04" length="0.02"/>
+            </geometry>
+            <material name="magnet_material">
+                <color rgba="0.8 0.2 0.2 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.04" length="0.02"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <!-- Overhead Camera System (floating above workspace) -->
+    <link name="camera_support_pole">
+        <xacro:default_inertial mass="2.0"/>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.01" length="1.0"/>
+            </geometry>
+            <material name="pole_material">
+                <color rgba="0.5 0.5 0.5 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.01" length="1.0"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="camera_mount">
+        <xacro:default_inertial mass="0.1"/>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.05 0.05 0.02"/>
+            </geometry>
+            <material name="camera_mount_material">
+                <color rgba="0.2 0.2 0.2 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.05 0.05 0.02"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="camera_link">
+        <xacro:default_inertial mass="0.05"/>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.03 0.03 0.02"/>
+            </geometry>
+            <material name="camera_material">
+                <color rgba="0.1 0.1 0.1 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.03 0.03 0.02"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <!-- Camera optical frame (for ROS conventions) -->
+    <link name="camera_optical_frame">
+        <xacro:default_inertial mass="0.001"/>
+    </link>
+
+    <!-- Joints -->  
+    <joint name="virtual_joint" type="fixed">
+        <parent link="world"/>
+        <child link="base_link"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint> 
+
+    <joint name ="joint_1" type="revolute">
+        <parent link="base_link"/>
+        <child link="link_1"/>
+        <origin xyz="0 0 0.099" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-2.967" upper="2.967" 
+               effort="${effort}" velocity="${velocity}"/>
+    </joint>
+
+    <joint name="joint_2" type="revolute">
+        <parent link="link_1"/>
+        <child link="link_2"/>
+        <origin xyz="0 0 0.103" rpy="0 0 0"/>
+        <axis xyz="1 0 0"/>
+        <limit lower="-${PI / 2}" upper="${PI / 2}"
+               effort="${effort}" velocity="${velocity}"/>
+    </joint>
+
+    <joint name="joint_3" type="revolute">
+        <parent link="link_2"/>
+        <child link="link_3"/>
+        <origin xyz="0 0 0.16" rpy="0 0 0"/>
+        <axis xyz="1 0 0"/>
+        <limit lower="-${PI / 2}" upper="${PI / 2}"
+               effort="${effort}" velocity="${velocity}"/>
+    </joint>
+
+    <joint name="joint_4" type="revolute">
+        <parent link="link_3"/>
+        <child link="link_4"/>
+        <origin xyz="0 0 0.0895" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-2.967" upper="2.967"
+               effort="${effort}" velocity="${velocity}"/>
+    </joint>
+
+    <joint name="joint_5" type="revolute">
+        <parent link="link_4"/>
+        <child link="link_5"/>
+        <origin xyz="0 0 0.1045" rpy="0 0 0"/>
+        <axis xyz="1 0 0"/>
+        <limit lower="-${PI / 2}" upper="${PI / 2}"
+               effort="${effort}" velocity="${velocity}"/>
+      </joint>
+
+    <joint name="joint_6" type="revolute">
+        <parent link="link_5"/>
+        <child link="link_6"/>
+        <origin xyz="0 0 0.0135" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-2.967" upper="2.967"
+               effort="${effort}" velocity="${velocity}"/>
+    </joint>
+
+    <!-- Electromagnet Mounting Joints -->
+    <joint name="link6_to_electromagnet_mount" type="fixed">
+        <parent link="link_6"/>
+        <child link="electromagnet_mount"/>
+        <origin xyz="0 0 0.043" rpy="0 0 0"/>
+    </joint>
+
+    <joint name="electromagnet_mount_to_plate" type="fixed">
+        <parent link="electromagnet_mount"/>
+        <child link="electromagnet_plate"/>
+        <origin xyz="0 0 0.0175" rpy="0 0 0"/>
+    </joint>
+
+    <!-- Overhead Camera System Joints -->
+    <!-- Support pole mounted to world (positioned above workspace) -->
+    <joint name="world_to_camera_pole" type="fixed">
+        <parent link="world"/>
+        <child link="camera_support_pole"/>
+        <!-- Position pole 0.5m to the side and 1m high -->
+        <origin xyz="0.5 0 1.0" rpy="0 0 0"/>
+    </joint>
+
+    <!-- Camera mount at top of pole -->
+    <joint name="pole_to_camera_mount" type="fixed">
+        <parent link="camera_support_pole"/>
+        <child link="camera_mount"/>
+        <!-- Position at top of pole -->
+        <origin xyz="0 0 0.5" rpy="0 0 0"/>
+    </joint>
+
+    <!-- Camera attached to mount, pointing down at workspace -->
+    <joint name="mount_to_camera" type="fixed">
+        <parent link="camera_mount"/>
+        <child link="camera_link"/>
+        <!-- Offset slightly and point down -->
+        <origin xyz="0 0 -0.03" rpy="0 ${PI/2} 0"/>
+    </joint>
+
+    <!-- Camera optical frame for ROS conventions -->
+    <joint name="camera_to_optical_frame" type="fixed">
+        <parent link="camera_link"/>
+        <child link="camera_optical_frame"/>
+        <!-- Standard ROS camera optical frame transformation -->
+        <origin xyz="0 0 0" rpy="-${PI/2} 0 -${PI/2}"/>
+    </joint>
+
+</robot>

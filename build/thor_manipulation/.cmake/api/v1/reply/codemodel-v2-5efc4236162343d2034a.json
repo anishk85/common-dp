@@ -1,0 +1,88 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-33a1ca46cc9b4649503b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "thor_manipulation",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_thor_manipulation_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_thor_manipulation_egg-2954888bd7c08598f7b7.json",
+					"name" : "ament_cmake_python_build_thor_manipulation_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_thor_manipulation::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_thor_manipulation-a95766d13252ed698a98.json",
+					"name" : "ament_cmake_python_copy_thor_manipulation",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "thor_manipulation_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-thor_manipulation_uninstall-7d6e26d47e3eb18fc003.json",
+					"name" : "thor_manipulation_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-7f88203d5babd49ff569.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_manipulation",
+		"source" : "/home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_manipulation"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

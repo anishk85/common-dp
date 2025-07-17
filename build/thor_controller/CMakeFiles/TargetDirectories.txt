@@ -1,0 +1,10 @@
+/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller/CMakeFiles/uninstall.dir
+/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller/CMakeFiles/thor_controller_uninstall.dir
+/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller/CMakeFiles/thor_controller.dir
+/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller/CMakeFiles/test.dir
+/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller/CMakeFiles/edit_cache.dir
+/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller/CMakeFiles/rebuild_cache.dir
+/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller/CMakeFiles/list_install_components.dir
+/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller/CMakeFiles/install.dir
+/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller/CMakeFiles/install/local.dir
+/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller/CMakeFiles/install/strip.dir
