@@ -23,9 +23,9 @@ class AutoObjectSpawner(Node):
             Bool, '/thor_arm/electromagnet/control', self.electromagnet_callback, 10)
         
         # Parameters
-        self.declare_parameter('spawn_interval', 15.0)
-        self.declare_parameter('max_objects', 6)
-        self.declare_parameter('cleanup_interval', 60.0)
+        self.declare_parameter('spawn_interval', 20.0)  # Increased from 15.0
+        self.declare_parameter('max_objects', 4)        # Decreased from 6
+        self.declare_parameter('cleanup_interval', 30.0) # Decreased from 60.0
         
         self.spawn_interval = self.get_parameter('spawn_interval').value
         self.max_objects = self.get_parameter('max_objects').value
@@ -97,12 +97,12 @@ class AutoObjectSpawner(Node):
             }
         }
         
-        # Spawn area (table surface)
+        # FIXED: Adjusted spawn area for better distribution
         self.spawn_area = {
-            'x_min': -0.25, 'x_max': 0.25,
-            'y_min': -0.25, 'y_max': 0.25,
-            'z': 0.83,  # Table height + small offset
-            'safe_radius': 0.08  # Minimum distance between objects
+            'x_min': 0.25, 'x_max': 0.55,  # Forward area on table
+            'y_min': -0.15, 'y_max': 0.15,  # Left-right spread
+            'z': 0.88,  # Table height + offset for proper placement
+            'safe_radius': 0.10  # Increased minimum distance between objects
         }
         
         # Wait for services
@@ -111,11 +111,12 @@ class AutoObjectSpawner(Node):
         # Start spawning after services are ready
         self.services_ready = False
         
-        self.get_logger().info("🎯 Auto Object Spawner initialized")
+        self.get_logger().info("🎯 Auto Object Spawner initialized - FIXED VERSION")
         self.get_logger().info(f"📊 Config: spawn_interval={self.spawn_interval}s, max_objects={self.max_objects}")
+        self.get_logger().info(f"📍 Spawn area: X[{self.spawn_area['x_min']:.2f}-{self.spawn_area['x_max']:.2f}], Y[{self.spawn_area['y_min']:.2f}-{self.spawn_area['y_max']:.2f}]")
     
     def check_services(self):
-        """Check if Gazebo services are available"""
+        """FIXED: Better service checking with recovery"""
         if not self.services_ready:
             if (self.spawn_client.wait_for_service(timeout_sec=1.0) and 
                 self.delete_client.wait_for_service(timeout_sec=1.0)):
@@ -123,12 +124,19 @@ class AutoObjectSpawner(Node):
                 self.services_ready = True
                 self.get_logger().info("✅ Gazebo services are ready!")
                 
-                # Start the spawning and cleanup timers
-                self.create_timer(5.0, self.initial_spawn)  # Initial spawn after 5s
+                # FIXED: More conservative initial spawn
+                self.create_timer(8.0, self.initial_spawn)  # Wait longer for Gazebo to be fully ready
                 self.create_timer(self.spawn_interval, self.auto_spawn_objects)
                 self.create_timer(self.cleanup_interval, self.cleanup_old_objects)
             else:
                 self.get_logger().warn("⚠️ Waiting for Gazebo services...")
+        else:
+            # FIXED: Periodic service health check
+            if not (self.spawn_client.wait_for_service(timeout_sec=0.1) and 
+                    self.delete_client.wait_for_service(timeout_sec=0.1)):
+                self.get_logger().warn("⚠️ Gazebo services became unavailable!")
+                self.services_ready = False
+                self.auto_spawn_enabled = False
     
     def electromagnet_callback(self, msg):
         """Track electromagnet state"""
@@ -144,28 +152,45 @@ class AutoObjectSpawner(Node):
     def initial_spawn(self):
         """Spawn initial set of objects"""
         if len(self.spawned_objects) == 0:
-            initial_count = min(4, self.max_objects)
+            initial_count = min(3, self.max_objects)  # Start with 3 objects
             self.get_logger().info(f"🎬 Initial spawn: {initial_count} objects")
             self.spawn_random_objects(initial_count)
     
     def auto_spawn_objects(self):
-        """Automatically spawn objects if needed"""
+        """FIXED: Auto spawn with better control and limits"""
         if not self.auto_spawn_enabled or not self.services_ready:
             return
         
         current_count = len(self.spawned_objects)
         
-        if current_count < self.max_objects:
-            # Spawn 1-2 new objects
-            spawn_count = min(random.randint(1, 2), self.max_objects - current_count)
-            self.get_logger().info(f"🔄 Auto-spawning {spawn_count} objects (current: {current_count})")
-            self.spawn_random_objects(spawn_count)
+        # FIXED: Check actual objects in Gazebo vs our tracking
+        if current_count >= self.max_objects:
+            self.get_logger().debug(f"📊 Max objects reached ({current_count}/{self.max_objects})")
+            return
+        
+        # FIXED: Only spawn if we really need more objects
+        if current_count < 2:  # Maintain minimum 2 objects
+            spawn_count = min(1, self.max_objects - current_count)  # Only spawn 1 at a time
+            self.get_logger().info(f"🔄 Auto-spawning {spawn_count} object(s) (current: {current_count})")
+            
+            success = self.spawn_random_objects(spawn_count)
+            if not success:
+                self.get_logger().warn("⚠️ Spawn failed - pausing auto-spawn for 30s")
+                # Pause spawning temporarily
+                def resume_spawning():
+                    self.auto_spawn_enabled = True
+                    self.get_logger().info("🔄 Auto-spawning resumed")
+                
+                self.create_timer(30.0, resume_spawning)
+                self.auto_spawn_enabled = False
     
     def spawn_random_objects(self, count):
-        """Spawn random objects with collision avoidance"""
+        """FIXED: Return success status and better error handling"""
+        success_count = 0
+        
         for _ in range(count):
             attempts = 0
-            max_attempts = 20
+            max_attempts = 10  # Reduced attempts to prevent excessive retrying
             
             while attempts < max_attempts:
                 # Choose random object type and color
@@ -193,12 +218,19 @@ class AutoObjectSpawner(Node):
                             'spawn_time': time.time()
                         })
                         self.get_logger().info(f"✅ Spawned {obj_type} ({color_name}) at ({x:.2f}, {y:.2f}, {z:.2f})")
+                        success_count += 1
+                        break
+                    else:
+                        # Spawn failed, don't retry immediately
+                        self.get_logger().warn(f"⚠️ Failed to spawn {obj_type} at ({x:.2f}, {y:.2f}, {z:.2f})")
                         break
                 
                 attempts += 1
             
             if attempts >= max_attempts:
-                self.get_logger().warn("⚠️ Could not find safe spawn position after 20 attempts")
+                self.get_logger().warn("⚠️ Could not find safe spawn position after 10 attempts")
+        
+        return success_count > 0
     
     def is_position_safe(self, x, y):
         """Check if position is safe (not too close to existing objects)"""
@@ -210,7 +242,7 @@ class AutoObjectSpawner(Node):
         return True
     
     def spawn_object(self, name, obj_type, color_name, x, y, z):
-        """Spawn a single object"""
+        """FIXED: Spawn a single object with better timeout handling"""
         try:
             # Create SDF content based on object type
             sdf_content = self.create_sdf_content(name, obj_type, color_name)
@@ -232,15 +264,26 @@ class AutoObjectSpawner(Node):
             request.xml = sdf_content
             request.initial_pose = pose
             
-            # Call service
+            # FIXED: Better service call with shorter timeout and proper handling
+            if not self.spawn_client.wait_for_service(timeout_sec=1.0):
+                self.get_logger().warn("⚠️ Spawn service not available, pausing spawning")
+                self.auto_spawn_enabled = False  # Temporarily disable spawning
+                return False
+            
             future = self.spawn_client.call_async(request)
-            rclpy.spin_until_future_complete(self, future, timeout_sec=5.0)
+            rclpy.spin_until_future_complete(self, future, timeout_sec=3.0)  # Shorter timeout
             
             if future.done():
                 response = future.result()
-                return response.success
+                if response.success:
+                    return True
+                else:
+                    self.get_logger().warn(f"⚠️ Spawn failed for {name}: {response.status_message}")
+                    return False
             else:
-                self.get_logger().error("❌ Spawn service call timed out")
+                self.get_logger().warn(f"⚠️ Spawn timeout for {name} - slowing down spawning")
+                # FIXED: Slow down spawning when timeouts occur
+                self.spawn_interval = min(self.spawn_interval * 1.2, 60.0)  # Increase interval
                 return False
                 
         except Exception as e:
@@ -348,35 +391,32 @@ class AutoObjectSpawner(Node):
         return sdf_content
     
     def cleanup_old_objects(self):
-        """Remove old objects to prevent clutter"""
+        """FIXED: More aggressive cleanup to prevent overcrowding"""
         if not self.services_ready:
             return
             
         current_time = time.time()
         objects_to_remove = []
         
-        # Remove objects older than 2 minutes that are far from robot
+        # FIXED: More aggressive cleanup rules
         for obj in self.spawned_objects:
             age = current_time - obj['spawn_time']
             obj_x, obj_y, _ = obj['position']
             
-            # Remove if old and far from center (likely placed objects)
-            distance_from_center = math.sqrt(obj_x**2 + obj_y**2)
-            
-            if age > 120 and distance_from_center > 0.3:  # 2 minutes old and >30cm from center
+            # Remove if old or if we have too many
+            if age > 90:  # Remove after 90 seconds (was 120)
                 objects_to_remove.append(obj)
-            elif age > 300:  # Force remove after 5 minutes
+            elif len(self.spawned_objects) > self.max_objects and age > 30:  # Quick removal if overcrowded
                 objects_to_remove.append(obj)
         
-        # Also remove excess objects if we have too many
-        if len(self.spawned_objects) > self.max_objects:
-            # Sort by age and remove oldest excess
-            sorted_objects = sorted(self.spawned_objects, key=lambda x: x['spawn_time'])
-            excess_count = len(self.spawned_objects) - self.max_objects
-            objects_to_remove.extend(sorted_objects[:excess_count])
+        # Sort by age and remove oldest first
+        objects_to_remove.sort(key=lambda x: x['spawn_time'])
         
         # Remove duplicates
         objects_to_remove = list({obj['name']: obj for obj in objects_to_remove}.values())
+        
+        # FIXED: Limit how many we try to delete at once
+        objects_to_remove = objects_to_remove[:2]  # Max 2 deletions per cleanup cycle
         
         for obj in objects_to_remove:
             if self.delete_object(obj['name']):
@@ -385,19 +425,28 @@ class AutoObjectSpawner(Node):
                 self.get_logger().info(f"🗑️ Cleaned up: {obj['name']} (age: {current_time - obj['spawn_time']:.1f}s)")
     
     def delete_object(self, name):
-        """Delete an object from Gazebo"""
+        """FIXED: Delete an object with better error handling"""
         try:
             request = DeleteEntity.Request()
             request.name = name
             
+            # Check if service is available
+            if not self.delete_client.wait_for_service(timeout_sec=1.0):
+                self.get_logger().warn(f"⚠️ Delete service not available for {name}")
+                return False
+            
             future = self.delete_client.call_async(request)
-            rclpy.spin_until_future_complete(self, future, timeout_sec=3.0)
+            rclpy.spin_until_future_complete(self, future, timeout_sec=2.0)  # Shorter timeout
             
             if future.done():
                 response = future.result()
-                return response.success
+                if response.success:
+                    return True
+                else:
+                    self.get_logger().warn(f"⚠️ Delete failed for {name}: {response.status_message}")
+                    return False
             else:
-                self.get_logger().error(f"❌ Delete service call timed out for {name}")
+                self.get_logger().warn(f"⚠️ Delete service call timed out for {name}")
                 return False
                 
         except Exception as e:

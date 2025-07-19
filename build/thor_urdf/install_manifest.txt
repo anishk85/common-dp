@@ -12,6 +12,7 @@
 /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_urdf/share/thor_urdf/urdf/thor_gazebo.xacro
 /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_urdf/share/thor_urdf/urdf/thor.urdf.xacro
 /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_urdf/share/thor_urdf/urdf/thor_arm.ros2_control.xacro
+/home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_urdf/share/thor_urdf/urdf/table.urdf.xacro
 /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_urdf/share/thor_urdf/launch/display.launch.py
 /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_urdf/share/thor_urdf/launch/gazebo.launch.py
 /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_urdf/share/thor_urdf/launch/launch.py
