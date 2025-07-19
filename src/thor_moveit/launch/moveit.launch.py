@@ -44,9 +44,16 @@ def generate_launch_description():
                     moveit_config.robot_description_kinematics,
                     moveit_config.joint_limits]
     )
+    # sensors_3d_config = os.path.join(
+    #     get_package_share_directory("thor_moveit"),
+    #     "config",
+    #     "sensors_3d.yaml"  # or "sensors_3d_minimal.yaml" if using minimal config
+    # )
+
 
     return LaunchDescription([
         is_sim_arg,
         move_group_node,
-        rviz_node
+        rviz_node,
+        # sensors_3d_config
     ])

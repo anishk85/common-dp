@@ -49,6 +49,8 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
     "/home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_perception/src/pick_place_controller.py"
     "/home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_perception/src/electromagnet_controller.py"
     "/home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_perception/src/auto_spawn_trigger.py"
+    "/home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_perception/src/interactive_pick_place.py"
+    "/home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_perception/src/auto_object_spawner.py"
     )
 endif()
 

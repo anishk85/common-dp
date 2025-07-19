@@ -27,6 +27,8 @@ install(PROGRAMS
   src/pick_place_controller.py
   src/electromagnet_controller.py
   src/auto_spawn_trigger.py
+  src/interactive_pick_place.py
+  src/auto_object_spawner.py
 
   DESTINATION lib/${PROJECT_NAME}
 )

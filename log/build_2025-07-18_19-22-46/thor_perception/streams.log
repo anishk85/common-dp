@@ -1,0 +1,144 @@
+[0.014s] Invoking command in '/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_perception -DCMAKE_INSTALL_PREFIX=/home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception
+[0.065s] -- The C compiler identification is GNU 11.4.0
+[0.118s] -- The CXX compiler identification is GNU 11.4.0
+[0.125s] -- Detecting C compiler ABI info
+[0.192s] -- Detecting C compiler ABI info - done
+[0.197s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.197s] -- Detecting C compile features
+[0.197s] -- Detecting C compile features - done
+[0.199s] -- Detecting CXX compiler ABI info
+[0.287s] -- Detecting CXX compiler ABI info - done
+[0.292s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.292s] -- Detecting CXX compile features
+[0.292s] -- Detecting CXX compile features - done
+[0.296s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.439s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.545s] -- Found rclpy: 3.3.16 (/opt/ros/humble/share/rclpy/cmake)
+[0.548s] -- Found std_msgs: 4.9.0 (/opt/ros/humble/share/std_msgs/cmake)
+[0.587s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.594s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.602s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.614s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.633s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.655s] -- Found geometry_msgs: 4.9.0 (/opt/ros/humble/share/geometry_msgs/cmake)
+[0.665s] -- Found sensor_msgs: 4.9.0 (/opt/ros/humble/share/sensor_msgs/cmake)
+[0.678s] -- Found tf2_ros: 0.25.13 (/opt/ros/humble/share/tf2_ros/cmake)
+[0.759s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.763s] -- Found rmw_cyclonedds_cpp: 1.3.4 (/opt/ros/humble/share/rmw_cyclonedds_cpp/cmake)
+[0.788s] -- Using RMW implementation 'rmw_cyclonedds_cpp' as default
+[0.799s] -- Looking for pthread.h
+[0.876s] -- Looking for pthread.h - found
+[0.876s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[0.956s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[0.957s] -- Found Threads: TRUE  
+[1.061s] -- Found tf2_geometry_msgs: 0.25.13 (/opt/ros/humble/share/tf2_geometry_msgs/cmake)
+[1.081s] -- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+[1.082s] -- Found Eigen3: TRUE (found version "3.4.0") 
+[1.082s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[1.086s] -- Found cv_bridge: 3.2.1 (/opt/ros/humble/share/cv_bridge/cmake)
+[1.097s] -- Found pcl_conversions: 2.4.5 (/opt/ros/humble/share/pcl_conversions/cmake)
+[1.131s] -- Checking for module 'eigen3'
+[1.151s] --   Found eigen3, version 3.4.0
+[1.186s] -- Found Eigen: /usr/include/eigen3 (Required is at least version "3.1") 
+[1.186s] -- Eigen found (include: /usr/include/eigen3, version: 3.4.0)
+[1.230s] -- Checking for module 'flann'
+[1.245s] --   Found flann, version 1.9.1
+[1.293s] -- Found FLANN: /usr/lib/x86_64-linux-gnu/libflann_cpp.so  
+[1.293s] -- FLANN found (include: /usr/include, lib: /usr/lib/x86_64-linux-gnu/libflann_cpp.so)
+[2.282s] -- Checking for module 'libusb-1.0'
+[2.301s] --   Found libusb-1.0, version 1.0.25
+[2.346s] -- Found libusb: /usr/lib/x86_64-linux-gnu/libusb-1.0.so  
+[2.347s] -- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[2.414s] -- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)
+[2.539s] -- Eigen found (include: /usr/include/eigen3, version: 3.4.0)
+[2.545s] -- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[2.550s] -- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)
+[2.666s] -- Found Qhull version 8.0.2
+[2.781s] -- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[2.896s] -- Found PCL_COMMON: /usr/lib/x86_64-linux-gnu/libpcl_common.so  
+[2.896s] -- Found PCL_KDTREE: /usr/lib/x86_64-linux-gnu/libpcl_kdtree.so  
+[2.897s] -- Found PCL_OCTREE: /usr/lib/x86_64-linux-gnu/libpcl_octree.so  
+[2.897s] -- Found PCL_SEARCH: /usr/lib/x86_64-linux-gnu/libpcl_search.so  
+[2.898s] -- Found PCL_SAMPLE_CONSENSUS: /usr/lib/x86_64-linux-gnu/libpcl_sample_consensus.so  
+[2.899s] -- Found PCL_FILTERS: /usr/lib/x86_64-linux-gnu/libpcl_filters.so  
+[2.899s] -- Found PCL_2D: /usr/include/pcl-1.12  
+[2.899s] -- Found PCL_GEOMETRY: /usr/include/pcl-1.12  
+[2.900s] -- Found PCL_IO: /usr/lib/x86_64-linux-gnu/libpcl_io.so  
+[2.900s] -- Found PCL_FEATURES: /usr/lib/x86_64-linux-gnu/libpcl_features.so  
+[2.901s] -- Found PCL_ML: /usr/lib/x86_64-linux-gnu/libpcl_ml.so  
+[2.902s] -- Found PCL_SEGMENTATION: /usr/lib/x86_64-linux-gnu/libpcl_segmentation.so  
+[2.902s] -- Found PCL_VISUALIZATION: /usr/lib/x86_64-linux-gnu/libpcl_visualization.so  
+[2.903s] -- Found PCL_SURFACE: /usr/lib/x86_64-linux-gnu/libpcl_surface.so  
+[2.904s] -- Found PCL_REGISTRATION: /usr/lib/x86_64-linux-gnu/libpcl_registration.so  
+[2.904s] -- Found PCL_KEYPOINTS: /usr/lib/x86_64-linux-gnu/libpcl_keypoints.so  
+[2.905s] -- Found PCL_TRACKING: /usr/lib/x86_64-linux-gnu/libpcl_tracking.so  
+[2.906s] -- Found PCL_RECOGNITION: /usr/lib/x86_64-linux-gnu/libpcl_recognition.so  
+[2.906s] -- Found PCL_STEREO: /usr/lib/x86_64-linux-gnu/libpcl_stereo.so  
+[2.907s] -- Found PCL_APPS: /usr/lib/x86_64-linux-gnu/libpcl_apps.so  
+[2.907s] -- Found PCL_IN_HAND_SCANNER: /usr/include/pcl-1.12  
+[2.908s] -- Found PCL_MODELER: /usr/include/pcl-1.12  
+[2.908s] -- Found PCL_POINT_CLOUD_EDITOR: /usr/include/pcl-1.12  
+[2.908s] -- Found PCL_OUTOFCORE: /usr/lib/x86_64-linux-gnu/libpcl_outofcore.so  
+[2.909s] -- Found PCL_PEOPLE: /usr/lib/x86_64-linux-gnu/libpcl_people.so  
+[2.913s] -- Found pcl_ros: 2.4.5 (/opt/ros/humble/share/pcl_ros/cmake)
+[2.925s] -- Found gazebo_msgs: 3.9.0 (/opt/ros/humble/share/gazebo_msgs/cmake)
+[2.956s] -- Found moveit_msgs: 2.2.1 (/opt/ros/humble/share/moveit_msgs/cmake)
+[3.016s] -- Found moveit_ros_planning_interface: 2.5.9 (/opt/ros/humble/share/moveit_ros_planning_interface/cmake)
+[3.035s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: date_time filesystem program_options system thread 
+[3.052s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: chrono date_time filesystem iostreams program_options regex serialization system thread 
+[3.092s] -- Found parameter_traits: 0.5.0 (/opt/ros/humble/share/parameter_traits/cmake)
+[3.107s] -- Found rclcpp_lifecycle: 16.0.12 (/opt/ros/humble/share/rclcpp_lifecycle/cmake)
+[3.131s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: filesystem 
+[3.239s] -- library: /usr/lib/x86_64-linux-gnu/libcurl.so
+[3.328s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: system filesystem date_time program_options thread chrono 
+[3.355s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: thread system filesystem regex date_time program_options 
+[3.449s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: system filesystem date_time program_options thread 
+[3.472s] -- Found ament_lint_auto: 0.12.12 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[3.547s] -- Added test 'copyright' to check source files copyright and LICENSE
+[3.549s] -- Added test 'flake8' to check Python code syntax and style conventions
+[3.550s] -- Added test 'lint_cmake' to check CMake code style
+[3.551s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[3.552s] -- Added test 'xmllint' to check XML markup files
+[3.554s] -- Configuring done
+[3.562s] -- Generating done
+[3.565s] -- Build files have been written to: /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception
+[3.581s] Invoked command in '/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_perception -DCMAKE_INSTALL_PREFIX=/home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception
+[3.583s] Invoking command in '/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception -- -j16 -l16
+[3.628s] Invoked command in '/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception -- -j16 -l16
+[3.630s] Invoking command in '/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception
+[3.637s] -- Install configuration: ""
+[3.637s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/lib/thor_perception/perception_node.py
+[3.637s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/lib/thor_perception/object_spawner.py
+[3.637s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/lib/thor_perception/pick_place_controller.py
+[3.637s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/lib/thor_perception/electromagnet_controller.py
+[3.637s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/lib/thor_perception/auto_spawn_trigger.py
+[3.637s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/lib/thor_perception/interactive_pick_place.py
+[3.637s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/lib/thor_perception/auto_object_spawner.py
+[3.638s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/share/thor_perception/launch
+[3.638s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/share/thor_perception/launch/interactive.launch.py
+[3.638s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/share/thor_perception/launch/complete_demo.launch.py
+[3.638s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/share/thor_perception/launch/object.launch.py
+[3.638s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/share/thor_perception/launch/perception.launch.py
+[3.638s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/share/thor_perception/config
+[3.638s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/share/thor_perception/config/pick_place_params.yaml
+[3.638s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/share/thor_perception/config/electromagnet_config.yaml
+[3.638s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/share/thor_perception/config/perception_params.yaml
+[3.638s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/share/thor_perception/config/camera_config.yaml
+[3.638s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/share/thor_perception/worlds
+[3.638s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/share/thor_perception/models
+[3.638s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/share/ament_index/resource_index/package_run_dependencies/thor_perception
+[3.639s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/share/ament_index/resource_index/parent_prefix_path/thor_perception
+[3.639s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/share/thor_perception/environment/ament_prefix_path.sh
+[3.639s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/share/thor_perception/environment/ament_prefix_path.dsv
+[3.639s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/share/thor_perception/environment/path.sh
+[3.639s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/share/thor_perception/environment/path.dsv
+[3.640s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/share/thor_perception/local_setup.bash
+[3.641s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/share/thor_perception/local_setup.sh
+[3.641s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/share/thor_perception/local_setup.zsh
+[3.641s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/share/thor_perception/local_setup.dsv
+[3.641s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/share/thor_perception/package.dsv
+[3.641s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/share/ament_index/resource_index/packages/thor_perception
+[3.641s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/share/thor_perception/cmake/thor_perceptionConfig.cmake
+[3.641s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/share/thor_perception/cmake/thor_perceptionConfig-version.cmake
+[3.642s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception/share/thor_perception/package.xml
+[3.644s] Invoked command in '/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception

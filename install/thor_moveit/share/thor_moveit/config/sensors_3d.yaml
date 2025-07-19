@@ -23,3 +23,42 @@ kinect_depthimage:
   queue_size: 5
   sensor_plugin: occupancy_map_monitor/DepthImageOctomapUpdater
   shadow_threshold: 0.2
+
+
+
+# MoveIt Sensor Configuration for Thor Robot
+# This file configures the 3D sensors for collision avoidance and planning scene updates
+
+# sensors:
+#   - thor_camera_depth
+#   - thor_camera_pointcloud
+
+# # Thor camera depth sensor configuration
+# thor_camera_depth:
+#   sensor_plugin: occupancy_map_monitor/DepthImageOctomapUpdater
+#   image_topic: /camera/depth/image_raw
+#   queue_size: 5
+#   near_clipping_plane_distance: 0.1
+#   far_clipping_plane_distance: 3.0
+#   shadow_threshold: 0.4
+#   padding_offset: 0.02
+#   padding_scale: 1.0
+#   max_update_rate: 2.0
+#   filtered_cloud_topic: /thor/filtered_cloud
+#   ns: thor_depth
+
+# # Thor camera point cloud configuration (backup/alternative)
+# thor_camera_pointcloud:
+#   sensor_plugin: occupancy_map_monitor/PointCloudOctomapUpdater
+#   point_cloud_topic: /camera/points
+#   max_range: 3.0
+#   point_subsample: 1
+#   padding_offset: 0.02
+#   padding_scale: 1.0
+#   max_update_rate: 1.0
+#   filtered_cloud_topic: /thor/filtered_pointcloud
+#   ns: thor_pointcloud
+
+# Alternative minimal configuration if the above still causes issues
+# Uncomment this section and comment out the above if you want to disable 3D sensors
+# sensors: []

@@ -2,12 +2,11 @@
 
 import rclpy
 from rclpy.node import Node
-import random
-import math
 from gazebo_msgs.srv import SpawnEntity, DeleteEntity
-from geometry_msgs.msg import Pose, Point, Quaternion
+from geometry_msgs.msg import Pose
 from std_srvs.srv import Empty
-
+import random
+import os
 
 class ObjectSpawner(Node):
     def __init__(self):
@@ -17,250 +16,122 @@ class ObjectSpawner(Node):
         self.spawn_client = self.create_client(SpawnEntity, '/spawn_entity')
         self.delete_client = self.create_client(DeleteEntity, '/delete_entity')
         
-        # Wait for services
-        while not self.spawn_client.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info('Waiting for spawn service...')
-        
-        while not self.delete_client.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info('Waiting for delete service...')
-        
-        # Object counter
-        self.object_counter = 0
-        self.spawned_objects = []
-        
-        # Services
+        # Service servers
         self.spawn_service = self.create_service(
             Empty,
             '/spawn_random_objects',
             self.spawn_random_objects_callback
         )
         
-        self.clear_service = self.create_service(
-            Empty,
-            '/clear_objects',
-            self.clear_objects_callback
-        )
+        self.spawned_objects = []
         
-        # Object definitions
-        self.object_definitions = {
-            'red_cube': self.get_cube_sdf('red_cube', 0.05, (1.0, 0.0, 0.0)),
-            'blue_cube': self.get_cube_sdf('blue_cube', 0.08, (0.0, 0.0, 1.0)),
-            'green_cube': self.get_cube_sdf('green_cube', 0.06, (0.0, 1.0, 0.0)),
-            'yellow_cylinder': self.get_cylinder_sdf('yellow_cylinder', 0.03, 0.08, (1.0, 1.0, 0.0)),
-            'red_cylinder': self.get_cylinder_sdf('red_cylinder', 0.04, 0.06, (1.0, 0.0, 0.0)),
-            'blue_cylinder': self.get_cylinder_sdf('blue_cylinder', 0.035, 0.07, (0.0, 0.0, 1.0))
-        }
-        
-        self.get_logger().info("Object spawner initialized")
-    
-    def get_cube_sdf(self, name, size, color):
-        """Generate SDF for a cube"""
-        return f"""
-        <sdf version='1.6'>
-          <model name='{name}'>
-            <pose>0 0 0 0 0 0</pose>
-            <link name='link'>
-              <inertial>
-                <mass>0.1</mass>
-                <inertia>
-                  <ixx>0.001</ixx>
-                  <ixy>0</ixy>
-                  <ixz>0</ixz>
-                  <iyy>0.001</iyy>
-                  <iyz>0</iyz>
-                  <izz>0.001</izz>
-                </inertia>
-              </inertial>
-              <collision name='collision'>
-                <geometry>
-                  <box>
-                    <size>{size} {size} {size}</size>
-                  </box>
-                </geometry>
-                <surface>
-                  <friction>
-                    <ode>
-                      <mu>0.8</mu>
-                      <mu2>0.8</mu2>
-                    </ode>
-                  </friction>
-                </surface>
-              </collision>
-              <visual name='visual'>
-                <geometry>
-                  <box>
-                    <size>{size} {size} {size}</size>
-                  </box>
-                </geometry>
-                <material>
-                  <ambient>{color[0]} {color[1]} {color[2]} 1</ambient>
-                  <diffuse>{color[0]} {color[1]} {color[2]} 1</diffuse>
-                  <specular>0.1 0.1 0.1 1</specular>
-                </material>
-              </visual>
-            </link>
-          </model>
-        </sdf>
-        """
-    
-    def get_cylinder_sdf(self, name, radius, length, color):
-        """Generate SDF for a cylinder"""
-        return f"""
-        <sdf version='1.6'>
-          <model name='{name}'>
-            <pose>0 0 0 0 0 0</pose>
-            <link name='link'>
-              <inertial>
-                <mass>0.1</mass>
-                <inertia>
-                  <ixx>0.001</ixx>
-                  <ixy>0</ixy>
-                  <ixz>0</ixz>
-                  <iyy>0.001</iyy>
-                  <iyz>0</iyz>
-                  <izz>0.001</izz>
-                </inertia>
-              </inertial>
-              <collision name='collision'>
-                <geometry>
-                  <cylinder>
-                    <radius>{radius}</radius>
-                    <length>{length}</length>
-                  </cylinder>
-                </geometry>
-                <surface>
-                  <friction>
-                    <ode>
-                      <mu>0.8</mu>
-                      <mu2>0.8</mu2>
-                    </ode>
-                  </friction>
-                </surface>
-              </collision>
-              <visual name='visual'>
-                <geometry>
-                  <cylinder>
-                    <radius>{radius}</radius>
-                    <length>{length}</length>
-                  </cylinder>
-                </geometry>
-                <material>
-                  <ambient>{color[0]} {color[1]} {color[2]} 1</ambient>
-                  <diffuse>{color[0]} {color[1]} {color[2]} 1</diffuse>
-                  <specular>0.1 0.1 0.1 1</specular>
-                </material>
-              </visual>
-            </link>
-          </model>
-        </sdf>
-        """
+        self.get_logger().info("🎯 Object spawner initialized")
     
     def spawn_random_objects_callback(self, request, response):
-        """Spawn random objects in the workspace"""
-        num_objects = random.randint(3, 6)
+        """Spawn random objects in the scene"""
+        try:
+            # Clear existing objects
+            self.clear_objects()
+            
+            # Spawn 3-5 objects
+            num_objects = random.randint(3, 5)
+            
+            for i in range(num_objects):
+                self.spawn_colored_object(i)
+            
+            self.get_logger().info(f"✅ Spawned {num_objects} objects")
+            
+        except Exception as e:
+            self.get_logger().error(f"❌ Error spawning objects: {e}")
         
-        for _ in range(num_objects):
-            self.spawn_random_object()
-        
-        self.get_logger().info(f"Spawned {num_objects} random objects")
         return response
     
-    def spawn_random_object(self):
-        """Spawn a single random object"""
-        # Choose random object type
-        object_type = random.choice(list(self.object_definitions.keys()))
+    def spawn_colored_object(self, index):
+        """Spawn a colored object"""
+        colors = ['red', 'blue', 'green', 'yellow', 'orange']
+        color = random.choice(colors)
         
-        # Generate unique name
-        object_name = f"{object_type}_{self.object_counter}"
-        self.object_counter += 1
+        # LARGER object SDF
+        sdf_content = f"""
+        <?xml version="1.0"?>
+        <sdf version="1.7">
+          <model name="colored_object_{index}">
+            <link name="link">
+              <inertial>
+                <mass>0.1</mass>
+                <inertia>
+                  <ixx>0.001</ixx>
+                  <iyy>0.001</iyy>
+                  <izz>0.001</izz>
+                </inertia>
+              </inertial>
+              <collision name="collision">
+                <geometry>
+                  <box>
+                    <size>0.08 0.08 0.08</size>
+                  </box>
+                </geometry>
+              </collision>
+              <visual name="visual">
+                <geometry>
+                  <box>
+                    <size>0.08 0.08 0.08</size>
+                  </box>
+                </geometry>
+                <material>
+                  <ambient>{self.get_color_rgba(color)}</ambient>
+                  <diffuse>{self.get_color_rgba(color)}</diffuse>
+                  <specular>0.1 0.1 0.1 1</specular>
+                </material>
+              </visual>
+            </link>
+            <plugin name="magnetism" filename="libgazebo_magnetism.so">
+              <magnetic_material>ferrous</magnetic_material>
+              <magnetic_strength>1.0</magnetic_strength>
+            </plugin>
+          </model>
+        </sdf>
+        """
         
-        # Generate random pose within workspace
-        pose = self.generate_random_pose()
-        
-        # Spawn object
-        self.spawn_object(object_name, object_type, pose)
-        self.spawned_objects.append(object_name)
-    
-    def generate_random_pose(self):
-        """Generate random pose within robot workspace"""
+        # Random position in workspace
         pose = Pose()
+        pose.position.x = random.uniform(0.2, 0.6)
+        pose.position.y = random.uniform(-0.3, 0.3)
+        pose.position.z = 0.8  # Above table
+        pose.orientation.w = 1.0
         
-        # Define workspace boundaries (in front of robot)
-        x_min, x_max = 0.3, 0.6
-        y_min, y_max = -0.3, 0.3
-        z_table = 0.01  # Table height
-        
-        # Random position
-        pose.position.x = random.uniform(x_min, x_max)
-        pose.position.y = random.uniform(y_min, y_max)
-        pose.position.z = z_table
-        
-        # Random orientation (only rotation around Z-axis)
-        yaw = random.uniform(0, 2 * math.pi)
-        pose.orientation.z = math.sin(yaw / 2)
-        pose.orientation.w = math.cos(yaw / 2)
-        
-        return pose
-    
-    def spawn_object(self, name, object_type, pose):
-        """Spawn an object in Gazebo"""
+        # Spawn request
         request = SpawnEntity.Request()
-        request.name = name
-        request.xml = self.object_definitions[object_type]
-        request.robot_namespace = ""
+        request.name = f"colored_object_{index}"
+        request.xml = sdf_content
         request.initial_pose = pose
-        request.reference_frame = "world"
         
-        future = self.spawn_client.call_async(request)
-        rclpy.spin_until_future_complete(self, future)
-        
-        if future.result() is not None:
-            if future.result().success:
-                self.get_logger().info(f"Successfully spawned {name}")
-            else:
-                self.get_logger().error(f"Failed to spawn {name}: {future.result().status_message}")
-        else:
-            self.get_logger().error(f"Failed to spawn {name}: Service call failed")
+        if self.spawn_client.wait_for_service(timeout_sec=1.0):
+            future = self.spawn_client.call_async(request)
+            self.spawned_objects.append(f"colored_object_{index}")
+            self.get_logger().info(f"🎨 Spawned {color} object at ({pose.position.x:.2f}, {pose.position.y:.2f})")
     
-    def clear_objects_callback(self, request, response):
+    def get_color_rgba(self, color):
+        """Get RGBA values for colors"""
+        colors = {
+            'red': '1 0 0 1',
+            'blue': '0 0 1 1',
+            'green': '0 1 0 1',
+            'yellow': '1 1 0 1',
+            'orange': '1 0.5 0 1',
+            'purple': '0.5 0 1 1'
+        }
+        return colors.get(color, '0.5 0.5 0.5 1')
+    
+    def clear_objects(self):
         """Clear all spawned objects"""
         for obj_name in self.spawned_objects:
-            self.delete_object(obj_name)
+            request = DeleteEntity.Request()
+            request.name = obj_name
+            if self.delete_client.wait_for_service(timeout_sec=1.0):
+                self.delete_client.call_async(request)
         
         self.spawned_objects.clear()
-        self.get_logger().info("Cleared all spawned objects")
-        return response
-    
-    def delete_object(self, name):
-        """Delete an object from Gazebo"""
-        request = DeleteEntity.Request()
-        request.name = name
-        
-        future = self.delete_client.call_async(request)
-        rclpy.spin_until_future_complete(self, future)
-        
-        if future.result() is not None:
-            if future.result().success:
-                self.get_logger().info(f"Successfully deleted {name}")
-            else:
-                self.get_logger().warn(f"Failed to delete {name}: {future.result().status_message}")
-        else:
-            self.get_logger().error(f"Failed to delete {name}: Service call failed")
-    
-    def spawn_specific_object(self, object_type, pose, name=None):
-        """Spawn a specific object at a specific pose"""
-        if object_type not in self.object_definitions:
-            self.get_logger().error(f"Unknown object type: {object_type}")
-            return False
-        
-        if name is None:
-            name = f"{object_type}_{self.object_counter}"
-            self.object_counter += 1
-        
-        self.spawn_object(name, object_type, pose)
-        self.spawned_objects.append(name)
-        return True
-
 
 def main(args=None):
     rclpy.init(args=args)
@@ -273,7 +144,6 @@ def main(args=None):
     finally:
         node.destroy_node()
         rclpy.shutdown()
-
 
 if __name__ == '__main__':
     main()

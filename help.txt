@@ -1,0 +1,3 @@
+🤖 Joint states received: joint_1: 0.00, joint_2: 0.00, joint_4: 0.00, joint_5: 0.00, joint_3: 0.00, joint_6: 0.00
+
+
