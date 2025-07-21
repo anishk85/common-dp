@@ -66,18 +66,18 @@ def generate_launch_description():
     )
     
     # 4. Auto object spawner
-    auto_spawner = TimerAction(
-        period=10.0,
-        actions=[
-            Node(
-                package='thor_perception',
-                executable='auto_object_spawner.py',
-                name='auto_object_spawner',
-                output='screen',
-                parameters=[{'use_sim_time': is_sim}]
-            )
-        ]
-    )
+    # auto_spawner = TimerAction(
+    #     period=10.0,
+    #     actions=[
+    #         Node(
+    #             package='thor_perception',
+    #             executable='auto_object_spawner.py',
+    #             name='auto_object_spawner',
+    #             output='screen',
+    #             parameters=[{'use_sim_time': is_sim}]
+    #         )
+    #     ]
+    # )
     
     # 5. FIXED: Interactive controller using MoveIt
     interactive_controller = TimerAction(
@@ -98,6 +98,6 @@ def generate_launch_description():
         gazebo_launch,
         controller_launch,
         moveit_launch,  # REQUIRED: MoveIt for motion planning
-        auto_spawner,
+        # auto_spawner,
         interactive_controller,
     ])

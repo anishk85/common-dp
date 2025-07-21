@@ -50,6 +50,13 @@
     <disable_collisions link1="base_link" link2="link_1" reason="Adjacent"/>
     <disable_collisions link1="base_link" link2="link_2" reason="Never"/>
     <disable_collisions link1="base_link" link2="link_3" reason="Never"/>
+    <disable_collisions link1="base_link" link2="metal_object_1" reason="Never"/>
+    <disable_collisions link1="base_link" link2="metal_object_2" reason="Never"/>
+    <disable_collisions link1="base_link" link2="table_base" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="table_leg_1" reason="Never"/>
+    <disable_collisions link1="base_link" link2="table_leg_2" reason="Never"/>
+    <disable_collisions link1="base_link" link2="table_leg_3" reason="Never"/>
+    <disable_collisions link1="base_link" link2="table_leg_4" reason="Never"/>
     <disable_collisions link1="camera_link" link2="camera_mount" reason="Adjacent"/>
     <disable_collisions link1="camera_link" link2="camera_support_pole" reason="Default"/>
     <disable_collisions link1="camera_link" link2="electromagnet_mount" reason="Never"/>
@@ -60,6 +67,13 @@
     <disable_collisions link1="camera_link" link2="link_4" reason="Never"/>
     <disable_collisions link1="camera_link" link2="link_5" reason="Never"/>
     <disable_collisions link1="camera_link" link2="link_6" reason="Never"/>
+    <disable_collisions link1="camera_link" link2="metal_object_1" reason="Never"/>
+    <disable_collisions link1="camera_link" link2="metal_object_2" reason="Never"/>
+    <disable_collisions link1="camera_link" link2="table_base" reason="Never"/>
+    <disable_collisions link1="camera_link" link2="table_leg_1" reason="Never"/>
+    <disable_collisions link1="camera_link" link2="table_leg_2" reason="Never"/>
+    <disable_collisions link1="camera_link" link2="table_leg_3" reason="Never"/>
+    <disable_collisions link1="camera_link" link2="table_leg_4" reason="Never"/>
     <disable_collisions link1="camera_mount" link2="camera_support_pole" reason="Adjacent"/>
     <disable_collisions link1="camera_mount" link2="electromagnet_mount" reason="Never"/>
     <disable_collisions link1="camera_mount" link2="electromagnet_plate" reason="Never"/>
@@ -69,6 +83,13 @@
     <disable_collisions link1="camera_mount" link2="link_4" reason="Never"/>
     <disable_collisions link1="camera_mount" link2="link_5" reason="Never"/>
     <disable_collisions link1="camera_mount" link2="link_6" reason="Never"/>
+    <disable_collisions link1="camera_mount" link2="metal_object_1" reason="Never"/>
+    <disable_collisions link1="camera_mount" link2="metal_object_2" reason="Never"/>
+    <disable_collisions link1="camera_mount" link2="table_base" reason="Never"/>
+    <disable_collisions link1="camera_mount" link2="table_leg_1" reason="Never"/>
+    <disable_collisions link1="camera_mount" link2="table_leg_2" reason="Never"/>
+    <disable_collisions link1="camera_mount" link2="table_leg_3" reason="Never"/>
+    <disable_collisions link1="camera_mount" link2="table_leg_4" reason="Never"/>
     <disable_collisions link1="camera_support_pole" link2="electromagnet_mount" reason="Never"/>
     <disable_collisions link1="camera_support_pole" link2="electromagnet_plate" reason="Never"/>
     <disable_collisions link1="camera_support_pole" link2="link_1" reason="Never"/>
@@ -77,6 +98,13 @@
     <disable_collisions link1="camera_support_pole" link2="link_4" reason="Never"/>
     <disable_collisions link1="camera_support_pole" link2="link_5" reason="Never"/>
     <disable_collisions link1="camera_support_pole" link2="link_6" reason="Never"/>
+    <disable_collisions link1="camera_support_pole" link2="metal_object_1" reason="Never"/>
+    <disable_collisions link1="camera_support_pole" link2="metal_object_2" reason="Never"/>
+    <disable_collisions link1="camera_support_pole" link2="table_base" reason="Adjacent"/>
+    <disable_collisions link1="camera_support_pole" link2="table_leg_1" reason="Never"/>
+    <disable_collisions link1="camera_support_pole" link2="table_leg_2" reason="Never"/>
+    <disable_collisions link1="camera_support_pole" link2="table_leg_3" reason="Never"/>
+    <disable_collisions link1="camera_support_pole" link2="table_leg_4" reason="Never"/>
     <disable_collisions link1="electromagnet_mount" link2="electromagnet_plate" reason="Adjacent"/>
     <disable_collisions link1="electromagnet_mount" link2="link_1" reason="Never"/>
     <disable_collisions link1="electromagnet_mount" link2="link_2" reason="Never"/>
@@ -84,24 +112,76 @@
     <disable_collisions link1="electromagnet_mount" link2="link_4" reason="Default"/>
     <disable_collisions link1="electromagnet_mount" link2="link_5" reason="Never"/>
     <disable_collisions link1="electromagnet_mount" link2="link_6" reason="Adjacent"/>
+    <disable_collisions link1="electromagnet_mount" link2="table_leg_1" reason="Never"/>
+    <disable_collisions link1="electromagnet_mount" link2="table_leg_3" reason="Never"/>
     <disable_collisions link1="electromagnet_plate" link2="link_1" reason="Never"/>
     <disable_collisions link1="electromagnet_plate" link2="link_2" reason="Never"/>
     <disable_collisions link1="electromagnet_plate" link2="link_3" reason="Never"/>
     <disable_collisions link1="electromagnet_plate" link2="link_4" reason="Never"/>
     <disable_collisions link1="electromagnet_plate" link2="link_5" reason="Never"/>
     <disable_collisions link1="electromagnet_plate" link2="link_6" reason="Never"/>
+    <disable_collisions link1="electromagnet_plate" link2="table_leg_1" reason="Never"/>
+    <disable_collisions link1="electromagnet_plate" link2="table_leg_3" reason="Never"/>
     <disable_collisions link1="link_1" link2="link_2" reason="Adjacent"/>
     <disable_collisions link1="link_1" link2="link_4" reason="Never"/>
     <disable_collisions link1="link_1" link2="link_5" reason="Never"/>
     <disable_collisions link1="link_1" link2="link_6" reason="Never"/>
+    <disable_collisions link1="link_1" link2="metal_object_1" reason="Never"/>
+    <disable_collisions link1="link_1" link2="metal_object_2" reason="Never"/>
+    <disable_collisions link1="link_1" link2="table_base" reason="Never"/>
+    <disable_collisions link1="link_1" link2="table_leg_1" reason="Never"/>
+    <disable_collisions link1="link_1" link2="table_leg_2" reason="Never"/>
+    <disable_collisions link1="link_1" link2="table_leg_3" reason="Never"/>
+    <disable_collisions link1="link_1" link2="table_leg_4" reason="Never"/>
     <disable_collisions link1="link_2" link2="link_3" reason="Adjacent"/>
     <disable_collisions link1="link_2" link2="link_4" reason="Never"/>
     <disable_collisions link1="link_2" link2="link_5" reason="Never"/>
     <disable_collisions link1="link_2" link2="link_6" reason="Never"/>
+    <disable_collisions link1="link_2" link2="metal_object_1" reason="Never"/>
+    <disable_collisions link1="link_2" link2="metal_object_2" reason="Never"/>
+    <disable_collisions link1="link_2" link2="table_base" reason="Never"/>
+    <disable_collisions link1="link_2" link2="table_leg_1" reason="Never"/>
+    <disable_collisions link1="link_2" link2="table_leg_2" reason="Never"/>
+    <disable_collisions link1="link_2" link2="table_leg_3" reason="Never"/>
+    <disable_collisions link1="link_2" link2="table_leg_4" reason="Never"/>
     <disable_collisions link1="link_3" link2="link_4" reason="Adjacent"/>
     <disable_collisions link1="link_3" link2="link_5" reason="Never"/>
     <disable_collisions link1="link_3" link2="link_6" reason="Never"/>
+    <disable_collisions link1="link_3" link2="metal_object_1" reason="Never"/>
+    <disable_collisions link1="link_3" link2="metal_object_2" reason="Never"/>
+    <disable_collisions link1="link_3" link2="table_base" reason="Never"/>
+    <disable_collisions link1="link_3" link2="table_leg_1" reason="Never"/>
+    <disable_collisions link1="link_3" link2="table_leg_2" reason="Never"/>
+    <disable_collisions link1="link_3" link2="table_leg_3" reason="Never"/>
+    <disable_collisions link1="link_3" link2="table_leg_4" reason="Never"/>
     <disable_collisions link1="link_4" link2="link_5" reason="Adjacent"/>
     <disable_collisions link1="link_4" link2="link_6" reason="Default"/>
+    <disable_collisions link1="link_4" link2="table_leg_1" reason="Never"/>
+    <disable_collisions link1="link_4" link2="table_leg_3" reason="Never"/>
     <disable_collisions link1="link_5" link2="link_6" reason="Adjacent"/>
+    <disable_collisions link1="link_5" link2="table_leg_1" reason="Never"/>
+    <disable_collisions link1="link_5" link2="table_leg_3" reason="Never"/>
+    <disable_collisions link1="link_6" link2="table_leg_1" reason="Never"/>
+    <disable_collisions link1="link_6" link2="table_leg_3" reason="Never"/>
+    <disable_collisions link1="metal_object_1" link2="metal_object_2" reason="Never"/>
+    <disable_collisions link1="metal_object_1" link2="table_base" reason="Adjacent"/>
+    <disable_collisions link1="metal_object_1" link2="table_leg_1" reason="Never"/>
+    <disable_collisions link1="metal_object_1" link2="table_leg_2" reason="Never"/>
+    <disable_collisions link1="metal_object_1" link2="table_leg_3" reason="Never"/>
+    <disable_collisions link1="metal_object_1" link2="table_leg_4" reason="Never"/>
+    <disable_collisions link1="metal_object_2" link2="table_base" reason="Adjacent"/>
+    <disable_collisions link1="metal_object_2" link2="table_leg_1" reason="Never"/>
+    <disable_collisions link1="metal_object_2" link2="table_leg_2" reason="Never"/>
+    <disable_collisions link1="metal_object_2" link2="table_leg_3" reason="Never"/>
+    <disable_collisions link1="metal_object_2" link2="table_leg_4" reason="Never"/>
+    <disable_collisions link1="table_base" link2="table_leg_1" reason="Adjacent"/>
+    <disable_collisions link1="table_base" link2="table_leg_2" reason="Adjacent"/>
+    <disable_collisions link1="table_base" link2="table_leg_3" reason="Adjacent"/>
+    <disable_collisions link1="table_base" link2="table_leg_4" reason="Adjacent"/>
+    <disable_collisions link1="table_leg_1" link2="table_leg_2" reason="Never"/>
+    <disable_collisions link1="table_leg_1" link2="table_leg_3" reason="Never"/>
+    <disable_collisions link1="table_leg_1" link2="table_leg_4" reason="Never"/>
+    <disable_collisions link1="table_leg_2" link2="table_leg_3" reason="Never"/>
+    <disable_collisions link1="table_leg_2" link2="table_leg_4" reason="Never"/>
+    <disable_collisions link1="table_leg_3" link2="table_leg_4" reason="Never"/>
 </robot>

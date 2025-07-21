@@ -39,7 +39,6 @@
                 <min_depth>0.1</min_depth>
                 <max_depth>10.0</max_depth>
                 <organize_cloud>true</organize_cloud>
-
             </plugin>
         </sensor>
     </gazebo>
@@ -106,6 +105,75 @@
         <material>Gazebo/Orange</material>
     </gazebo>
 
+   <gazebo reference="table_base">
+        <material>Gazebo/Wood</material>
+        <mu1>0.9</mu1>
+        <mu2>0.9</mu2>
+        <kp>10000000.0</kp>
+        <kd>10.0</kd>
+        <minDepth>0.001</minDepth>
+        <maxVel>0.1</maxVel>
+        <fdir1>0 0 0</fdir1>
+    </gazebo>
+
+    <gazebo reference="table_leg_1">
+        <material>Gazebo/WoodPallet</material>
+        <mu1>1.0</mu1>
+        <mu2>1.0</mu2>
+        <kp>10000000.0</kp>
+        <kd>100.0</kd>
+        <minDepth>0.001</minDepth>
+        <maxVel>0.01</maxVel>
+    </gazebo>
+
+    <gazebo reference="table_leg_2">
+        <material>Gazebo/WoodPallet</material>
+        <mu1>1.0</mu1>
+        <mu2>1.0</mu2>
+        <kp>10000000.0</kp>
+        <kd>100.0</kd>
+        <minDepth>0.001</minDepth>
+        <maxVel>0.01</maxVel>
+    </gazebo>
+
+    <gazebo reference="table_leg_3">
+        <material>Gazebo/WoodPallet</material>
+        <mu1>1.0</mu1>
+        <mu2>1.0</mu2>
+        <kp>10000000.0</kp>
+        <kd>100.0</kd>
+        <minDepth>0.001</minDepth>
+        <maxVel>0.01</maxVel>
+    </gazebo>
+
+    <gazebo reference="table_leg_4">
+        <material>Gazebo/WoodPallet</material>
+        <mu1>1.0</mu1>
+        <mu2>1.0</mu2>
+        <kp>10000000.0</kp>
+        <kd>100.0</kd>
+        <minDepth>0.001</minDepth>
+        <maxVel>0.01</maxVel>
+    </gazebo>
+    
+    <gazebo reference="metal_object_1">
+        <material>Gazebo/Chrome</material>
+        <mu1>0.3</mu1>
+        <mu2>0.3</mu2>
+        <kp>1000000.0</kp>
+        <kd>1.0</kd>
+        <magnetic_permeability>1000</magnetic_permeability>
+    </gazebo>
+
+    <gazebo reference="metal_object_2">
+        <material>Gazebo/FlatBlack</material>
+        <mu1>0.4</mu1>
+        <mu2>0.4</mu2>
+        <kp>1000000.0</kp>
+        <kd>1.0</kd>
+        <magnetic_permeability>800</magnetic_permeability>
+    </gazebo>
+
     <gazebo>
         <plugin name="electromagnet_controller" filename="libgazebo_ros_electromagnet.so">
             <ros>
@@ -117,7 +185,43 @@
             <force_constant>50.0</force_constant>
             <max_distance>0.05</max_distance>
             <update_rate>100</update_rate>
+            <ferromagnetic_objects>
+                <object>metal_object_1</object>
+                <object>metal_object_2</object>
+            </ferromagnetic_objects>
         </plugin>
+    </gazebo>
+
+    <gazebo reference="metal_object_1">
+        <sensor name="contact_sensor_obj1" type="contact">
+            <contact>
+                <collision>metal_object_1_collision</collision>
+            </contact>
+            <plugin name="gazebo_ros_contact_sensor" filename="libgazebo_ros_contact_sensor.so">
+                <ros>
+                    <namespace>/thor_arm</namespace>
+                    <remapping>contacts:=metal_object_1/contacts</remapping>
+                </ros>
+                <contact_topic>metal_object_1/contacts</contact_topic>
+                <frame_name>metal_object_1</frame_name>
+            </plugin>
+        </sensor>
+    </gazebo>
+
+    <gazebo reference="metal_object_2">
+        <sensor name="contact_sensor_obj2" type="contact">
+            <contact>
+                <collision>metal_object_2_collision</collision>
+            </contact>
+            <plugin name="gazebo_ros_contact_sensor" filename="libgazebo_ros_contact_sensor.so">
+                <ros>
+                    <namespace>/thor_arm</namespace>
+                    <remapping>contacts:=metal_object_2/contacts</remapping>
+                </ros>
+                <contact_topic>metal_object_2/contacts</contact_topic>
+                <frame_name>metal_object_2</frame_name>
+            </plugin>
+        </sensor>
     </gazebo>
 
     <gazebo>

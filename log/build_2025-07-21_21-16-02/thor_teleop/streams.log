@@ -1,0 +1,17 @@
+[0.009s] Invoking command in '/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_teleop -DCMAKE_INSTALL_PREFIX=/home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_teleop
+[0.016s] [31mCMake Error at CMakeLists.txt:1 (make_minimum_required):
+[0.016s]   Unknown CMake command "make_minimum_required".
+[0.016s] 
+[0.017s] [0m
+[0.017s] [33mCMake Warning (dev) in CMakeLists.txt:
+[0.017s]   No cmake_minimum_required command is present.  A line of code such as
+[0.017s] 
+[0.017s]     cmake_minimum_required(VERSION 3.22)
+[0.017s] 
+[0.017s]   should be added at the top of the file.  The version specified may be lower
+[0.017s]   if you wish to support older CMake versions for this project.  For more
+[0.017s]   information run "cmake --help-policy CMP0000".
+[0.017s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[0.017s] [0m
+[0.017s] -- Configuring incomplete, errors occurred!
+[0.018s] Invoked command in '/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop' returned '1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_teleop -DCMAKE_INSTALL_PREFIX=/home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_teleop

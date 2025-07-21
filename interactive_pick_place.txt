@@ -7,10 +7,9 @@ from geometry_msgs.msg import PoseStamped, Pose, Point, Quaternion
 from std_msgs.msg import Bool
 from sensor_msgs.msg import Image, JointState
 from moveit_msgs.action import MoveGroup
-from moveit_msgs.msg import MoveGroupGoal, Constraints, JointConstraint, PositionConstraint, OrientationConstraint
-from moveit_msgs.msg import RobotState, PlanningScene, CollisionObject
-from moveit_msgs.srv import GetPlanningScene, GetPositionIK, GetPositionFK
-from shape_msgs.msg import SolidPrimitive
+from moveit_msgs.msg import MotionPlanRequest, WorkspaceParameters, Constraints, JointConstraint
+from moveit_msgs.srv import GetPlanningScene
+from tf2_ros import Buffer, TransformListener
 from cv_bridge import CvBridge
 import cv2
 import numpy as np
@@ -25,17 +24,18 @@ class InteractivePickPlaceController(Node):
         # CV Bridge
         self.bridge = CvBridge()
         
+        # TF2 for getting actual end effector position
+        self.tf_buffer = Buffer()
+        self.tf_listener = TransformListener(self.tf_buffer, self)
+        
         # Publishers
         self.electromagnet_pub = self.create_publisher(Bool, '/thor_arm/electromagnet/control', 10)
-        self.planning_scene_pub = self.create_publisher(PlanningScene, '/planning_scene', 10)
         
-        # Action clients
+        # MoveIt action client
         self.move_group_client = ActionClient(self, MoveGroup, '/move_action')
         
-        # Service clients
-        self.get_planning_scene_client = self.create_client(GetPlanningScene, '/get_planning_scene')
-        self.get_position_ik_client = self.create_client(GetPositionIK, '/compute_ik')
-        self.get_position_fk_client = self.create_client(GetPositionFK, '/compute_fk')
+        # Service clients for MoveIt
+        self.planning_scene_client = self.create_client(GetPlanningScene, '/get_planning_scene')
         
         # Subscribers
         self.image_sub = self.create_subscription(
@@ -44,398 +44,514 @@ class InteractivePickPlaceController(Node):
         self.joint_states_sub = self.create_subscription(
             JointState, '/joint_states', self.joint_states_callback, 10)
         
-        # State variables
+        # Initialize state variables
         self.current_image = None
         self.current_joint_states = None
         self.selected_point = None
         self.movement_in_progress = False
         self.electromagnet_active = False
+        self.system_ready = False
+        self.motion_sequence_active = False
+        self.current_target = None
+        self.sequence_failed = False
+        self.last_error_code = None
+        self.debug_mode = True
         
-        # MoveIt configuration
-        self.group_name = "arm_group"
-        self.planning_frame = "base_link"
+        # Robot configuration based on URDF analysis
+        self.move_group_name = "arm_group"
         self.end_effector_link = "electromagnet_plate"
         
-        # Joint names
-        self.joint_names = ['joint_1', 'joint_2', 'joint_3', 'joint_4', 'joint_5', 'joint_6']
+        # Corrected workspace parameters based on URDF measurements
+        self.robot_base_height = 0.0  # Base at ground level
+        self.table_height = 0.095 + 0.04  # Table base height + table thickness = 13.5cm total
+        self.contact_height = self.table_height + 0.035  # 3.5cm above table for object pickup
+        self.safe_approach_height = 0.08  # 8cm above contact
         
-        # Predefined positions
-        self.home_position = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-        self.scan_position = [0.0, -0.5, 0.3, 0.0, 0.2, 0.0]
+        # Corrected reachable workspace based on URDF arm geometry
+        # Calculated from joint limits and link lengths:
+        # - Max reach when fully extended: ~0.6m
+        # - Min reach when folded: ~0.15m
+        # - Height range: 0.1m to 0.5m (from base)
+        self.workspace_bounds = {
+            'x_min': 0.15, 'x_max': 0.65,   # Forward reach
+            'y_min': -0.35, 'y_max': 0.35,  # Side reach (wider for joint rotation)
+            'z_min': 0.10, 'z_max': 0.50    # Height reach
+        }
         
-        # Camera calibration (adjust these based on your camera setup)
-        self.camera_pos = [0.5, 0.0, 1.5]  # Camera position in world frame
-        self.camera_fov = 1.047  # Field of view in radians
-        self.table_height = 0.8  # Table height in meters
+        # Corrected predefined poses - now all reachable
+        self.predefined_poses = {
+            'home': self.create_pose(0.35, 0.0, 0.25, 0.0, 0.0, 0.0, 1.0),  # Safe home position
+            
+            'scan': self.create_pose(0.45, 0.0, 0.30, 0.707, 0.0, 0.0, 0.707),  # Over table, pointing down
+            
+            # Contact positions adjusted to be within reach
+            'contact_object1': self.create_pose(0.35, 0.10, self.contact_height, 0.707, 0.0, 0.0, 0.707),
+            'contact_object2': self.create_pose(0.35, -0.10, self.contact_height, 0.707, 0.0, 0.0, 0.707),
+            'contact_center': self.create_pose(0.45, 0.0, self.contact_height, 0.707, 0.0, 0.0, 0.707),
+        }
         
-        # GUI thread
-        self.gui_thread = threading.Thread(target=self.run_gui)
-        self.gui_thread.daemon = True
-        self.gui_thread.start()
+        # Initialize system
+        self.create_timer(1.0, self.check_system_status)
         
-        # Wait for services
-        self.create_timer(2.0, self.initialize_system)
+        self.get_logger().info("🎯 FIXED CONTACT-PICKUP Controller")
+        self.get_logger().info(f"📏 Table height: {self.table_height:.3f}m")
+        self.get_logger().info(f"🤏 Contact height: {self.contact_height:.3f}m")
+        self.get_logger().info(f"🏠 Home position: (0.35, 0.0, 0.25) - REACHABLE!")
+        self.get_logger().info(f"📍 Table position: (0.45, 0.0, {self.table_height:.3f})")
         
-        self.get_logger().info("🎯 Interactive Pick & Place Controller with MoveIt started")
-        self.get_logger().info("📱 GUI window will open - click on objects to pick them!")
+        # Start GUI after delay
+        self.create_timer(3.0, self.start_gui_once)
     
-    def initialize_system(self):
-        """Initialize MoveIt and move to scan position"""
-        if not self.move_group_client.wait_for_server(timeout_sec=1.0):
-            self.get_logger().warn("⚠️ Waiting for MoveIt action server...")
-            return
+    def create_pose(self, x, y, z, qx, qy, qz, qw):
+        """Create a validated PoseStamped"""
+        # Clamp to workspace bounds
+        x = max(self.workspace_bounds['x_min'], min(self.workspace_bounds['x_max'], x))
+        y = max(self.workspace_bounds['y_min'], min(self.workspace_bounds['y_max'], y))
+        z = max(self.workspace_bounds['z_min'], min(self.workspace_bounds['z_max'], z))
         
-        # Add table to planning scene
-        self.add_table_to_planning_scene()
+        pose = PoseStamped()
+        pose.header.frame_id = "base_link"
+        pose.header.stamp = self.get_clock().now().to_msg()
         
-        # Move to scan position
-        self.move_to_scan_position()
+        pose.pose.position = Point(x=x, y=y, z=z)
+        pose.pose.orientation = Quaternion(x=qx, y=qy, z=qz, w=qw)
+        
+        if self.debug_mode:
+            self.get_logger().info(f"🎯 Created pose at: ({x:.3f}, {y:.3f}, {z:.3f})")
+        
+        return pose
     
-    def add_table_to_planning_scene(self):
-        """Add table as collision object to planning scene"""
-        planning_scene = PlanningScene()
-        planning_scene.is_diff = True
+    def get_current_end_effector_pose(self):
+        """Get current end effector pose with error handling"""
+        try:
+            transform = self.tf_buffer.lookup_transform(
+                'base_link', self.end_effector_link, rclpy.time.Time()
+            )
+            
+            pos = transform.transform.translation
+            orient = transform.transform.rotation
+            
+            return (pos.x, pos.y, pos.z), (orient.x, orient.y, orient.z, orient.w)
+            
+        except Exception as e:
+            self.get_logger().warn(f"TF lookup failed: {str(e)}")
+            return None, None
+    
+    def start_gui_once(self):
+        """Start GUI once"""
+        if not hasattr(self, 'gui_started'):
+            self.gui_started = True
+            self.gui_thread = threading.Thread(target=self.run_gui)
+            self.gui_thread.daemon = True
+            self.gui_thread.start()
+    
+    def check_system_status(self):
+        """Check system readiness"""
+        image_ready = self.current_image is not None
+        joints_ready = self.current_joint_states is not None
+        moveit_ready = self.move_group_client.wait_for_server(timeout_sec=0.1)
         
-        # Create table collision object
-        table = CollisionObject()
-        table.id = "table"
-        table.header.frame_id = self.planning_frame
+        if not hasattr(self, '_status_counter'):
+            self._status_counter = 0
+            
+        if self._status_counter % 10 == 0:
+            self.get_logger().info(f"📊 System Status - Image: {image_ready}, Joints: {joints_ready}, MoveIt: {moveit_ready}")
+            if joints_ready:
+                self.log_robot_state()
         
-        # Table pose
-        table_pose = Pose()
-        table_pose.position.x = 0.0
-        table_pose.position.y = 0.0
-        table_pose.position.z = self.table_height / 2
-        table_pose.orientation.w = 1.0
-        
-        # Table shape
-        table_primitive = SolidPrimitive()
-        table_primitive.type = SolidPrimitive.BOX
-        table_primitive.dimensions = [1.0, 1.0, self.table_height]  # 1m x 1m x table_height
-        
-        table.primitives.append(table_primitive)
-        table.primitive_poses.append(table_pose)
-        table.operation = CollisionObject.ADD
-        
-        planning_scene.world.collision_objects.append(table)
-        self.planning_scene_pub.publish(planning_scene)
-        
-        self.get_logger().info("🏢 Added table to planning scene")
+        if image_ready and joints_ready and moveit_ready and not self.system_ready:
+            self.system_ready = True
+            self.get_logger().info("✅ System Ready!")
+    
+    def log_robot_state(self):
+        """Log current robot state"""
+        end_pos, _ = self.get_current_end_effector_pose()
+        if end_pos:
+            height_above_table = (end_pos[2] - self.table_height) * 1000
+            distance_to_table = math.sqrt((end_pos[0] - 0.45)**2 + end_pos[1]**2)
+            self.get_logger().info(f"🦾 End Effector: ({end_pos[0]:.3f}, {end_pos[1]:.3f}, {end_pos[2]:.3f})")
+            self.get_logger().info(f"📏 {height_above_table:.0f}mm above table | {distance_to_table:.3f}m from table center")
     
     def image_callback(self, msg):
-        """Store latest image"""
+        """Store image"""
         try:
             self.current_image = self.bridge.imgmsg_to_cv2(msg, "bgr8")
         except Exception as e:
-            self.get_logger().error(f"❌ Image conversion error: {e}")
+            self.get_logger().error(f"❌ Image error: {e}")
     
     def joint_states_callback(self, msg):
         """Store joint states"""
         self.current_joint_states = msg
     
-    def move_to_scan_position(self):
-        """Move to scan position using MoveIt"""
-        if not self.movement_in_progress:
-            self.get_logger().info("🔍 Moving to scan position...")
-            self.move_to_joint_positions(self.scan_position)
+    def pixel_to_world_coordinates(self, pixel_x, pixel_y):
+        """Map pixels to table coordinates"""
+        if self.current_image is None:
+            return None
+        
+        img_height, img_width = self.current_image.shape[:2]
+        
+        # Normalize pixel coordinates
+        norm_x = pixel_x / img_width
+        norm_y = pixel_y / img_height
+        
+        # Map to table area (adjusted for camera perspective)
+        table_center_x = 0.45  # Table is at 0.45 in X (not 0.5)
+        table_center_y = 0.0
+        table_width = 0.35   # 35cm wide reachable area
+        table_depth = 0.3    # 30cm deep reachable area
+        
+        world_x = table_center_x - table_depth/2 + norm_y * table_depth
+        world_y = table_center_y - table_width/2 + norm_x * table_width
+        world_z = self.contact_height
+        
+        # Validate against workspace
+        world_x = max(self.workspace_bounds['x_min'], min(self.workspace_bounds['x_max'], world_x))
+        world_y = max(self.workspace_bounds['y_min'], min(self.workspace_bounds['y_max'], world_y))
+        
+        if self.debug_mode:
+            self.get_logger().info(f"🌍 Pixel ({pixel_x},{pixel_y}) → World ({world_x:.3f},{world_y:.3f},{world_z:.3f})")
+        
+        return (world_x, world_y, world_z)
+    
+    def create_approach_pose(self, target_pos):
+        """Create approach pose above target"""
+        x, y, z = target_pos
+        approach_z = z + self.safe_approach_height
+        
+        return self.create_pose(x, y, approach_z, 0.707, 0.0, 0.0, 0.707)
+    
+    def create_contact_pose(self, target_pos):
+        """Create contact pose at target"""
+        x, y, z = target_pos
+        return self.create_pose(x, y, z, 0.707, 0.0, 0.0, 0.707)
+    
+    def move_to_pose(self, target_pose, move_type="MOVE"):
+        """Execute MoveIt motion with improved planning parameters"""
+        if self.movement_in_progress:
+            self.get_logger().warn(f"⚠️ Motion in progress: {move_type}")
+            return False
+        
+        self.movement_in_progress = True
+        self.last_error_code = None
+        
+        pos = target_pose.pose.position
+        self.get_logger().info(f"🎯 Moving to: ({pos.x:.3f}, {pos.y:.3f}, {pos.z:.3f}) for {move_type}")
+        
+        # Validate pose
+        if not self.validate_pose(pos):
+            self.movement_in_progress = False
+            return False
+        
+        try:
+            if not self.move_group_client.wait_for_server(timeout_sec=2.0):
+                self.get_logger().error("❌ MoveIt server unavailable")
+                self.movement_in_progress = False
+                self.last_error_code = -998
+                return False
+            
+            # Create motion plan request with relaxed constraints
+            goal = MoveGroup.Goal()
+            goal.request.group_name = self.move_group_name
+            goal.request.num_planning_attempts = 30  # More attempts
+            goal.request.allowed_planning_time = 20.0  # More time
+            goal.request.max_velocity_scaling_factor = 0.2  # Slower for accuracy
+            goal.request.max_acceleration_scaling_factor = 0.2
+            
+            # Set workspace parameters
+            ws = WorkspaceParameters()
+            ws.header.frame_id = "base_link"
+            ws.min_corner.x = self.workspace_bounds['x_min']
+            ws.min_corner.y = self.workspace_bounds['y_min']
+            ws.min_corner.z = self.workspace_bounds['z_min']
+            ws.max_corner.x = self.workspace_bounds['x_max']
+            ws.max_corner.y = self.workspace_bounds['y_max']
+            ws.max_corner.z = self.workspace_bounds['z_max']
+            goal.request.workspace_parameters = ws
+            
+            # Set position constraints (more relaxed)
+            from moveit_msgs.msg import PositionConstraint, OrientationConstraint
+            from shape_msgs.msg import SolidPrimitive
+            
+            pos_constraint = PositionConstraint()
+            pos_constraint.header.frame_id = "base_link"
+            pos_constraint.link_name = self.end_effector_link
+            pos_constraint.constraint_region.primitives = [SolidPrimitive()]
+            pos_constraint.constraint_region.primitives[0].type = SolidPrimitive.SPHERE
+            pos_constraint.constraint_region.primitives[0].dimensions = [0.05]  # 5cm tolerance sphere
+            pos_constraint.constraint_region.primitive_poses = [target_pose.pose]
+            pos_constraint.weight = 0.5  # Lower weight for more flexibility
+            
+            # Orientation constraint (more relaxed)
+            orient_constraint = OrientationConstraint()
+            orient_constraint.header.frame_id = "base_link"
+            orient_constraint.link_name = self.end_effector_link
+            orient_constraint.orientation = target_pose.pose.orientation
+            orient_constraint.absolute_x_axis_tolerance = 0.5  # ~30 degrees
+            orient_constraint.absolute_y_axis_tolerance = 0.5
+            orient_constraint.absolute_z_axis_tolerance = 0.5
+            orient_constraint.weight = 0.3  # Lower priority
+            
+            goal.request.goal_constraints = [Constraints()]
+            goal.request.goal_constraints[0].position_constraints = [pos_constraint]
+            goal.request.goal_constraints[0].orientation_constraints = [orient_constraint]
+            
+            # Send goal
+            future = self.move_group_client.send_goal_async(goal)
+            
+            def goal_response_callback(future_result):
+                try:
+                    goal_handle = future_result.result()
+                    if not goal_handle.accepted:
+                        self.get_logger().error(f"❌ Goal rejected for {move_type}")
+                        self.movement_in_progress = False
+                        self.last_error_code = -997
+                        return
+                    
+                    self.get_logger().info(f"✅ Goal accepted for {move_type}")
+                    result_future = goal_handle.get_result_async()
+                    result_future.add_done_callback(lambda f: self.result_callback(f, move_type, target_pose))
+                    
+                except Exception as e:
+                    self.get_logger().error(f"❌ Goal callback error: {e}")
+                    self.movement_in_progress = False
+                    self.last_error_code = -996
+            
+            future.add_done_callback(goal_response_callback)
+            return True
+            
+        except Exception as e:
+            self.get_logger().error(f"❌ MoveIt error: {e}")
+            self.movement_in_progress = False
+            self.last_error_code = -995
+            return False
+    
+    def validate_pose(self, position):
+        """Validate pose is within reachable workspace"""
+        x, y, z = position.x, position.y, position.z
+        
+        if not (self.workspace_bounds['x_min'] <= x <= self.workspace_bounds['x_max']):
+            self.get_logger().error(f"❌ X out of bounds: {x:.3f} not in [{self.workspace_bounds['x_min']:.3f}, {self.workspace_bounds['x_max']:.3f}]")
+            return False
+        if not (self.workspace_bounds['y_min'] <= y <= self.workspace_bounds['y_max']):
+            self.get_logger().error(f"❌ Y out of bounds: {y:.3f} not in [{self.workspace_bounds['y_min']:.3f}, {self.workspace_bounds['y_max']:.3f}]")
+            return False
+        if not (self.workspace_bounds['z_min'] <= z <= self.workspace_bounds['z_max']):
+            self.get_logger().error(f"❌ Z out of bounds: {z:.3f} not in [{self.workspace_bounds['z_min']:.3f}, {self.workspace_bounds['z_max']:.3f}]")
+            return False
+        
+        return True
+    
+    def result_callback(self, future, move_type, target_pose):
+        """Handle MoveIt result"""
+        try:
+            result = future.result()
+            error_code = getattr(result.result.error_code, 'val', 1)
+            self.last_error_code = error_code
+                
+            if error_code == 1:  # SUCCESS
+                self.get_logger().info(f"✅ Success: {move_type}")
+                
+                # Verify final position
+                final_pos, _ = self.get_current_end_effector_pose()
+                if final_pos:
+                    target_pos = target_pose.pose.position
+                    error = math.sqrt((final_pos[0]-target_pos.x)**2 + 
+                                    (final_pos[1]-target_pos.y)**2 + 
+                                    (final_pos[2]-target_pos.z)**2)
+                    self.get_logger().info(f"🎯 Position error: {error*1000:.1f}mm")
+            else:
+                self.get_logger().error(f"❌ Failed: {move_type} - Error {error_code}")
+                self.sequence_failed = True
+                
+        except Exception as e:
+            self.get_logger().error(f"❌ Result callback error: {e}")
+            self.last_error_code = -994
+            self.sequence_failed = True
+        finally:
+            self.movement_in_progress = False
     
     def run_gui(self):
-        """Run the GUI for object selection"""
-        cv2.namedWindow('Thor Camera - Click to Pick Objects', cv2.WINDOW_NORMAL)
-        cv2.resizeWindow('Thor Camera - Click to Pick Objects', 800, 600)
-        cv2.setMouseCallback('Thor Camera - Click to Pick Objects', self.mouse_callback)
+        """GUI interface"""
+        window_name = 'Thor Controller'
+        cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)
+        cv2.resizeWindow(window_name, 800, 600)
+        cv2.setMouseCallback(window_name, self.mouse_callback)
         
         while True:
             if self.current_image is not None:
                 display_image = self.current_image.copy()
                 
+                # Add status overlay
+                status_color = (0, 255, 0) if self.system_ready else (0, 0, 255)
+                cv2.putText(display_image, f"Status: {'READY' if self.system_ready else 'INIT'}",
+                           (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, status_color, 2)
+                
+                # Add current position
+                end_pos, _ = self.get_current_end_effector_pose()
+                if end_pos:
+                    cv2.putText(display_image, f"Position: ({end_pos[0]:.2f}, {end_pos[1]:.2f}, {end_pos[2]:.2f})",
+                               (10, 60), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 0), 1)
+                
                 # Add instructions
-                cv2.putText(display_image, "Click on object to pick it up!", 
-                           (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2)
-                cv2.putText(display_image, f"Magnet: {'ON' if self.electromagnet_active else 'OFF'}", 
-                           (10, 60), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 255), 2)
-                cv2.putText(display_image, "Controls: h=home, s=scan, m=magnet, r=reset, q=quit", 
-                           (10, 90), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
+                instructions = [
+                    "Controls:",
+                    "h: Home | s: Scan | 1/2: Objects | 3: Center",
+                    "p: Demo Pickup | m: Toggle Magnet | q: Quit",
+                    "Click on image to pick location"
+                ]
                 
-                # Show selected point
-                if self.selected_point is not None:
-                    x, y = self.selected_point
-                    cv2.circle(display_image, (x, y), 20, (0, 0, 255), 3)
-                    cv2.putText(display_image, "TARGET", (x+25, y), 
-                               cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 2)
+                for i, text in enumerate(instructions):
+                    cv2.putText(display_image, text, (10, 90 + i*20),
+                               cv2.FONT_HERSHEY_SIMPLEX, 0.4, (255, 255, 255), 1)
                 
-                # Show movement status
-                if self.movement_in_progress:
-                    cv2.putText(display_image, "MOVING...", 
-                               (10, display_image.shape[0] - 20), 
-                               cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 255), 2)
+                cv2.imshow(window_name, display_image)
                 
-                cv2.imshow('Thor Camera - Click to Pick Objects', display_image)
-                
-                key = cv2.waitKey(1) & 0xFF
+                key = cv2.waitKey(30) & 0xFF
                 if key == ord('q'):
                     break
-                elif key == ord('h'):
-                    self.get_logger().info("🏠 Moving to home position...")
-                    self.move_to_joint_positions(self.home_position)
-                elif key == ord('s'):
-                    self.get_logger().info("🔍 Moving to scan position...")
-                    self.move_to_joint_positions(self.scan_position)
-                elif key == ord('m'):
-                    self.toggle_electromagnet()
-                elif key == ord('r'):
-                    self.selected_point = None
-                    
+                elif self.system_ready and not self.movement_in_progress:
+                    self.handle_keyboard(key)
             else:
-                # Show waiting message
-                waiting_image = np.zeros((480, 640, 3), dtype=np.uint8)
-                cv2.putText(waiting_image, "Waiting for camera...", 
-                           (200, 240), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
-                cv2.imshow('Thor Camera - Click to Pick Objects', waiting_image)
+                # Show waiting screen
+                waiting_img = np.zeros((300, 500, 3), dtype=np.uint8)
+                cv2.putText(waiting_img, "Waiting for camera...", 
+                           (150, 150), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 255), 2)
+                cv2.imshow(window_name, waiting_img)
                 cv2.waitKey(100)
         
         cv2.destroyAllWindows()
     
+    def handle_keyboard(self, key):
+        """Handle keyboard input"""
+        if key == ord('h'):
+            self.move_to_pose(self.predefined_poses['home'], "HOME")
+        elif key == ord('s'):
+            self.move_to_pose(self.predefined_poses['scan'], "SCAN")
+        elif key == ord('1'):
+            self.move_to_pose(self.predefined_poses['contact_object1'], "OBJECT1")
+        elif key == ord('2'):
+            self.move_to_pose(self.predefined_poses['contact_object2'], "OBJECT2")
+        elif key == ord('3'):
+            self.move_to_pose(self.predefined_poses['contact_center'], "CENTER")
+        elif key == ord('m'):
+            self.toggle_electromagnet()
+        elif key == ord('p'):
+            self.run_demo_pickup()
+    
     def mouse_callback(self, event, x, y, flags, param):
-        """Handle mouse clicks"""
-        if event == cv2.EVENT_LBUTTONDOWN and not self.movement_in_progress:
+        """Handle mouse clicks for target selection"""
+        if event == cv2.EVENT_LBUTTONDOWN and self.system_ready:
             self.selected_point = (x, y)
-            self.get_logger().info(f"🎯 Selected point: ({x}, {y})")
-            
-            # Convert pixel to world coordinates
-            world_pos = self.pixel_to_world(x, y)
-            self.get_logger().info(f"📍 Estimated world position: {world_pos}")
-            
-            # Start pick and place sequence
-            self.start_pick_and_place_sequence(world_pos)
+            world_pos = self.pixel_to_world_coordinates(x, y)
+            if world_pos:
+                self.start_pickup_sequence(world_pos)
     
-    def pixel_to_world(self, pixel_x, pixel_y):
-        """Convert pixel coordinates to world coordinates"""
-        if self.current_image is None:
-            return (0, 0, self.table_height + 0.05)
-        
-        img_height, img_width = self.current_image.shape[:2]
-        
-        # Normalize pixel coordinates to [-1, 1]
-        norm_x = (pixel_x - img_width/2) / (img_width/2)
-        norm_y = (pixel_y - img_height/2) / (img_height/2)
-        
-        # Calculate world coordinates based on camera position and FOV
-        # Assuming camera is looking down at table
-        camera_height = self.camera_pos[2] - self.table_height
-        half_fov = self.camera_fov / 2
-        
-        # Calculate the real-world size of the image at table level
-        table_half_width = camera_height * math.tan(half_fov)
-        
-        # Convert to world coordinates
-        world_x = norm_x * table_half_width
-        world_y = norm_y * table_half_width
-        world_z = self.table_height + 0.05  # Slightly above table
-        
-        return (world_x, world_y, world_z)
-    
-    def start_pick_and_place_sequence(self, target_pos):
-        """Start automated pick and place sequence using MoveIt"""
-        if self.movement_in_progress:
+    def start_pickup_sequence(self, target_pos):
+        """Execute pickup sequence"""
+        if self.motion_sequence_active:
             return
+            
+        self.motion_sequence_active = True
+        self.sequence_failed = False
         
-        self.get_logger().info("🚀 Starting MoveIt pick and place sequence...")
+        def sequence_thread():
+            try:
+                # Step 1: Home
+                self.get_logger().info("🏠 Step 1: Going home")
+                if not self.move_to_pose(self.predefined_poses['home'], "HOME"):
+                    raise Exception("Home failed")
+                self.wait_for_completion()
+                if self.check_error():
+                    raise Exception("Home error")
+                
+                # Step 2: Approach
+                approach_pose = self.create_approach_pose(target_pos)
+                self.get_logger().info("⬆️ Step 2: Approaching")
+                if not self.move_to_pose(approach_pose, "APPROACH"):
+                    raise Exception("Approach failed")
+                self.wait_for_completion()
+                if self.check_error():
+                    raise Exception("Approach error")
+                
+                # Step 3: Contact
+                contact_pose = self.create_contact_pose(target_pos)
+                self.get_logger().info("🤏 Step 3: Contacting")
+                if not self.move_to_pose(contact_pose, "CONTACT"):
+                    raise Exception("Contact failed")
+                self.wait_for_completion()
+                if self.check_error():
+                    raise Exception("Contact error")
+                
+                # Step 4: Activate magnet
+                self.get_logger().info("🧲 Step 4: Activating magnet")
+                self.activate_electromagnet()
+                time.sleep(2.0)
+                
+                # Step 5: Lift
+                self.get_logger().info("⬆️ Step 5: Lifting")
+                if not self.move_to_pose(approach_pose, "LIFT"):
+                    raise Exception("Lift failed")
+                self.wait_for_completion()
+                if self.check_error():
+                    raise Exception("Lift error")
+                
+                # Step 6: Return home
+                self.get_logger().info("🏠 Step 6: Returning home")
+                if not self.move_to_pose(self.predefined_poses['home'], "RETURN"):
+                    raise Exception("Return failed")
+                self.wait_for_completion()
+                
+                # Step 7: Release
+                self.get_logger().info("⚫ Step 7: Releasing")
+                self.deactivate_electromagnet()
+                self.get_logger().info("✅ Pickup completed!")
+                
+            except Exception as e:
+                self.get_logger().error(f"❌ Sequence failed: {e}")
+                self.sequence_failed = True
+                self.emergency_cleanup()
+            finally:
+                self.motion_sequence_active = False
         
-        # Execute sequence in separate thread
-        sequence_thread = threading.Thread(target=self.execute_pick_and_place, args=(target_pos,))
-        sequence_thread.daemon = True
-        sequence_thread.start()
+        thread = threading.Thread(target=sequence_thread)
+        thread.daemon = True
+        thread.start()
     
-    def execute_pick_and_place(self, target_pos):
-        """Execute the full pick and place sequence"""
+    def run_demo_pickup(self):
+        """Run demo pickup sequence"""
+        demo_pos = (0.45, 0.0, self.contact_height)
+        self.start_pickup_sequence(demo_pos)
+    
+    def wait_for_completion(self):
+        """Wait for motion to complete"""
+        while self.movement_in_progress:
+            time.sleep(0.1)
+    
+    def check_error(self):
+        """Check if last motion had error"""
+        return self.last_error_code is not None and self.last_error_code != 1
+    
+    def emergency_cleanup(self):
+        """Emergency cleanup"""
         try:
-            # Step 1: Move to pre-pickup position (above target)
-            pre_pickup_pos = (target_pos[0], target_pos[1], target_pos[2] + 0.1)
-            self.get_logger().info("🎯 Step 1: Moving to pre-pickup position...")
-            if not self.move_to_pose(pre_pickup_pos, (0, 0, 0, 1)):
-                self.get_logger().error("❌ Failed to reach pre-pickup position")
-                return
-            
-            # Step 2: Move to pickup position
-            self.get_logger().info("📍 Step 2: Moving to pickup position...")
-            if not self.move_to_pose(target_pos, (0, 0, 0, 1)):
-                self.get_logger().error("❌ Failed to reach pickup position")
-                return
-            
-            # Step 3: Activate electromagnet
-            self.get_logger().info("🧲 Step 3: Activating electromagnet...")
-            self.activate_electromagnet()
-            time.sleep(2)
-            
-            # Step 4: Lift object
-            lift_pos = (target_pos[0], target_pos[1], target_pos[2] + 0.2)
-            self.get_logger().info("⬆️ Step 4: Lifting object...")
-            if not self.move_to_pose(lift_pos, (0, 0, 0, 1)):
-                self.get_logger().error("❌ Failed to lift object")
-                return
-            
-            # Step 5: Move to place position
-            place_pos = (target_pos[0] + 0.3, target_pos[1], target_pos[2] + 0.2)
-            self.get_logger().info("📦 Step 5: Moving to place position...")
-            if not self.move_to_pose(place_pos, (0, 0, 0, 1)):
-                self.get_logger().error("❌ Failed to reach place position")
-                return
-            
-            # Step 6: Lower to place
-            final_place_pos = (place_pos[0], place_pos[1], target_pos[2])
-            self.get_logger().info("⬇️ Step 6: Lowering to place...")
-            if not self.move_to_pose(final_place_pos, (0, 0, 0, 1)):
-                self.get_logger().error("❌ Failed to lower to place")
-                return
-            
-            # Step 7: Deactivate electromagnet
-            self.get_logger().info("⚫ Step 7: Releasing object...")
             self.deactivate_electromagnet()
-            time.sleep(1)
-            
-            # Step 8: Return to scan position
-            self.get_logger().info("🔄 Step 8: Returning to scan position...")
-            self.move_to_joint_positions(self.scan_position)
-            
-            self.get_logger().info("✅ Pick and place sequence completed successfully!")
-            self.selected_point = None
-            
-        except Exception as e:
-            self.get_logger().error(f"❌ Pick and place sequence failed: {e}")
-            self.selected_point = None
-    
-    def move_to_pose(self, position, orientation):
-        """Move end effector to target pose using MoveIt"""
-        self.movement_in_progress = True
-        
-        try:
-            # Create pose goal
-            pose_goal = Pose()
-            pose_goal.position.x = position[0]
-            pose_goal.position.y = position[1]
-            pose_goal.position.z = position[2]
-            pose_goal.orientation.x = orientation[0]
-            pose_goal.orientation.y = orientation[1]
-            pose_goal.orientation.z = orientation[2]
-            pose_goal.orientation.w = orientation[3]
-            
-            # Create MoveGroup goal
-            goal = MoveGroup.Goal()
-            goal.request.group_name = self.group_name
-            goal.request.num_planning_attempts = 10
-            goal.request.allowed_planning_time = 5.0
-            goal.request.planner_id = "RRTConnect"
-            
-            # Set pose target
-            pose_constraint = PositionConstraint()
-            pose_constraint.header.frame_id = self.planning_frame
-            pose_constraint.link_name = self.end_effector_link
-            pose_constraint.target_point_offset.x = 0.0
-            pose_constraint.target_point_offset.y = 0.0
-            pose_constraint.target_point_offset.z = 0.0
-            
-            # Create goal constraint
-            goal_constraint = Constraints()
-            goal_constraint.name = "pose_constraint"
-            goal_constraint.position_constraints.append(pose_constraint)
-            
-            goal.request.goal_constraints.append(goal_constraint)
-            
-            # Send goal
-            future = self.move_group_client.send_goal_async(goal)
-            goal_handle = future.result()
-            
-            if not goal_handle.accepted:
-                self.get_logger().error("❌ MoveIt goal rejected")
-                return False
-            
-            # Wait for result
-            result_future = goal_handle.get_result_async()
-            result = result_future.result()
-            
-            if result.result.error_code.val == 1:  # SUCCESS
-                self.get_logger().info("✅ MoveIt motion completed successfully")
-                return True
-            else:
-                self.get_logger().error(f"❌ MoveIt motion failed: {result.result.error_code.val}")
-                return False
-                
-        except Exception as e:
-            self.get_logger().error(f"❌ MoveIt motion error: {e}")
-            return False
-        finally:
-            self.movement_in_progress = False
-    
-    def move_to_joint_positions(self, joint_positions):
-        """Move to joint positions using MoveIt"""
-        self.movement_in_progress = True
-        
-        try:
-            # Create MoveGroup goal
-            goal = MoveGroup.Goal()
-            goal.request.group_name = self.group_name
-            goal.request.num_planning_attempts = 10
-            goal.request.allowed_planning_time = 5.0
-            goal.request.planner_id = "RRTConnect"
-            
-            # Set joint constraints
-            joint_constraints = []
-            for i, joint_name in enumerate(self.joint_names):
-                constraint = JointConstraint()
-                constraint.joint_name = joint_name
-                constraint.position = joint_positions[i]
-                constraint.tolerance_above = 0.01
-                constraint.tolerance_below = 0.01
-                constraint.weight = 1.0
-                joint_constraints.append(constraint)
-            
-            goal_constraint = Constraints()
-            goal_constraint.name = "joint_constraint"
-            goal_constraint.joint_constraints = joint_constraints
-            
-            goal.request.goal_constraints.append(goal_constraint)
-            
-            # Send goal
-            future = self.move_group_client.send_goal_async(goal)
-            goal_handle = future.result()
-            
-            if not goal_handle.accepted:
-                self.get_logger().error("❌ MoveIt joint goal rejected")
-                return False
-            
-            # Wait for result
-            result_future = goal_handle.get_result_async()
-            result = result_future.result()
-            
-            if result.result.error_code.val == 1:  # SUCCESS
-                self.get_logger().info("✅ MoveIt joint motion completed")
-                return True
-            else:
-                self.get_logger().error(f"❌ MoveIt joint motion failed: {result.result.error_code.val}")
-                return False
-                
-        except Exception as e:
-            self.get_logger().error(f"❌ MoveIt joint motion error: {e}")
-            return False
-        finally:
-            self.movement_in_progress = False
+            self.move_to_pose(self.predefined_poses['home'], "EMERGENCY")
+        except:
+            pass
     
     def activate_electromagnet(self):
         """Activate electromagnet"""
         self.electromagnet_active = True
-        msg = Bool()
-        msg.data = True
+        msg = Bool(data=True)
         self.electromagnet_pub.publish(msg)
-        self.get_logger().info("🧲 Electromagnet ACTIVATED")
+        self.get_logger().info("🧲 Magnet ON")
     
     def deactivate_electromagnet(self):
         """Deactivate electromagnet"""
         self.electromagnet_active = False
-        msg = Bool()
-        msg.data = False
+        msg = Bool(data=False)
         self.electromagnet_pub.publish(msg)
-        self.get_logger().info("⚫ Electromagnet DEACTIVATED")
+        self.get_logger().info("⚫ Magnet OFF")
     
     def toggle_electromagnet(self):
         """Toggle electromagnet"""
@@ -458,324 +574,3 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    #!/usr/bin/env python3
-
-import rclpy
-from rclpy.node import Node
-from rclpy.action import ActionClient
-from geometry_msgs.msg import PoseStamped
-from std_msgs.msg import Bool
-from sensor_msgs.msg import JointState
-from control_msgs.action import FollowJointTrajectory
-from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
-import time
-import threading
-
-class PickPlaceController(Node):
-    def __init__(self):
-        super().__init__('pick_place_controller')
-        
-        # Publishers
-        self.electromagnet_pub = self.create_publisher(Bool, '/electromagnet_control', 10)
-        self.status_pub = self.create_publisher(Bool, '/electromagnet_status', 10)
-        
-        # Action client
-        self.joint_trajectory_client = ActionClient(
-            self, FollowJointTrajectory, '/arm_group_controller/follow_joint_trajectory')
-        
-        # Subscribers
-        self.joint_states_sub = self.create_subscription(
-            JointState, '/joint_states', self.joint_states_callback, 10)
-        
-        self.detected_objects_sub = self.create_subscription(
-            PoseStamped, '/perception/detected_objects', self.detected_objects_callback, 10)
-        
-        # State variables
-        self.current_joint_states = None
-        self.detected_objects = []
-        self.electromagnet_active = False
-        self.task_running = False
-        self.sequence_step = 0
-        self.movement_in_progress = False
-        
-        # IMPROVED: Better joint positions for actual robot workspace
-        self.joint_names = ['joint_1', 'joint_2', 'joint_3', 'joint_4', 'joint_5', 'joint_6']
-        
-        # FIXED: More realistic joint positions (in radians)
-        # self.home_position = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-        # self.scan_position = [0.0, -0.5, 0.3, 0.0, 0.2, 0.0]      # Look down at workspace
-        # self.pickup_position = [0.0, -0.8, 0.8, 0.0, 0.0, 0.0]    # Lower to pickup
-        # self.place_position = [1.2, -0.8, 0.8, 0.0, 0.0, 0.0]     # Move to place location
-         self.home_position = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-        self.scan_position = [0.0, -1.0, 0.8, 0.0, 0.5, 0.0]      # Better scan position
-        self.pickup_position = [0.0, -1.3, 1.2, 0.0, 0.8, 0.0]    # Lower for pickup
-        self.place_position = [1.5, -1.3, 1.2, 0.0, 0.8, 0.0]     # Move to place
-        # Status timer
-        self.status_timer = self.create_timer(0.1, self.publish_status)
-        
-        # Wait for services
-        self.create_timer(2.0, self.start_sequence)
-        
-        self.get_logger().info("🤖 Pick and Place Controller initialized")
-    
-    def joint_states_callback(self, msg):
-        self.current_joint_states = msg
-    
-    def detected_objects_callback(self, msg):
-        # Only store recent objects
-        self.detected_objects.append(msg)
-        if len(self.detected_objects) > 10:
-            self.detected_objects.pop(0)
-    
-    def publish_status(self):
-        msg = Bool()
-        msg.data = self.electromagnet_active
-        self.status_pub.publish(msg)
-    
-    def start_sequence(self):
-        """Start the pick and place sequence"""
-        if self.task_running or self.movement_in_progress:
-            return
-            
-        if not self.joint_trajectory_client.wait_for_server(timeout_sec=1.0):
-            self.get_logger().warn("⚠️ Waiting for action server...")
-            return
-            
-        if self.current_joint_states is None:
-            self.get_logger().warn("⚠️ No joint states received yet...")
-            return
-        
-        self.get_logger().info("🚀 Starting pick and place sequence")
-        self.task_running = True
-        self.sequence_step = 0
-        self.execute_next_step()
-    
-    def execute_next_step(self):
-        """Execute the next step in the sequence"""
-        if not self.task_running or self.movement_in_progress:
-            return
-            
-        if self.sequence_step == 0:
-            self.get_logger().info("🔍 Step 1: Moving to scan position...")
-            self.move_to_position(self.scan_position)
-            
-        elif self.sequence_step == 1:
-            self.get_logger().info("📷 Step 2: Scanning for objects...")
-            self.scan_for_objects()
-            
-        elif self.sequence_step == 2:
-            self.get_logger().info("📍 Step 3: Moving to pickup position...")
-            self.move_to_position(self.pickup_position)
-            
-        elif self.sequence_step == 3:
-            self.get_logger().info("🧲 Step 4: Activating electromagnet...")
-            self.activate_electromagnet()
-            self.create_timer(2.0, self.timer_callback_once)  # Wait 2 seconds
-            
-        elif self.sequence_step == 4:
-            self.get_logger().info("📦 Step 5: Moving to place position...")
-            self.move_to_position(self.place_position)
-            
-        elif self.sequence_step == 5:
-            self.get_logger().info("🔓 Step 6: Releasing object...")
-            self.deactivate_electromagnet()
-            self.create_timer(2.0, self.timer_callback_once)  # Wait 2 seconds
-            
-        elif self.sequence_step == 6:
-            self.get_logger().info("🏠 Step 7: Returning home...")
-            self.move_to_position(self.home_position)
-            
-        elif self.sequence_step == 7:
-            self.get_logger().info("✅ Sequence complete! Restarting in 5 seconds...")
-            self.task_running = False
-            self.sequence_step = 0
-            self.detected_objects.clear()
-            self.create_timer(5.0, self.timer_callback_once)  # Restart after 5 seconds
-    
-    def timer_callback_once(self):
-        """Single-use timer callback"""
-        if not self.task_running:
-            # Restart sequence
-            self.start_sequence()
-        else:
-            # Continue to next step
-            self.sequence_step += 1
-            self.execute_next_step()
-    
-    def scan_for_objects(self):
-        """Scan for objects and decide next action"""
-        if len(self.detected_objects) > 0:
-            self.get_logger().info(f"🎯 Found {len(self.detected_objects)} objects!")
-            self.sequence_step += 1
-            self.execute_next_step()
-        else:
-            self.get_logger().info("⚠️ No objects found, waiting 3 seconds...")
-            self.create_timer(3.0, self.timer_callback_once)
-    
-    def move_to_position(self, target_positions):
-        """Move robot to target position"""
-        if self.movement_in_progress:
-            self.get_logger().warn("⚠️ Movement already in progress!")
-            return
-            
-        self.movement_in_progress = True
-        
-        # Create trajectory goal
-        goal = FollowJointTrajectory.Goal()
-        goal.trajectory.joint_names = self.joint_names
-        goal.trajectory.header.stamp = self.get_clock().now().to_msg()
-        
-        # Create trajectory point
-        point = JointTrajectoryPoint()
-        point.positions = target_positions
-        point.velocities = [0.0] * len(self.joint_names)
-        point.accelerations = [0.0] * len(self.joint_names)
-        point.time_from_start.sec = 5  # 5 seconds for movement
-        point.time_from_start.nanosec = 0
-        
-        goal.trajectory.points = [point]
-        
-        self.get_logger().info(f"🎯 Moving to: {[f'{pos:.2f}' for pos in target_positions]}")
-        
-        # Send goal
-        future = self.joint_trajectory_client.send_goal_async(goal)
-        future.add_done_callback(self.goal_response_callback)
-    
-    def goal_response_callback(self, future):
-        """Handle goal response"""
-        goal_handle = future.result()
-        if not goal_handle.accepted:
-            self.get_logger().error("❌ Goal rejected!")
-            self.movement_in_progress = False
-            return
-            
-        self.get_logger().info("✅ Goal accepted, waiting for result...")
-        result_future = goal_handle.get_result_async()
-        result_future.add_done_callback(self.result_callback)
-    
-    def result_callback(self, future):
-        """Handle movement result"""
-        self.movement_in_progress = False
-        result = future.result().result
-        
-        if result.error_code == 0:
-            self.get_logger().info("✅ Movement completed successfully!")
-            self.sequence_step += 1
-            # Wait a bit before next step
-            self.create_timer(1.0, self.timer_callback_once)
-        else:
-            self.get_logger().error(f"❌ Movement failed with error: {result.error_code}")
-            self.task_running = False
-    
-    def activate_electromagnet(self):
-        """Activate electromagnet"""
-        self.electromagnet_active = True
-        msg = Bool()
-        msg.data = True
-        self.electromagnet_pub.publish(msg)
-        self.get_logger().info("🧲 Electromagnet ACTIVATED")
-    
-    def deactivate_electromagnet(self):
-        """Deactivate electromagnet"""
-        self.electromagnet_active = False
-        msg = Bool()
-        msg.data = False
-        self.electromagnet_pub.publish(msg)
-        self.get_logger().info("⚫ Electromagnet DEACTIVATED")
-
-def main(args=None):
-    rclpy.init(args=args)
-    node = PickPlaceController()
-    
-    try:
-        rclpy.spin(node)
-    except KeyboardInterrupt:
-        pass
-    finally:
-        node.destroy_node()
-        rclpy.shutdown()
-
-if __name__ == '__main__':
-    main()
-
-
-
-
-
-
-
-
-
-ros2 topic list | grep depth
-/depth/camera_info
-/depth/image_raw
-/depth/image_raw/compressed
-/depth/image_raw/compressedDepth
-/depth/image_raw/theora
-anish@anish-OMEN-by-HP-Gaming-Laptop-16-xd0xxx:~/dp_ws/Thor-ROS/ws_thor$ ros2 topic list | grep move_group
-anish@anish-OMEN-by-HP-Gaming-Laptop-16-xd0xxx:~/dp_ws/Thor-ROS/ws_thor$ ros2 pkg list | grep moveit
-moveit
-moveit_common
-moveit_configs_utils
-moveit_core
-moveit_kinematics
-moveit_msgs
-moveit_planners
-moveit_planners_chomp
-moveit_planners_ompl
-moveit_plugins
-moveit_resources
-moveit_resources_fanuc_description
-moveit_resources_fanuc_moveit_config
-moveit_resources_gazebo
-moveit_resources_panda_description
-moveit_resources_panda_moveit_config
-moveit_resources_pr2_description
-moveit_ros
-moveit_ros_benchmarks
-moveit_ros_move_group
-moveit_ros_occupancy_map_monitor
-moveit_ros_planning
-moveit_ros_planning_interface
-moveit_ros_robot_interaction
-moveit_ros_visualization
-moveit_ros_warehouse
-moveit_servo
-moveit_setup_app_plugins
-moveit_setup_assistant
-moveit_setup_controllers
-moveit_setup_core_plugins
-moveit_setup_framework
-moveit_setup_srdf_plugins
-moveit_simple_controller_manager
-moveit_task_constructor_msgs
-moveit_visual_tools
-mycobot_moveit_config
-mycobot_moveit_demos
-panda_moveit_config
-turtlebot3_manipulation_moveit_config

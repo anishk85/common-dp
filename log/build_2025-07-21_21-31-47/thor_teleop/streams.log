@@ -1,0 +1,22 @@
+[0.009s] Invoking command in '/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop -- -j16 -l16
+[0.050s] Invoked command in '/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop -- -j16 -l16
+[0.060s] Invoking command in '/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop
+[0.067s] -- Install configuration: ""
+[0.067s] -- Up-to-date: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_teleop/lib/thor_teleop/teleop_joint_control.py
+[0.067s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_teleop/lib/thor_teleop/teleop_pose_control.py
+[0.067s] -- Up-to-date: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_teleop/share/ament_index/resource_index/package_run_dependencies/thor_teleop
+[0.067s] -- Up-to-date: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_teleop/share/ament_index/resource_index/parent_prefix_path/thor_teleop
+[0.067s] -- Up-to-date: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_teleop/share/thor_teleop/environment/ament_prefix_path.sh
+[0.067s] -- Up-to-date: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_teleop/share/thor_teleop/environment/ament_prefix_path.dsv
+[0.068s] -- Up-to-date: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_teleop/share/thor_teleop/environment/path.sh
+[0.068s] -- Up-to-date: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_teleop/share/thor_teleop/environment/path.dsv
+[0.068s] -- Up-to-date: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_teleop/share/thor_teleop/local_setup.bash
+[0.068s] -- Up-to-date: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_teleop/share/thor_teleop/local_setup.sh
+[0.068s] -- Up-to-date: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_teleop/share/thor_teleop/local_setup.zsh
+[0.068s] -- Up-to-date: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_teleop/share/thor_teleop/local_setup.dsv
+[0.068s] -- Installing: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_teleop/share/thor_teleop/package.dsv
+[0.068s] -- Up-to-date: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_teleop/share/ament_index/resource_index/packages/thor_teleop
+[0.068s] -- Up-to-date: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_teleop/share/thor_teleop/cmake/thor_teleopConfig.cmake
+[0.068s] -- Up-to-date: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_teleop/share/thor_teleop/cmake/thor_teleopConfig-version.cmake
+[0.068s] -- Up-to-date: /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_teleop/share/thor_teleop/package.xml
+[0.069s] Invoked command in '/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop

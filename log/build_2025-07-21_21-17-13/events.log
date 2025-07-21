@@ -1,0 +1,11 @@
+[0.000000] (-) TimerEvent: {}
+[0.000110] (-) JobUnselected: {'identifier': 'thor_bringup'}
+[0.000124] (-) JobUnselected: {'identifier': 'thor_controller'}
+[0.000163] (-) JobUnselected: {'identifier': 'thor_joystick'}
+[0.000171] (-) JobUnselected: {'identifier': 'thor_manipulation'}
+[0.000258] (-) JobUnselected: {'identifier': 'thor_moveit'}
+[0.000267] (-) JobUnselected: {'identifier': 'thor_perception'}
+[0.000391] (-) JobUnselected: {'identifier': 'thor_server'}
+[0.000401] (-) JobUnselected: {'identifier': 'thor_teleop'}
+[0.000409] (-) JobUnselected: {'identifier': 'thor_urdf'}
+[0.000749] (-) EventReactorShutdown: {}
