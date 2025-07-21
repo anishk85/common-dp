@@ -1,5 +1,4 @@
-/home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_teleop/lib/thor_teleop/teleop_joint_control.py
-/home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_teleop/lib/thor_teleop/teleop_pose_control.py
+/home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_teleop/lib/thor_teleop/teleop_pose_control
 /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_teleop/share/ament_index/resource_index/package_run_dependencies/thor_teleop
 /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_teleop/share/ament_index/resource_index/parent_prefix_path/thor_teleop
 /home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_teleop/share/thor_teleop/environment/ament_prefix_path.sh

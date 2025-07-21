@@ -1,5 +1,6 @@
 /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop/CMakeFiles/uninstall.dir
 /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop/CMakeFiles/thor_teleop_uninstall.dir
+/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop/CMakeFiles/teleop_pose_control.dir
 /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop/CMakeFiles/test.dir
 /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop/CMakeFiles/edit_cache.dir
 /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop/CMakeFiles/rebuild_cache.dir

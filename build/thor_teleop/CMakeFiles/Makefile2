@@ -63,7 +63,7 @@ CMAKE_BINARY_DIR = /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all:
+all: CMakeFiles/teleop_pose_control.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -73,6 +73,7 @@ preinstall:
 # The main recursive "clean" target.
 clean: CMakeFiles/uninstall.dir/clean
 clean: CMakeFiles/thor_teleop_uninstall.dir/clean
+clean: CMakeFiles/teleop_pose_control.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -126,6 +127,32 @@ thor_teleop_uninstall: CMakeFiles/thor_teleop_uninstall.dir/rule
 CMakeFiles/thor_teleop_uninstall.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/thor_teleop_uninstall.dir/build.make CMakeFiles/thor_teleop_uninstall.dir/clean
 .PHONY : CMakeFiles/thor_teleop_uninstall.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/teleop_pose_control.dir
+
+# All Build rule for target.
+CMakeFiles/teleop_pose_control.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/teleop_pose_control.dir/build.make CMakeFiles/teleop_pose_control.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/teleop_pose_control.dir/build.make CMakeFiles/teleop_pose_control.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop/CMakeFiles --progress-num=1,2 "Built target teleop_pose_control"
+.PHONY : CMakeFiles/teleop_pose_control.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/teleop_pose_control.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/teleop_pose_control.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop/CMakeFiles 0
+.PHONY : CMakeFiles/teleop_pose_control.dir/rule
+
+# Convenience name for target.
+teleop_pose_control: CMakeFiles/teleop_pose_control.dir/rule
+.PHONY : teleop_pose_control
+
+# clean rule for target.
+CMakeFiles/teleop_pose_control.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/teleop_pose_control.dir/build.make CMakeFiles/teleop_pose_control.dir/clean
+.PHONY : CMakeFiles/teleop_pose_control.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

@@ -43,10 +43,23 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/thor_teleop" TYPE PROGRAM FILES
-    "/home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_teleop/scripts/teleop_joint_control.py"
-    "/home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_teleop/scripts/teleop_pose_control.py"
-    )
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/thor_teleop/teleop_pose_control" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/thor_teleop/teleop_pose_control")
+    file(RPATH_CHECK
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/thor_teleop/teleop_pose_control"
+         RPATH "")
+  endif()
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/thor_teleop" TYPE EXECUTABLE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop/teleop_pose_control")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/thor_teleop/teleop_pose_control" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/thor_teleop/teleop_pose_control")
+    file(RPATH_CHANGE
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/thor_teleop/teleop_pose_control"
+         OLD_RPATH "/opt/ros/humble/lib:"
+         NEW_RPATH "")
+    if(CMAKE_INSTALL_DO_STRIP)
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/thor_teleop/teleop_pose_control")
+    endif()
+  endif()
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)

@@ -197,6 +197,43 @@ thor_teleop_uninstall/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/thor_teleop_uninstall.dir/build.make CMakeFiles/thor_teleop_uninstall.dir/build
 .PHONY : thor_teleop_uninstall/fast
 
+#=============================================================================
+# Target rules for targets named teleop_pose_control
+
+# Build rule for target.
+teleop_pose_control: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 teleop_pose_control
+.PHONY : teleop_pose_control
+
+# fast build rule for target.
+teleop_pose_control/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/teleop_pose_control.dir/build.make CMakeFiles/teleop_pose_control.dir/build
+.PHONY : teleop_pose_control/fast
+
+src/teleop_pose_control.o: src/teleop_pose_control.cpp.o
+.PHONY : src/teleop_pose_control.o
+
+# target to build an object file
+src/teleop_pose_control.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/teleop_pose_control.dir/build.make CMakeFiles/teleop_pose_control.dir/src/teleop_pose_control.cpp.o
+.PHONY : src/teleop_pose_control.cpp.o
+
+src/teleop_pose_control.i: src/teleop_pose_control.cpp.i
+.PHONY : src/teleop_pose_control.i
+
+# target to preprocess a source file
+src/teleop_pose_control.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/teleop_pose_control.dir/build.make CMakeFiles/teleop_pose_control.dir/src/teleop_pose_control.cpp.i
+.PHONY : src/teleop_pose_control.cpp.i
+
+src/teleop_pose_control.s: src/teleop_pose_control.cpp.s
+.PHONY : src/teleop_pose_control.s
+
+# target to generate assembly for a file
+src/teleop_pose_control.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/teleop_pose_control.dir/build.make CMakeFiles/teleop_pose_control.dir/src/teleop_pose_control.cpp.s
+.PHONY : src/teleop_pose_control.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -212,6 +249,10 @@ help:
 	@echo "... test"
 	@echo "... thor_teleop_uninstall"
 	@echo "... uninstall"
+	@echo "... teleop_pose_control"
+	@echo "... src/teleop_pose_control.o"
+	@echo "... src/teleop_pose_control.i"
+	@echo "... src/teleop_pose_control.s"
 .PHONY : help
 
 
