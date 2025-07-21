@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_perception
+CMAKE_SOURCE_DIR = /home/naman72060/common-dp/src/thor_perception
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception
+CMAKE_BINARY_DIR = /home/naman72060/common-dp/build/thor_perception
 
 # Utility rule file for uninstall.
 
@@ -78,6 +78,6 @@ CMakeFiles/uninstall.dir/clean:
 .PHONY : CMakeFiles/uninstall.dir/clean
 
 CMakeFiles/uninstall.dir/depend:
-	cd /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_perception /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_perception /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/naman72060/common-dp/build/thor_perception && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/naman72060/common-dp/src/thor_perception /home/naman72060/common-dp/src/thor_perception /home/naman72060/common-dp/build/thor_perception /home/naman72060/common-dp/build/thor_perception /home/naman72060/common-dp/build/thor_perception/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/uninstall.dir/depend
 

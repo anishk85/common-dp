@@ -1,0 +1,31 @@
+-- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found rclpy: 3.3.16 (/opt/ros/humble/share/rclpy/cmake)
+-- Found moveit_msgs: 2.2.1 (/opt/ros/humble/share/moveit_msgs/cmake)
+-- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+-- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+-- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/naman72060/common-dp/build/thor_teleop
+-- Install configuration: ""
+-- Up-to-date: /home/naman72060/common-dp/install/thor_teleop/lib/thor_teleop/teleop_joint_control.py
+-- Up-to-date: /home/naman72060/common-dp/install/thor_teleop/lib/thor_teleop/teleop_pose_control.py
+-- Up-to-date: /home/naman72060/common-dp/install/thor_teleop/lib/thor_teleop/teleop_ps5_control_joy.py
+-- Installing: /home/naman72060/common-dp/install/thor_teleop/lib/thor_teleop/teleop_ps5_control_pose.py
+-- Up-to-date: /home/naman72060/common-dp/install/thor_teleop/share/ament_index/resource_index/package_run_dependencies/thor_teleop
+-- Installing: /home/naman72060/common-dp/install/thor_teleop/share/ament_index/resource_index/parent_prefix_path/thor_teleop
+-- Up-to-date: /home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/environment/ament_prefix_path.sh
+-- Installing: /home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/environment/path.sh
+-- Installing: /home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/environment/path.dsv
+-- Up-to-date: /home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/local_setup.bash
+-- Up-to-date: /home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/local_setup.sh
+-- Up-to-date: /home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/local_setup.zsh
+-- Installing: /home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/local_setup.dsv
+-- Installing: /home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/package.dsv
+-- Up-to-date: /home/naman72060/common-dp/install/thor_teleop/share/ament_index/resource_index/packages/thor_teleop
+-- Up-to-date: /home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/cmake/thor_teleopConfig.cmake
+-- Up-to-date: /home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/cmake/thor_teleopConfig-version.cmake
+-- Up-to-date: /home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/package.xml

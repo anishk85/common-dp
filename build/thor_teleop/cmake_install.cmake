@@ -1,8 +1,8 @@
-# Install script for directory: /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_teleop
+# Install script for directory: /home/naman72060/common-dp/src/thor_teleop
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_teleop")
+  set(CMAKE_INSTALL_PREFIX "/home/naman72060/common-dp/install/thor_teleop")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -44,17 +44,23 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/thor_teleop" TYPE PROGRAM FILES
-    "/home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_teleop/scripts/teleop_joint_control.py"
-    "/home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_teleop/scripts/teleop_pose_control.py"
+    "/home/naman72060/common-dp/src/thor_teleop/scripts/teleop_joint_control.py"
+    "/home/naman72060/common-dp/src/thor_teleop/scripts/teleop_pose_control.py"
+    "/home/naman72060/common-dp/src/thor_teleop/scripts/teleop_ps5_control_joy.py"
+    "/home/naman72060/common-dp/src/thor_teleop/scripts/teleop_ps5_control_pose.py"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/package_run_dependencies" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/thor_teleop")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_teleop" TYPE DIRECTORY FILES "/home/naman72060/common-dp/src/thor_teleop/launch")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/parent_prefix_path" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/thor_teleop")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/package_run_dependencies" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_teleop/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/thor_teleop")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/parent_prefix_path" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_teleop/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/thor_teleop")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -62,7 +68,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_teleop/environment" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop/ament_cmake_environment_hooks/ament_prefix_path.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_teleop/environment" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_teleop/ament_cmake_environment_hooks/ament_prefix_path.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -70,42 +76,42 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_teleop/environment" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop/ament_cmake_environment_hooks/path.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_teleop/environment" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_teleop/ament_cmake_environment_hooks/path.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_teleop" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop/ament_cmake_environment_hooks/local_setup.bash")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_teleop" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_teleop/ament_cmake_environment_hooks/local_setup.bash")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_teleop" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop/ament_cmake_environment_hooks/local_setup.sh")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_teleop" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_teleop/ament_cmake_environment_hooks/local_setup.sh")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_teleop" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop/ament_cmake_environment_hooks/local_setup.zsh")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_teleop" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_teleop/ament_cmake_environment_hooks/local_setup.zsh")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_teleop" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop/ament_cmake_environment_hooks/local_setup.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_teleop" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_teleop/ament_cmake_environment_hooks/local_setup.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_teleop" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop/ament_cmake_environment_hooks/package.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_teleop" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_teleop/ament_cmake_environment_hooks/package.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/packages" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop/ament_cmake_index/share/ament_index/resource_index/packages/thor_teleop")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/packages" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_teleop/ament_cmake_index/share/ament_index/resource_index/packages/thor_teleop")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_teleop/cmake" TYPE FILE FILES
-    "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop/ament_cmake_core/thor_teleopConfig.cmake"
-    "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop/ament_cmake_core/thor_teleopConfig-version.cmake"
+    "/home/naman72060/common-dp/build/thor_teleop/ament_cmake_core/thor_teleopConfig.cmake"
+    "/home/naman72060/common-dp/build/thor_teleop/ament_cmake_core/thor_teleopConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_teleop" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_teleop/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_teleop" TYPE FILE FILES "/home/naman72060/common-dp/src/thor_teleop/package.xml")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -116,5 +122,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_teleop/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/naman72060/common-dp/build/thor_teleop/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

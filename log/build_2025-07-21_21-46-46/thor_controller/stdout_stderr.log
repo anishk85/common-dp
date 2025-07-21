@@ -1,0 +1,33 @@
+[35m[1mConsolidate compiler generated dependencies of target thor_controller[0m
+[100%] Built target thor_controller
+-- Install configuration: ""
+-- Installing: /home/naman72060/common-dp/install/thor_controller/share/thor_controller/thor_controller.xml
+-- Installing: /home/naman72060/common-dp/install/thor_controller/share/thor_controller/config
+-- Installing: /home/naman72060/common-dp/install/thor_controller/share/thor_controller/config/thor_controllers.yaml
+-- Installing: /home/naman72060/common-dp/install/thor_controller/share/thor_controller/launch
+-- Installing: /home/naman72060/common-dp/install/thor_controller/share/thor_controller/launch/controller.launch.py
+-- Installing: /home/naman72060/common-dp/install/thor_controller/lib/libthor_controller.so
+-- Set runtime path of "/home/naman72060/common-dp/install/thor_controller/lib/libthor_controller.so" to ""
+-- Installing: /home/naman72060/common-dp/install/thor_controller/include/thor_controller
+-- Installing: /home/naman72060/common-dp/install/thor_controller/include/thor_controller/thor_interface.hpp
+-- Installing: /home/naman72060/common-dp/install/thor_controller/share/thor_controller/environment/library_path.sh
+-- Installing: /home/naman72060/common-dp/install/thor_controller/share/thor_controller/environment/library_path.dsv
+-- Installing: /home/naman72060/common-dp/install/thor_controller/share/ament_index/resource_index/package_run_dependencies/thor_controller
+-- Installing: /home/naman72060/common-dp/install/thor_controller/share/ament_index/resource_index/parent_prefix_path/thor_controller
+-- Installing: /home/naman72060/common-dp/install/thor_controller/share/thor_controller/environment/ament_prefix_path.sh
+-- Installing: /home/naman72060/common-dp/install/thor_controller/share/thor_controller/environment/ament_prefix_path.dsv
+-- Installing: /home/naman72060/common-dp/install/thor_controller/share/thor_controller/environment/path.sh
+-- Installing: /home/naman72060/common-dp/install/thor_controller/share/thor_controller/environment/path.dsv
+-- Installing: /home/naman72060/common-dp/install/thor_controller/share/thor_controller/local_setup.bash
+-- Installing: /home/naman72060/common-dp/install/thor_controller/share/thor_controller/local_setup.sh
+-- Installing: /home/naman72060/common-dp/install/thor_controller/share/thor_controller/local_setup.zsh
+-- Installing: /home/naman72060/common-dp/install/thor_controller/share/thor_controller/local_setup.dsv
+-- Installing: /home/naman72060/common-dp/install/thor_controller/share/thor_controller/package.dsv
+-- Installing: /home/naman72060/common-dp/install/thor_controller/share/ament_index/resource_index/packages/thor_controller
+-- Installing: /home/naman72060/common-dp/install/thor_controller/share/ament_index/resource_index/hardware_interface__pluginlib__plugin/thor_controller
+-- Installing: /home/naman72060/common-dp/install/thor_controller/share/thor_controller/cmake/ament_cmake_export_include_directories-extras.cmake
+-- Installing: /home/naman72060/common-dp/install/thor_controller/share/thor_controller/cmake/ament_cmake_export_libraries-extras.cmake
+-- Installing: /home/naman72060/common-dp/install/thor_controller/share/thor_controller/cmake/ament_cmake_export_dependencies-extras.cmake
+-- Installing: /home/naman72060/common-dp/install/thor_controller/share/thor_controller/cmake/thor_controllerConfig.cmake
+-- Installing: /home/naman72060/common-dp/install/thor_controller/share/thor_controller/cmake/thor_controllerConfig-version.cmake
+-- Installing: /home/naman72060/common-dp/install/thor_controller/share/thor_controller/package.xml

@@ -1,0 +1,48 @@
+Built target ament_cmake_python_copy_thor_manipulation
+running egg_info
+writing thor_manipulation.egg-info/PKG-INFO
+writing dependency_links to thor_manipulation.egg-info/dependency_links.txt
+writing top-level names to thor_manipulation.egg-info/top_level.txt
+reading manifest file 'thor_manipulation.egg-info/SOURCES.txt'
+writing manifest file 'thor_manipulation.egg-info/SOURCES.txt'
+Built target ament_cmake_python_build_thor_manipulation_egg
+-- Install configuration: ""
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/environment/pythonpath.sh
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/environment/pythonpath.dsv
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/local/lib/python3.10/dist-packages/thor_manipulation-0.1.0-py3.10.egg-info
+-- Installing: /home/naman72060/common-dp/install/thor_manipulation/local/lib/python3.10/dist-packages/thor_manipulation-0.1.0-py3.10.egg-info/SOURCES.txt
+-- Installing: /home/naman72060/common-dp/install/thor_manipulation/local/lib/python3.10/dist-packages/thor_manipulation-0.1.0-py3.10.egg-info/PKG-INFO
+-- Installing: /home/naman72060/common-dp/install/thor_manipulation/local/lib/python3.10/dist-packages/thor_manipulation-0.1.0-py3.10.egg-info/top_level.txt
+-- Installing: /home/naman72060/common-dp/install/thor_manipulation/local/lib/python3.10/dist-packages/thor_manipulation-0.1.0-py3.10.egg-info/dependency_links.txt
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/local/lib/python3.10/dist-packages/thor_manipulation
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/local/lib/python3.10/dist-packages/thor_manipulation/__init__.py
+Listing '/home/naman72060/common-dp/install/thor_manipulation/local/lib/python3.10/dist-packages/thor_manipulation'...
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/lib/thor_manipulation/pick_place_node
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/lib/thor_manipulation/pick_place_task_constructor
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/lib/thor_manipulation/thor_task_constructor_demo
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/lib/thor_manipulation/control_interface
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/lib/thor_manipulation/task_coordinator_node
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/lib/thor_manipulation/object_detector
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/lib/thor_manipulation/enhanced_pick_place_node
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/lib/thor_manipulation/simple_command_interface
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/launch
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/launch/pick_place.launch.py
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/config
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/config/mtc.rviz
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/config/electromagnet_controller.cpp
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/config/sensors.yaml
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/ament_index/resource_index/package_run_dependencies/thor_manipulation
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/ament_index/resource_index/parent_prefix_path/thor_manipulation
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/environment/ament_prefix_path.sh
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/environment/path.sh
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/environment/path.dsv
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/local_setup.bash
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/local_setup.sh
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/local_setup.zsh
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/local_setup.dsv
+-- Installing: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/package.dsv
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/ament_index/resource_index/packages/thor_manipulation
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/cmake/thor_manipulationConfig.cmake
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/cmake/thor_manipulationConfig-version.cmake
+-- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/package.xml

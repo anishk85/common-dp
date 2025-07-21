@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_server
+CMAKE_SOURCE_DIR = /home/naman72060/common-dp/src/thor_server
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_server
+CMAKE_BINARY_DIR = /home/naman72060/common-dp/build/thor_server
 
 # Utility rule file for thor_server__py.
 
@@ -97,8 +97,8 @@ rosidl_generator_py/thor_server/_thor_server_s.ep.rosidl_typesupport_fastrtps_c.
 rosidl_generator_py/thor_server/_thor_server_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/builtin_interfaces/msg/Duration.idl
 rosidl_generator_py/thor_server/_thor_server_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/builtin_interfaces/msg/Time.idl
 rosidl_generator_py/thor_server/_thor_server_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/unique_identifier_msgs/msg/UUID.idl
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_server/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python code for ROS interfaces"
-	cd /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_server/thor_server__py && /usr/bin/python3 /opt/ros/humble/share/rosidl_generator_py/cmake/../../../lib/rosidl_generator_py/rosidl_generator_py --generator-arguments-file /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_server/rosidl_generator_py__arguments.json --typesupport-impls "rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c;rosidl_typesupport_c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/naman72060/common-dp/build/thor_server/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python code for ROS interfaces"
+	cd /home/naman72060/common-dp/build/thor_server/thor_server__py && /usr/bin/python3 /opt/ros/humble/share/rosidl_generator_py/cmake/../../../lib/rosidl_generator_py/rosidl_generator_py --generator-arguments-file /home/naman72060/common-dp/build/thor_server/rosidl_generator_py__arguments.json --typesupport-impls "rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c;rosidl_typesupport_c"
 
 rosidl_generator_py/thor_server/_thor_server_s.ep.rosidl_typesupport_introspection_c.c: rosidl_generator_py/thor_server/_thor_server_s.ep.rosidl_typesupport_fastrtps_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/thor_server/_thor_server_s.ep.rosidl_typesupport_introspection_c.c
@@ -138,10 +138,10 @@ thor_server__py/CMakeFiles/thor_server__py.dir/build: thor_server__py
 .PHONY : thor_server__py/CMakeFiles/thor_server__py.dir/build
 
 thor_server__py/CMakeFiles/thor_server__py.dir/clean:
-	cd /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_server/thor_server__py && $(CMAKE_COMMAND) -P CMakeFiles/thor_server__py.dir/cmake_clean.cmake
+	cd /home/naman72060/common-dp/build/thor_server/thor_server__py && $(CMAKE_COMMAND) -P CMakeFiles/thor_server__py.dir/cmake_clean.cmake
 .PHONY : thor_server__py/CMakeFiles/thor_server__py.dir/clean
 
 thor_server__py/CMakeFiles/thor_server__py.dir/depend:
-	cd /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_server && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_server /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_server/thor_server__py /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_server /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_server/thor_server__py /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_server/thor_server__py/CMakeFiles/thor_server__py.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/naman72060/common-dp/build/thor_server && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/naman72060/common-dp/src/thor_server /home/naman72060/common-dp/build/thor_server/thor_server__py /home/naman72060/common-dp/build/thor_server /home/naman72060/common-dp/build/thor_server/thor_server__py /home/naman72060/common-dp/build/thor_server/thor_server__py/CMakeFiles/thor_server__py.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : thor_server__py/CMakeFiles/thor_server__py.dir/depend
 

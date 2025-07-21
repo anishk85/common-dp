@@ -1,0 +1,43 @@
+[0.027s] Invoking command in '/home/naman72060/common-dp/build/thor_moveit': CMAKE_PREFIX_PATH=/home/naman72060/common-dp/install/thor_urdf:/home/naman72060/common-dp/install/thor_bringup:/home/naman72060/common-dp/install/thor_moveit:/home/naman72060/common-dp/install/thor_teleop:/home/naman72060/common-dp/install/thor_joystick:/home/naman72060/common-dp/install/thor_server:/home/naman72060/common-dp/install/thor_perception:/home/naman72060/common-dp/install/thor_manipulation:/home/naman72060/common-dp/install/thor_controller:/opt/ros/humble /usr/bin/cmake --build /home/naman72060/common-dp/build/thor_moveit -- -j12 -l12
+[0.065s] Invoked command in '/home/naman72060/common-dp/build/thor_moveit' returned '0': CMAKE_PREFIX_PATH=/home/naman72060/common-dp/install/thor_urdf:/home/naman72060/common-dp/install/thor_bringup:/home/naman72060/common-dp/install/thor_moveit:/home/naman72060/common-dp/install/thor_teleop:/home/naman72060/common-dp/install/thor_joystick:/home/naman72060/common-dp/install/thor_server:/home/naman72060/common-dp/install/thor_perception:/home/naman72060/common-dp/install/thor_manipulation:/home/naman72060/common-dp/install/thor_controller:/opt/ros/humble /usr/bin/cmake --build /home/naman72060/common-dp/build/thor_moveit -- -j12 -l12
+[0.067s] Invoking command in '/home/naman72060/common-dp/build/thor_moveit': CMAKE_PREFIX_PATH=/home/naman72060/common-dp/install/thor_urdf:/home/naman72060/common-dp/install/thor_bringup:/home/naman72060/common-dp/install/thor_moveit:/home/naman72060/common-dp/install/thor_teleop:/home/naman72060/common-dp/install/thor_joystick:/home/naman72060/common-dp/install/thor_server:/home/naman72060/common-dp/install/thor_perception:/home/naman72060/common-dp/install/thor_manipulation:/home/naman72060/common-dp/install/thor_controller:/opt/ros/humble /usr/bin/cmake --install /home/naman72060/common-dp/build/thor_moveit
+[0.074s] -- Install configuration: ""
+[0.074s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/ament_index/resource_index/package_run_dependencies/thor_moveit
+[0.074s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/ament_index/resource_index/parent_prefix_path/thor_moveit
+[0.075s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/environment/ament_prefix_path.sh
+[0.075s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/environment/ament_prefix_path.dsv
+[0.075s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/environment/path.sh
+[0.075s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/environment/path.dsv
+[0.075s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/local_setup.bash
+[0.075s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/local_setup.sh
+[0.075s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/local_setup.zsh
+[0.075s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/local_setup.dsv
+[0.075s] -- Installing: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/package.dsv
+[0.075s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/ament_index/resource_index/packages/thor_moveit
+[0.076s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/cmake/thor_moveitConfig.cmake
+[0.076s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/cmake/thor_moveitConfig-version.cmake
+[0.076s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/package.xml
+[0.076s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/launch
+[0.076s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/launch/static_virtual_joint_tfs.launch.py
+[0.076s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/launch/spawn_controllers.launch.py
+[0.076s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/launch/demo.launch.py
+[0.076s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/launch/moveit_rviz.launch.py
+[0.076s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/launch/rsp.launch.py
+[0.076s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/launch/moveit.launch.py
+[0.076s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/launch/warehouse_db.launch.py
+[0.077s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/launch/move_group.launch.py
+[0.077s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/launch/setup_assistant.launch.py
+[0.077s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/config
+[0.077s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/config/initial_positions.yaml
+[0.077s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/config/sensors_3d.yaml
+[0.077s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/config/moveit.rviz
+[0.077s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/config/thor_arm.urdf.xacro
+[0.077s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/config/moveit_controllers.yaml
+[0.077s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/config/joint_limits.yaml
+[0.077s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/config/ros2_controllers.yaml
+[0.077s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/config/thor_arm.ros2_control.xacro
+[0.077s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/config/thor_arm.srdf
+[0.077s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/config/pilz_cartesian_limits.yaml
+[0.078s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/config/kinematics.yaml
+[0.078s] -- Up-to-date: /home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/.setup_assistant
+[0.079s] Invoked command in '/home/naman72060/common-dp/build/thor_moveit' returned '0': CMAKE_PREFIX_PATH=/home/naman72060/common-dp/install/thor_urdf:/home/naman72060/common-dp/install/thor_bringup:/home/naman72060/common-dp/install/thor_moveit:/home/naman72060/common-dp/install/thor_teleop:/home/naman72060/common-dp/install/thor_joystick:/home/naman72060/common-dp/install/thor_server:/home/naman72060/common-dp/install/thor_perception:/home/naman72060/common-dp/install/thor_manipulation:/home/naman72060/common-dp/install/thor_controller:/opt/ros/humble /usr/bin/cmake --install /home/naman72060/common-dp/build/thor_moveit

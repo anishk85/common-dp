@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_urdf
+CMAKE_SOURCE_DIR = /home/naman72060/common-dp/src/thor_urdf
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_urdf
+CMAKE_BINARY_DIR = /home/naman72060/common-dp/build/thor_urdf
 
 # Utility rule file for thor_urdf_uninstall.
 
@@ -67,7 +67,7 @@ include CMakeFiles/thor_urdf_uninstall.dir/compiler_depend.make
 include CMakeFiles/thor_urdf_uninstall.dir/progress.make
 
 CMakeFiles/thor_urdf_uninstall:
-	/usr/bin/cmake -P /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_urdf/ament_cmake_uninstall_target/ament_cmake_uninstall_target.cmake
+	/usr/bin/cmake -P /home/naman72060/common-dp/build/thor_urdf/ament_cmake_uninstall_target/ament_cmake_uninstall_target.cmake
 
 thor_urdf_uninstall: CMakeFiles/thor_urdf_uninstall
 thor_urdf_uninstall: CMakeFiles/thor_urdf_uninstall.dir/build.make
@@ -82,6 +82,6 @@ CMakeFiles/thor_urdf_uninstall.dir/clean:
 .PHONY : CMakeFiles/thor_urdf_uninstall.dir/clean
 
 CMakeFiles/thor_urdf_uninstall.dir/depend:
-	cd /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_urdf && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_urdf /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_urdf /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_urdf /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_urdf /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_urdf/CMakeFiles/thor_urdf_uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/naman72060/common-dp/build/thor_urdf && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/naman72060/common-dp/src/thor_urdf /home/naman72060/common-dp/src/thor_urdf /home/naman72060/common-dp/build/thor_urdf /home/naman72060/common-dp/build/thor_urdf /home/naman72060/common-dp/build/thor_urdf/CMakeFiles/thor_urdf_uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/thor_urdf_uninstall.dir/depend
 

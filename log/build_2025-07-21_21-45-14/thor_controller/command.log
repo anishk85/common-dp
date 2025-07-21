@@ -1,0 +1,3 @@
+Invoking command in '/home/naman72060/common-dp/build/thor_controller': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/naman72060/common-dp/src/thor_controller -DCMAKE_INSTALL_PREFIX=/home/naman72060/common-dp/install/thor_controller
+Invoked command in '/home/naman72060/common-dp/build/thor_controller' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/naman72060/common-dp/src/thor_controller -DCMAKE_INSTALL_PREFIX=/home/naman72060/common-dp/install/thor_controller
+Invoking command in '/home/naman72060/common-dp/build/thor_controller': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/naman72060/common-dp/build/thor_controller -- -j12 -l12

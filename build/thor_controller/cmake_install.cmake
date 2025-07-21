@@ -1,8 +1,8 @@
-# Install script for directory: /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_controller
+# Install script for directory: /home/naman72060/common-dp/src/thor_controller
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_controller")
+  set(CMAKE_INSTALL_PREFIX "/home/naman72060/common-dp/install/thor_controller")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -43,13 +43,13 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_controller" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_controller/thor_controller.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_controller" TYPE FILE FILES "/home/naman72060/common-dp/src/thor_controller/thor_controller.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_controller" TYPE DIRECTORY FILES
-    "/home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_controller/config"
-    "/home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_controller/launch"
+    "/home/naman72060/common-dp/src/thor_controller/config"
+    "/home/naman72060/common-dp/src/thor_controller/launch"
     )
 endif()
 
@@ -60,7 +60,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libthor_controller.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller/libthor_controller.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/naman72060/common-dp/build/thor_controller/libthor_controller.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libthor_controller.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libthor_controller.so")
     file(RPATH_CHANGE
@@ -77,7 +77,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_controller/include/thor_controller")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/naman72060/common-dp/src/thor_controller/include/thor_controller")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -85,15 +85,15 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_controller/environment" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller/ament_cmake_environment_hooks/library_path.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_controller/environment" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_controller/ament_cmake_environment_hooks/library_path.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/package_run_dependencies" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/thor_controller")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/package_run_dependencies" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_controller/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/thor_controller")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/parent_prefix_path" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/thor_controller")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/parent_prefix_path" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_controller/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/thor_controller")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -101,7 +101,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_controller/environment" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller/ament_cmake_environment_hooks/ament_prefix_path.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_controller/environment" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_controller/ament_cmake_environment_hooks/ament_prefix_path.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -109,58 +109,58 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_controller/environment" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller/ament_cmake_environment_hooks/path.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_controller/environment" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_controller/ament_cmake_environment_hooks/path.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_controller" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller/ament_cmake_environment_hooks/local_setup.bash")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_controller" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_controller/ament_cmake_environment_hooks/local_setup.bash")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_controller" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller/ament_cmake_environment_hooks/local_setup.sh")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_controller" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_controller/ament_cmake_environment_hooks/local_setup.sh")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_controller" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller/ament_cmake_environment_hooks/local_setup.zsh")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_controller" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_controller/ament_cmake_environment_hooks/local_setup.zsh")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_controller" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller/ament_cmake_environment_hooks/local_setup.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_controller" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_controller/ament_cmake_environment_hooks/local_setup.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_controller" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller/ament_cmake_environment_hooks/package.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_controller" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_controller/ament_cmake_environment_hooks/package.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/packages" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller/ament_cmake_index/share/ament_index/resource_index/packages/thor_controller")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/packages" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_controller/ament_cmake_index/share/ament_index/resource_index/packages/thor_controller")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/hardware_interface__pluginlib__plugin" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller/ament_cmake_index/share/ament_index/resource_index/hardware_interface__pluginlib__plugin/thor_controller")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/hardware_interface__pluginlib__plugin" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_controller/ament_cmake_index/share/ament_index/resource_index/hardware_interface__pluginlib__plugin/thor_controller")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_controller/cmake" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller/ament_cmake_export_include_directories/ament_cmake_export_include_directories-extras.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_controller/cmake" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_controller/ament_cmake_export_include_directories/ament_cmake_export_include_directories-extras.cmake")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_controller/cmake" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller/ament_cmake_export_libraries/ament_cmake_export_libraries-extras.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_controller/cmake" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_controller/ament_cmake_export_libraries/ament_cmake_export_libraries-extras.cmake")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_controller/cmake" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller/ament_cmake_export_dependencies/ament_cmake_export_dependencies-extras.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_controller/cmake" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_controller/ament_cmake_export_dependencies/ament_cmake_export_dependencies-extras.cmake")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_controller/cmake" TYPE FILE FILES
-    "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller/ament_cmake_core/thor_controllerConfig.cmake"
-    "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller/ament_cmake_core/thor_controllerConfig-version.cmake"
+    "/home/naman72060/common-dp/build/thor_controller/ament_cmake_core/thor_controllerConfig.cmake"
+    "/home/naman72060/common-dp/build/thor_controller/ament_cmake_core/thor_controllerConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_controller" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_controller/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_controller" TYPE FILE FILES "/home/naman72060/common-dp/src/thor_controller/package.xml")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -171,5 +171,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/naman72060/common-dp/build/thor_controller/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

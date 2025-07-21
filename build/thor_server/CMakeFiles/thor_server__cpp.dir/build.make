@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_server
+CMAKE_SOURCE_DIR = /home/naman72060/common-dp/src/thor_server
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_server
+CMAKE_BINARY_DIR = /home/naman72060/common-dp/build/thor_server
 
 # Utility rule file for thor_server__cpp.
 
@@ -102,8 +102,8 @@ rosidl_generator_cpp/thor_server/action/joint_task.hpp: /opt/ros/humble/share/ac
 rosidl_generator_cpp/thor_server/action/joint_task.hpp: /opt/ros/humble/share/builtin_interfaces/msg/Duration.idl
 rosidl_generator_cpp/thor_server/action/joint_task.hpp: /opt/ros/humble/share/builtin_interfaces/msg/Time.idl
 rosidl_generator_cpp/thor_server/action/joint_task.hpp: /opt/ros/humble/share/unique_identifier_msgs/msg/UUID.idl
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_server/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code for ROS interfaces"
-	/usr/bin/python3 /opt/ros/humble/share/rosidl_generator_cpp/cmake/../../../lib/rosidl_generator_cpp/rosidl_generator_cpp --generator-arguments-file /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_server/rosidl_generator_cpp__arguments.json
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/naman72060/common-dp/build/thor_server/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code for ROS interfaces"
+	/usr/bin/python3 /opt/ros/humble/share/rosidl_generator_cpp/cmake/../../../lib/rosidl_generator_cpp/rosidl_generator_cpp --generator-arguments-file /home/naman72060/common-dp/build/thor_server/rosidl_generator_cpp__arguments.json
 
 rosidl_generator_cpp/thor_server/action/detail/joint_task__builder.hpp: rosidl_generator_cpp/thor_server/action/joint_task.hpp
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/thor_server/action/detail/joint_task__builder.hpp
@@ -155,6 +155,6 @@ CMakeFiles/thor_server__cpp.dir/clean:
 .PHONY : CMakeFiles/thor_server__cpp.dir/clean
 
 CMakeFiles/thor_server__cpp.dir/depend:
-	cd /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_server && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_server /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_server /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_server /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_server /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_server/CMakeFiles/thor_server__cpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/naman72060/common-dp/build/thor_server && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/naman72060/common-dp/src/thor_server /home/naman72060/common-dp/src/thor_server /home/naman72060/common-dp/build/thor_server /home/naman72060/common-dp/build/thor_server /home/naman72060/common-dp/build/thor_server/CMakeFiles/thor_server__cpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/thor_server__cpp.dir/depend
 

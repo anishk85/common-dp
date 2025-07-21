@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_controller
+CMAKE_SOURCE_DIR = /home/naman72060/common-dp/src/thor_controller
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller
+CMAKE_BINARY_DIR = /home/naman72060/common-dp/build/thor_controller
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -142,9 +142,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller/CMakeFiles /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/naman72060/common-dp/build/thor_controller/CMakeFiles /home/naman72060/common-dp/build/thor_controller//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_controller/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/naman72060/common-dp/build/thor_controller/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

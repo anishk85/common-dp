@@ -20,14 +20,13 @@ from moveit_msgs.msg import MotionPlanRequest, Constraints, JointConstraint
 
 # --- Key Mapping and Configuration ---
 KEY_MAP = {
-    'q': ('joint_1', 0.05), 'a': ('joint_1', -0.05),
-    'w': ('joint_2', 0.05), 's': ('joint_2', -0.05),
-    'e': ('joint_3', 0.05), 'd': ('joint_3', -0.05),
-    'r': ('joint_4', 0.05), 'f': ('joint_4', -0.05),
-    't': ('joint_5', 0.05), 'g': ('joint_5', -0.05),
-    'y': ('joint_6', 0.05), 'h': ('joint_6', -0.05),
+    'q': ('joint_1', 0.1), 'a': ('joint_1', -0.1),
+    'w': ('joint_2', 0.1), 's': ('joint_2', -0.1),
+    'e': ('joint_3', 0.1), 'd': ('joint_3', -0.1),
+    'r': ('joint_4', 0.1), 'f': ('joint_4', -0.1),
+    't': ('joint_5', 0.1), 'g': ('joint_5', -0.1),
+    'y': ('joint_6', 0.1), 'h': ('joint_6', -0.1),
 }
-
 PREDEFINED_POSES = {
     '1': "Zero",
     '2': "Rest",

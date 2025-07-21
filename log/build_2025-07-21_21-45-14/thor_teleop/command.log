@@ -1,0 +1,6 @@
+Invoking command in '/home/naman72060/common-dp/build/thor_teleop': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/naman72060/common-dp/src/thor_teleop -DCMAKE_INSTALL_PREFIX=/home/naman72060/common-dp/install/thor_teleop
+Invoked command in '/home/naman72060/common-dp/build/thor_teleop' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/naman72060/common-dp/src/thor_teleop -DCMAKE_INSTALL_PREFIX=/home/naman72060/common-dp/install/thor_teleop
+Invoking command in '/home/naman72060/common-dp/build/thor_teleop': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/naman72060/common-dp/build/thor_teleop -- -j12 -l12
+Invoked command in '/home/naman72060/common-dp/build/thor_teleop' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/naman72060/common-dp/build/thor_teleop -- -j12 -l12
+Invoking command in '/home/naman72060/common-dp/build/thor_teleop': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/naman72060/common-dp/build/thor_teleop
+Invoked command in '/home/naman72060/common-dp/build/thor_teleop' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/naman72060/common-dp/build/thor_teleop

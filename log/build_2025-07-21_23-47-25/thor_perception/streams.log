@@ -1,0 +1,39 @@
+[0.021s] Invoking command in '/home/naman72060/common-dp/build/thor_perception': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/naman72060/common-dp/build/thor_perception -- -j12 -l12
+[0.070s] Invoked command in '/home/naman72060/common-dp/build/thor_perception' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/naman72060/common-dp/build/thor_perception -- -j12 -l12
+[0.073s] Invoking command in '/home/naman72060/common-dp/build/thor_perception': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/naman72060/common-dp/build/thor_perception
+[0.087s] -- Install configuration: ""
+[0.088s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/lib/thor_perception/perception_node.py
+[0.088s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/lib/thor_perception/object_spawner.py
+[0.088s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/lib/thor_perception/pick_place_controller.py
+[0.088s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/lib/thor_perception/electromagnet_controller.py
+[0.088s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/lib/thor_perception/auto_spawn_trigger.py
+[0.088s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/lib/thor_perception/interactive_pick_place.py
+[0.089s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/lib/thor_perception/auto_object_spawner.py
+[0.089s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/share/thor_perception/launch
+[0.089s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/share/thor_perception/launch/object.launch.py
+[0.089s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/share/thor_perception/launch/interactive.launch.py
+[0.089s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/share/thor_perception/launch/complete_demo.launch.py
+[0.089s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/share/thor_perception/launch/perception.launch.py
+[0.089s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/share/thor_perception/config
+[0.089s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/share/thor_perception/config/electromagnet_config.yaml
+[0.090s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/share/thor_perception/config/pick_place_params.yaml
+[0.090s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/share/thor_perception/config/perception_params.yaml
+[0.090s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/share/thor_perception/config/camera_config.yaml
+[0.090s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/share/thor_perception/worlds
+[0.090s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/share/thor_perception/models
+[0.090s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/share/ament_index/resource_index/package_run_dependencies/thor_perception
+[0.090s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/share/ament_index/resource_index/parent_prefix_path/thor_perception
+[0.090s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/share/thor_perception/environment/ament_prefix_path.sh
+[0.090s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/share/thor_perception/environment/ament_prefix_path.dsv
+[0.091s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/share/thor_perception/environment/path.sh
+[0.091s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/share/thor_perception/environment/path.dsv
+[0.091s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/share/thor_perception/local_setup.bash
+[0.091s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/share/thor_perception/local_setup.sh
+[0.091s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/share/thor_perception/local_setup.zsh
+[0.091s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/share/thor_perception/local_setup.dsv
+[0.091s] -- Installing: /home/naman72060/common-dp/install/thor_perception/share/thor_perception/package.dsv
+[0.091s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/share/ament_index/resource_index/packages/thor_perception
+[0.092s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/share/thor_perception/cmake/thor_perceptionConfig.cmake
+[0.092s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/share/thor_perception/cmake/thor_perceptionConfig-version.cmake
+[0.092s] -- Up-to-date: /home/naman72060/common-dp/install/thor_perception/share/thor_perception/package.xml
+[0.146s] Invoked command in '/home/naman72060/common-dp/build/thor_perception' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/naman72060/common-dp/build/thor_perception

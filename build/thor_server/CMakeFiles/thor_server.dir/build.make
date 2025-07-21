@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_server
+CMAKE_SOURCE_DIR = /home/naman72060/common-dp/src/thor_server
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_server
+CMAKE_BINARY_DIR = /home/naman72060/common-dp/build/thor_server
 
 # Utility rule file for thor_server.
 
@@ -66,8 +66,8 @@ include CMakeFiles/thor_server.dir/compiler_depend.make
 # Include the progress variables for this target.
 include CMakeFiles/thor_server.dir/progress.make
 
-CMakeFiles/thor_server: /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_server/action/JointTask.action
-CMakeFiles/thor_server: /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_server/action/PoseTask.action
+CMakeFiles/thor_server: /home/naman72060/common-dp/src/thor_server/action/JointTask.action
+CMakeFiles/thor_server: /home/naman72060/common-dp/src/thor_server/action/PoseTask.action
 CMakeFiles/thor_server: /opt/ros/humble/share/action_msgs/msg/GoalInfo.idl
 CMakeFiles/thor_server: /opt/ros/humble/share/action_msgs/msg/GoalStatus.idl
 CMakeFiles/thor_server: /opt/ros/humble/share/action_msgs/msg/GoalStatusArray.idl
@@ -86,6 +86,6 @@ CMakeFiles/thor_server.dir/clean:
 .PHONY : CMakeFiles/thor_server.dir/clean
 
 CMakeFiles/thor_server.dir/depend:
-	cd /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_server && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_server /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_server /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_server /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_server /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_server/CMakeFiles/thor_server.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/naman72060/common-dp/build/thor_server && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/naman72060/common-dp/src/thor_server /home/naman72060/common-dp/src/thor_server /home/naman72060/common-dp/build/thor_server /home/naman72060/common-dp/build/thor_server /home/naman72060/common-dp/build/thor_server/CMakeFiles/thor_server.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/thor_server.dir/depend
 

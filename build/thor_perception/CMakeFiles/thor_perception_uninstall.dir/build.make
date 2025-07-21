@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_perception
+CMAKE_SOURCE_DIR = /home/naman72060/common-dp/src/thor_perception
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception
+CMAKE_BINARY_DIR = /home/naman72060/common-dp/build/thor_perception
 
 # Utility rule file for thor_perception_uninstall.
 
@@ -67,7 +67,7 @@ include CMakeFiles/thor_perception_uninstall.dir/compiler_depend.make
 include CMakeFiles/thor_perception_uninstall.dir/progress.make
 
 CMakeFiles/thor_perception_uninstall:
-	/usr/bin/cmake -P /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception/ament_cmake_uninstall_target/ament_cmake_uninstall_target.cmake
+	/usr/bin/cmake -P /home/naman72060/common-dp/build/thor_perception/ament_cmake_uninstall_target/ament_cmake_uninstall_target.cmake
 
 thor_perception_uninstall: CMakeFiles/thor_perception_uninstall
 thor_perception_uninstall: CMakeFiles/thor_perception_uninstall.dir/build.make
@@ -82,6 +82,6 @@ CMakeFiles/thor_perception_uninstall.dir/clean:
 .PHONY : CMakeFiles/thor_perception_uninstall.dir/clean
 
 CMakeFiles/thor_perception_uninstall.dir/depend:
-	cd /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_perception /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_perception /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception/CMakeFiles/thor_perception_uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/naman72060/common-dp/build/thor_perception && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/naman72060/common-dp/src/thor_perception /home/naman72060/common-dp/src/thor_perception /home/naman72060/common-dp/build/thor_perception /home/naman72060/common-dp/build/thor_perception /home/naman72060/common-dp/build/thor_perception/CMakeFiles/thor_perception_uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/thor_perception_uninstall.dir/depend
 

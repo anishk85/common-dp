@@ -1,8 +1,8 @@
-# Install script for directory: /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_server/thor_server__py
+# Install script for directory: /home/naman72060/common-dp/build/thor_server/thor_server__py
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_server")
+  set(CMAKE_INSTALL_PREFIX "/home/naman72060/common-dp/install/thor_server")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 

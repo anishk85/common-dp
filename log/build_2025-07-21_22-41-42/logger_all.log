@@ -1,0 +1,691 @@
+[0.087s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.087s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=12, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x763169e12140>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x763169f170a0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x763169f170a0>>, mixin_verb=('build',))
+[0.199s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.199s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.199s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.199s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.199s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.199s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.200s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/naman72060/common-dp'
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.210s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_bringup) by extensions ['ignore', 'ignore_ament_install']
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_bringup) by extension 'ignore'
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_bringup) by extension 'ignore_ament_install'
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_bringup) by extensions ['colcon_pkg']
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_bringup) by extension 'colcon_pkg'
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_bringup) by extensions ['colcon_meta']
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_bringup) by extension 'colcon_meta'
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_bringup) by extensions ['ros']
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_bringup) by extension 'ros'
+[0.213s] DEBUG:colcon.colcon_core.package_identification:Package 'src/thor_bringup' with type 'ros.ament_cmake' and name 'thor_bringup'
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_controller) by extensions ['ignore', 'ignore_ament_install']
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_controller) by extension 'ignore'
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_controller) by extension 'ignore_ament_install'
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_controller) by extensions ['colcon_pkg']
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_controller) by extension 'colcon_pkg'
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_controller) by extensions ['colcon_meta']
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_controller) by extension 'colcon_meta'
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_controller) by extensions ['ros']
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_controller) by extension 'ros'
+[0.214s] DEBUG:colcon.colcon_core.package_identification:Package 'src/thor_controller' with type 'ros.ament_cmake' and name 'thor_controller'
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_joystick) by extensions ['ignore', 'ignore_ament_install']
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_joystick) by extension 'ignore'
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_joystick) by extension 'ignore_ament_install'
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_joystick) by extensions ['colcon_pkg']
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_joystick) by extension 'colcon_pkg'
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_joystick) by extensions ['colcon_meta']
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_joystick) by extension 'colcon_meta'
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_joystick) by extensions ['ros']
+[0.214s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_joystick) by extension 'ros'
+[0.215s] DEBUG:colcon.colcon_core.package_identification:Package 'src/thor_joystick' with type 'ros.ament_cmake' and name 'thor_joystick'
+[0.215s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_manipulation) by extensions ['ignore', 'ignore_ament_install']
+[0.215s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_manipulation) by extension 'ignore'
+[0.215s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_manipulation) by extension 'ignore_ament_install'
+[0.215s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_manipulation) by extensions ['colcon_pkg']
+[0.215s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_manipulation) by extension 'colcon_pkg'
+[0.215s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_manipulation) by extensions ['colcon_meta']
+[0.215s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_manipulation) by extension 'colcon_meta'
+[0.215s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_manipulation) by extensions ['ros']
+[0.215s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_manipulation) by extension 'ros'
+[0.216s] DEBUG:colcon.colcon_core.package_identification:Package 'src/thor_manipulation' with type 'ros.ament_cmake' and name 'thor_manipulation'
+[0.216s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_moveit) by extensions ['ignore', 'ignore_ament_install']
+[0.216s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_moveit) by extension 'ignore'
+[0.216s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_moveit) by extension 'ignore_ament_install'
+[0.216s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_moveit) by extensions ['colcon_pkg']
+[0.217s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_moveit) by extension 'colcon_pkg'
+[0.217s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_moveit) by extensions ['colcon_meta']
+[0.217s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_moveit) by extension 'colcon_meta'
+[0.217s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_moveit) by extensions ['ros']
+[0.217s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_moveit) by extension 'ros'
+[0.217s] DEBUG:colcon.colcon_core.package_identification:Package 'src/thor_moveit' with type 'ros.ament_cmake' and name 'thor_moveit'
+[0.217s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_perception) by extensions ['ignore', 'ignore_ament_install']
+[0.217s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_perception) by extension 'ignore'
+[0.217s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_perception) by extension 'ignore_ament_install'
+[0.217s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_perception) by extensions ['colcon_pkg']
+[0.217s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_perception) by extension 'colcon_pkg'
+[0.217s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_perception) by extensions ['colcon_meta']
+[0.217s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_perception) by extension 'colcon_meta'
+[0.217s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_perception) by extensions ['ros']
+[0.217s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_perception) by extension 'ros'
+[0.218s] DEBUG:colcon.colcon_core.package_identification:Package 'src/thor_perception' with type 'ros.ament_cmake' and name 'thor_perception'
+[0.218s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_server) by extensions ['ignore', 'ignore_ament_install']
+[0.218s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_server) by extension 'ignore'
+[0.218s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_server) by extension 'ignore_ament_install'
+[0.219s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_server) by extensions ['colcon_pkg']
+[0.219s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_server) by extension 'colcon_pkg'
+[0.219s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_server) by extensions ['colcon_meta']
+[0.219s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_server) by extension 'colcon_meta'
+[0.219s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_server) by extensions ['ros']
+[0.219s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_server) by extension 'ros'
+[0.219s] DEBUG:colcon.colcon_core.package_identification:Package 'src/thor_server' with type 'ros.ament_cmake' and name 'thor_server'
+[0.219s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_teleop) by extensions ['ignore', 'ignore_ament_install']
+[0.219s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_teleop) by extension 'ignore'
+[0.219s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_teleop) by extension 'ignore_ament_install'
+[0.219s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_teleop) by extensions ['colcon_pkg']
+[0.219s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_teleop) by extension 'colcon_pkg'
+[0.220s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_teleop) by extensions ['colcon_meta']
+[0.220s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_teleop) by extension 'colcon_meta'
+[0.220s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_teleop) by extensions ['ros']
+[0.220s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_teleop) by extension 'ros'
+[0.220s] DEBUG:colcon.colcon_core.package_identification:Package 'src/thor_teleop' with type 'ros.ament_cmake' and name 'thor_teleop'
+[0.220s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_tests) by extensions ['ignore', 'ignore_ament_install']
+[0.220s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_tests) by extension 'ignore'
+[0.220s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_tests) by extension 'ignore_ament_install'
+[0.220s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_tests) by extensions ['colcon_pkg']
+[0.220s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_tests) by extension 'colcon_pkg'
+[0.220s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_tests) by extensions ['colcon_meta']
+[0.220s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_tests) by extension 'colcon_meta'
+[0.220s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_tests) by extensions ['ros']
+[0.220s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_tests) by extension 'ros'
+[0.220s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_tests) by extensions ['cmake', 'python']
+[0.220s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_tests) by extension 'cmake'
+[0.220s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_tests) by extension 'python'
+[0.220s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_tests) by extensions ['python_setup_py']
+[0.220s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_tests) by extension 'python_setup_py'
+[0.220s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_tests/src) by extensions ['ignore', 'ignore_ament_install']
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_tests/src) by extension 'ignore'
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_tests/src) by extension 'ignore_ament_install'
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_tests/src) by extensions ['colcon_pkg']
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_tests/src) by extension 'colcon_pkg'
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_tests/src) by extensions ['colcon_meta']
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_tests/src) by extension 'colcon_meta'
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_tests/src) by extensions ['ros']
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_tests/src) by extension 'ros'
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_tests/src) by extensions ['cmake', 'python']
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_tests/src) by extension 'cmake'
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_tests/src) by extension 'python'
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_tests/src) by extensions ['python_setup_py']
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_tests/src) by extension 'python_setup_py'
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_urdf) by extensions ['ignore', 'ignore_ament_install']
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_urdf) by extension 'ignore'
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_urdf) by extension 'ignore_ament_install'
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_urdf) by extensions ['colcon_pkg']
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_urdf) by extension 'colcon_pkg'
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_urdf) by extensions ['colcon_meta']
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_urdf) by extension 'colcon_meta'
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_urdf) by extensions ['ros']
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(src/thor_urdf) by extension 'ros'
+[0.221s] DEBUG:colcon.colcon_core.package_identification:Package 'src/thor_urdf' with type 'ros.ament_cmake' and name 'thor_urdf'
+[0.221s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.221s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.221s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.221s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.221s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.252s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.252s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.253s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 9 installed packages in /home/naman72060/common-dp/install
+[0.254s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 368 installed packages in /opt/ros/humble
+[0.255s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.283s] Level 5:colcon.colcon_core.verb:set package 'thor_controller' build argument 'cmake_args' from command line to 'None'
+[0.283s] Level 5:colcon.colcon_core.verb:set package 'thor_controller' build argument 'cmake_target' from command line to 'None'
+[0.283s] Level 5:colcon.colcon_core.verb:set package 'thor_controller' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.283s] Level 5:colcon.colcon_core.verb:set package 'thor_controller' build argument 'cmake_clean_cache' from command line to 'False'
+[0.283s] Level 5:colcon.colcon_core.verb:set package 'thor_controller' build argument 'cmake_clean_first' from command line to 'False'
+[0.283s] Level 5:colcon.colcon_core.verb:set package 'thor_controller' build argument 'cmake_force_configure' from command line to 'False'
+[0.283s] Level 5:colcon.colcon_core.verb:set package 'thor_controller' build argument 'ament_cmake_args' from command line to 'None'
+[0.283s] Level 5:colcon.colcon_core.verb:set package 'thor_controller' build argument 'catkin_cmake_args' from command line to 'None'
+[0.283s] Level 5:colcon.colcon_core.verb:set package 'thor_controller' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.283s] DEBUG:colcon.colcon_core.verb:Building package 'thor_controller' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/naman72060/common-dp/build/thor_controller', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/naman72060/common-dp/install/thor_controller', 'merge_install': False, 'path': '/home/naman72060/common-dp/src/thor_controller', 'symlink_install': False, 'test_result_base': None}
+[0.283s] Level 5:colcon.colcon_core.verb:set package 'thor_manipulation' build argument 'cmake_args' from command line to 'None'
+[0.283s] Level 5:colcon.colcon_core.verb:set package 'thor_manipulation' build argument 'cmake_target' from command line to 'None'
+[0.283s] Level 5:colcon.colcon_core.verb:set package 'thor_manipulation' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.283s] Level 5:colcon.colcon_core.verb:set package 'thor_manipulation' build argument 'cmake_clean_cache' from command line to 'False'
+[0.283s] Level 5:colcon.colcon_core.verb:set package 'thor_manipulation' build argument 'cmake_clean_first' from command line to 'False'
+[0.283s] Level 5:colcon.colcon_core.verb:set package 'thor_manipulation' build argument 'cmake_force_configure' from command line to 'False'
+[0.283s] Level 5:colcon.colcon_core.verb:set package 'thor_manipulation' build argument 'ament_cmake_args' from command line to 'None'
+[0.283s] Level 5:colcon.colcon_core.verb:set package 'thor_manipulation' build argument 'catkin_cmake_args' from command line to 'None'
+[0.283s] Level 5:colcon.colcon_core.verb:set package 'thor_manipulation' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.283s] DEBUG:colcon.colcon_core.verb:Building package 'thor_manipulation' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/naman72060/common-dp/build/thor_manipulation', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/naman72060/common-dp/install/thor_manipulation', 'merge_install': False, 'path': '/home/naman72060/common-dp/src/thor_manipulation', 'symlink_install': False, 'test_result_base': None}
+[0.283s] Level 5:colcon.colcon_core.verb:set package 'thor_perception' build argument 'cmake_args' from command line to 'None'
+[0.283s] Level 5:colcon.colcon_core.verb:set package 'thor_perception' build argument 'cmake_target' from command line to 'None'
+[0.283s] Level 5:colcon.colcon_core.verb:set package 'thor_perception' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.283s] Level 5:colcon.colcon_core.verb:set package 'thor_perception' build argument 'cmake_clean_cache' from command line to 'False'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_perception' build argument 'cmake_clean_first' from command line to 'False'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_perception' build argument 'cmake_force_configure' from command line to 'False'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_perception' build argument 'ament_cmake_args' from command line to 'None'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_perception' build argument 'catkin_cmake_args' from command line to 'None'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_perception' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.284s] DEBUG:colcon.colcon_core.verb:Building package 'thor_perception' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/naman72060/common-dp/build/thor_perception', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/naman72060/common-dp/install/thor_perception', 'merge_install': False, 'path': '/home/naman72060/common-dp/src/thor_perception', 'symlink_install': False, 'test_result_base': None}
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_teleop' build argument 'cmake_args' from command line to 'None'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_teleop' build argument 'cmake_target' from command line to 'None'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_teleop' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_teleop' build argument 'cmake_clean_cache' from command line to 'False'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_teleop' build argument 'cmake_clean_first' from command line to 'False'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_teleop' build argument 'cmake_force_configure' from command line to 'False'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_teleop' build argument 'ament_cmake_args' from command line to 'None'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_teleop' build argument 'catkin_cmake_args' from command line to 'None'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_teleop' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.284s] DEBUG:colcon.colcon_core.verb:Building package 'thor_teleop' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/naman72060/common-dp/build/thor_teleop', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/naman72060/common-dp/install/thor_teleop', 'merge_install': False, 'path': '/home/naman72060/common-dp/src/thor_teleop', 'symlink_install': False, 'test_result_base': None}
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_urdf' build argument 'cmake_args' from command line to 'None'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_urdf' build argument 'cmake_target' from command line to 'None'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_urdf' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_urdf' build argument 'cmake_clean_cache' from command line to 'False'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_urdf' build argument 'cmake_clean_first' from command line to 'False'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_urdf' build argument 'cmake_force_configure' from command line to 'False'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_urdf' build argument 'ament_cmake_args' from command line to 'None'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_urdf' build argument 'catkin_cmake_args' from command line to 'None'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_urdf' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.284s] DEBUG:colcon.colcon_core.verb:Building package 'thor_urdf' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/naman72060/common-dp/build/thor_urdf', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/naman72060/common-dp/install/thor_urdf', 'merge_install': False, 'path': '/home/naman72060/common-dp/src/thor_urdf', 'symlink_install': False, 'test_result_base': None}
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_moveit' build argument 'cmake_args' from command line to 'None'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_moveit' build argument 'cmake_target' from command line to 'None'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_moveit' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_moveit' build argument 'cmake_clean_cache' from command line to 'False'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_moveit' build argument 'cmake_clean_first' from command line to 'False'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_moveit' build argument 'cmake_force_configure' from command line to 'False'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_moveit' build argument 'ament_cmake_args' from command line to 'None'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_moveit' build argument 'catkin_cmake_args' from command line to 'None'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'thor_moveit' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.284s] DEBUG:colcon.colcon_core.verb:Building package 'thor_moveit' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/naman72060/common-dp/build/thor_moveit', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/naman72060/common-dp/install/thor_moveit', 'merge_install': False, 'path': '/home/naman72060/common-dp/src/thor_moveit', 'symlink_install': False, 'test_result_base': None}
+[0.285s] Level 5:colcon.colcon_core.verb:set package 'thor_server' build argument 'cmake_args' from command line to 'None'
+[0.285s] Level 5:colcon.colcon_core.verb:set package 'thor_server' build argument 'cmake_target' from command line to 'None'
+[0.285s] Level 5:colcon.colcon_core.verb:set package 'thor_server' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.285s] Level 5:colcon.colcon_core.verb:set package 'thor_server' build argument 'cmake_clean_cache' from command line to 'False'
+[0.285s] Level 5:colcon.colcon_core.verb:set package 'thor_server' build argument 'cmake_clean_first' from command line to 'False'
+[0.285s] Level 5:colcon.colcon_core.verb:set package 'thor_server' build argument 'cmake_force_configure' from command line to 'False'
+[0.285s] Level 5:colcon.colcon_core.verb:set package 'thor_server' build argument 'ament_cmake_args' from command line to 'None'
+[0.285s] Level 5:colcon.colcon_core.verb:set package 'thor_server' build argument 'catkin_cmake_args' from command line to 'None'
+[0.285s] Level 5:colcon.colcon_core.verb:set package 'thor_server' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.285s] DEBUG:colcon.colcon_core.verb:Building package 'thor_server' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/naman72060/common-dp/build/thor_server', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/naman72060/common-dp/install/thor_server', 'merge_install': False, 'path': '/home/naman72060/common-dp/src/thor_server', 'symlink_install': False, 'test_result_base': None}
+[0.285s] Level 5:colcon.colcon_core.verb:set package 'thor_bringup' build argument 'cmake_args' from command line to 'None'
+[0.285s] Level 5:colcon.colcon_core.verb:set package 'thor_bringup' build argument 'cmake_target' from command line to 'None'
+[0.285s] Level 5:colcon.colcon_core.verb:set package 'thor_bringup' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.285s] Level 5:colcon.colcon_core.verb:set package 'thor_bringup' build argument 'cmake_clean_cache' from command line to 'False'
+[0.285s] Level 5:colcon.colcon_core.verb:set package 'thor_bringup' build argument 'cmake_clean_first' from command line to 'False'
+[0.285s] Level 5:colcon.colcon_core.verb:set package 'thor_bringup' build argument 'cmake_force_configure' from command line to 'False'
+[0.285s] Level 5:colcon.colcon_core.verb:set package 'thor_bringup' build argument 'ament_cmake_args' from command line to 'None'
+[0.285s] Level 5:colcon.colcon_core.verb:set package 'thor_bringup' build argument 'catkin_cmake_args' from command line to 'None'
+[0.285s] Level 5:colcon.colcon_core.verb:set package 'thor_bringup' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.285s] DEBUG:colcon.colcon_core.verb:Building package 'thor_bringup' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/naman72060/common-dp/build/thor_bringup', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/naman72060/common-dp/install/thor_bringup', 'merge_install': False, 'path': '/home/naman72060/common-dp/src/thor_bringup', 'symlink_install': False, 'test_result_base': None}
+[0.285s] Level 5:colcon.colcon_core.verb:set package 'thor_joystick' build argument 'cmake_args' from command line to 'None'
+[0.285s] Level 5:colcon.colcon_core.verb:set package 'thor_joystick' build argument 'cmake_target' from command line to 'None'
+[0.285s] Level 5:colcon.colcon_core.verb:set package 'thor_joystick' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.285s] Level 5:colcon.colcon_core.verb:set package 'thor_joystick' build argument 'cmake_clean_cache' from command line to 'False'
+[0.285s] Level 5:colcon.colcon_core.verb:set package 'thor_joystick' build argument 'cmake_clean_first' from command line to 'False'
+[0.285s] Level 5:colcon.colcon_core.verb:set package 'thor_joystick' build argument 'cmake_force_configure' from command line to 'False'
+[0.285s] Level 5:colcon.colcon_core.verb:set package 'thor_joystick' build argument 'ament_cmake_args' from command line to 'None'
+[0.285s] Level 5:colcon.colcon_core.verb:set package 'thor_joystick' build argument 'catkin_cmake_args' from command line to 'None'
+[0.285s] Level 5:colcon.colcon_core.verb:set package 'thor_joystick' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.285s] DEBUG:colcon.colcon_core.verb:Building package 'thor_joystick' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/naman72060/common-dp/build/thor_joystick', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/naman72060/common-dp/install/thor_joystick', 'merge_install': False, 'path': '/home/naman72060/common-dp/src/thor_joystick', 'symlink_install': False, 'test_result_base': None}
+[0.285s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.286s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.287s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/naman72060/common-dp/src/thor_controller' with build type 'ament_cmake'
+[0.287s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/naman72060/common-dp/src/thor_controller'
+[0.289s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.290s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.290s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.296s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/naman72060/common-dp/src/thor_urdf' with build type 'ament_cmake'
+[0.296s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/naman72060/common-dp/src/thor_urdf'
+[0.296s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.297s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.302s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/naman72060/common-dp/src/thor_manipulation' with build type 'ament_cmake'
+[0.302s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/naman72060/common-dp/src/thor_manipulation'
+[0.303s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.303s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.307s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/naman72060/common-dp/src/thor_perception' with build type 'ament_cmake'
+[0.307s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/naman72060/common-dp/src/thor_perception'
+[0.307s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.307s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.312s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/naman72060/common-dp/src/thor_teleop' with build type 'ament_cmake'
+[0.312s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/naman72060/common-dp/src/thor_teleop'
+[0.313s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.313s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.325s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/naman72060/common-dp/build/thor_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/naman72060/common-dp/build/thor_controller -- -j12 -l12
+[0.329s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/naman72060/common-dp/build/thor_urdf': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/naman72060/common-dp/build/thor_urdf -- -j12 -l12
+[0.333s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/naman72060/common-dp/build/thor_manipulation': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/naman72060/common-dp/build/thor_manipulation -- -j12 -l12
+[0.343s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/naman72060/common-dp/build/thor_perception': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/naman72060/common-dp/build/thor_perception -- -j12 -l12
+[0.352s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/naman72060/common-dp/build/thor_teleop': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/naman72060/common-dp/build/thor_teleop -- -j12 -l12
+[0.417s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/naman72060/common-dp/build/thor_teleop' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/naman72060/common-dp/build/thor_teleop -- -j12 -l12
+[0.434s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/naman72060/common-dp/build/thor_teleop': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/naman72060/common-dp/build/thor_teleop
+[0.437s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/naman72060/common-dp/build/thor_urdf' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/naman72060/common-dp/build/thor_urdf -- -j12 -l12
+[0.440s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/naman72060/common-dp/build/thor_urdf': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/naman72060/common-dp/build/thor_urdf
+[0.449s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(thor_teleop)
+[0.455s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/naman72060/common-dp/build/thor_teleop' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/naman72060/common-dp/build/thor_teleop
+[0.458s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_teleop' for CMake module files
+[0.458s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_teleop' for CMake config files
+[0.459s] Level 1:colcon.colcon_core.shell:create_environment_hook('thor_teleop', 'cmake_prefix_path')
+[0.459s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/hook/cmake_prefix_path.ps1'
+[0.459s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/hook/cmake_prefix_path.dsv'
+[0.460s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/hook/cmake_prefix_path.sh'
+[0.460s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_teleop/lib'
+[0.461s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_teleop/bin'
+[0.461s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_teleop/lib/pkgconfig/thor_teleop.pc'
+[0.461s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_teleop/lib/python3.10/site-packages'
+[0.461s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_teleop/bin'
+[0.461s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/package.ps1'
+[0.462s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/package.dsv'
+[0.462s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/package.sh'
+[0.462s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/package.bash'
+[0.463s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/package.zsh'
+[0.463s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/naman72060/common-dp/install/thor_teleop/share/colcon-core/packages/thor_teleop)
+[0.464s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(thor_teleop)
+[0.464s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_teleop' for CMake module files
+[0.464s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_teleop' for CMake config files
+[0.464s] Level 1:colcon.colcon_core.shell:create_environment_hook('thor_teleop', 'cmake_prefix_path')
+[0.464s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/hook/cmake_prefix_path.ps1'
+[0.465s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/hook/cmake_prefix_path.dsv'
+[0.465s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/hook/cmake_prefix_path.sh'
+[0.465s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_teleop/lib'
+[0.465s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_teleop/bin'
+[0.465s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_teleop/lib/pkgconfig/thor_teleop.pc'
+[0.466s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_teleop/lib/python3.10/site-packages'
+[0.466s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_teleop/bin'
+[0.466s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/package.ps1'
+[0.466s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/package.dsv'
+[0.466s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/package.sh'
+[0.467s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/package.bash'
+[0.467s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/package.zsh'
+[0.467s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/naman72060/common-dp/install/thor_teleop/share/colcon-core/packages/thor_teleop)
+[0.469s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/naman72060/common-dp/build/thor_perception' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/naman72060/common-dp/build/thor_perception -- -j12 -l12
+[0.470s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/naman72060/common-dp/build/thor_perception': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/naman72060/common-dp/build/thor_perception
+[0.470s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(thor_urdf)
+[0.471s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_urdf' for CMake module files
+[0.472s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/naman72060/common-dp/build/thor_urdf' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/naman72060/common-dp/build/thor_urdf
+[0.473s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_urdf' for CMake config files
+[0.473s] Level 1:colcon.colcon_core.shell:create_environment_hook('thor_urdf', 'cmake_prefix_path')
+[0.473s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_urdf/share/thor_urdf/hook/cmake_prefix_path.ps1'
+[0.474s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naman72060/common-dp/install/thor_urdf/share/thor_urdf/hook/cmake_prefix_path.dsv'
+[0.475s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_urdf/share/thor_urdf/hook/cmake_prefix_path.sh'
+[0.476s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_urdf/bin'
+[0.476s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_urdf/lib/pkgconfig/thor_urdf.pc'
+[0.476s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_urdf/lib/python3.10/site-packages'
+[0.476s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_urdf/bin'
+[0.477s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_urdf/share/thor_urdf/package.ps1'
+[0.477s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/naman72060/common-dp/install/thor_urdf/share/thor_urdf/package.dsv'
+[0.478s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_urdf/share/thor_urdf/package.sh'
+[0.479s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_urdf/share/thor_urdf/package.bash'
+[0.479s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_urdf/share/thor_urdf/package.zsh'
+[0.480s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/naman72060/common-dp/install/thor_urdf/share/colcon-core/packages/thor_urdf)
+[0.485s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(thor_urdf)
+[0.485s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_urdf' for CMake module files
+[0.486s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_urdf' for CMake config files
+[0.487s] Level 1:colcon.colcon_core.shell:create_environment_hook('thor_urdf', 'cmake_prefix_path')
+[0.487s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_urdf/share/thor_urdf/hook/cmake_prefix_path.ps1'
+[0.488s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naman72060/common-dp/install/thor_urdf/share/thor_urdf/hook/cmake_prefix_path.dsv'
+[0.488s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_urdf/share/thor_urdf/hook/cmake_prefix_path.sh'
+[0.489s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_urdf/bin'
+[0.489s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_urdf/lib/pkgconfig/thor_urdf.pc'
+[0.489s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_urdf/lib/python3.10/site-packages'
+[0.490s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_urdf/bin'
+[0.490s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_urdf/share/thor_urdf/package.ps1'
+[0.491s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/naman72060/common-dp/install/thor_urdf/share/thor_urdf/package.dsv'
+[0.492s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_urdf/share/thor_urdf/package.sh'
+[0.492s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_urdf/share/thor_urdf/package.bash'
+[0.493s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_urdf/share/thor_urdf/package.zsh'
+[0.493s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/naman72060/common-dp/install/thor_urdf/share/colcon-core/packages/thor_urdf)
+[0.494s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/naman72060/common-dp/src/thor_moveit' with build type 'ament_cmake'
+[0.494s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/naman72060/common-dp/src/thor_moveit'
+[0.494s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.494s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.501s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/naman72060/common-dp/build/thor_controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/naman72060/common-dp/build/thor_controller -- -j12 -l12
+[0.502s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/naman72060/common-dp/build/thor_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/naman72060/common-dp/build/thor_controller
+[0.507s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(thor_perception)
+[0.507s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_perception' for CMake module files
+[0.508s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/naman72060/common-dp/build/thor_moveit': CMAKE_PREFIX_PATH=/home/naman72060/common-dp/install/thor_urdf:/home/naman72060/common-dp/install/thor_bringup:/home/naman72060/common-dp/install/thor_moveit:/home/naman72060/common-dp/install/thor_teleop:/home/naman72060/common-dp/install/thor_joystick:/home/naman72060/common-dp/install/thor_server:/home/naman72060/common-dp/install/thor_perception:/home/naman72060/common-dp/install/thor_manipulation:/home/naman72060/common-dp/install/thor_controller:/opt/ros/humble /usr/bin/cmake --build /home/naman72060/common-dp/build/thor_moveit -- -j12 -l12
+[0.509s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/naman72060/common-dp/build/thor_perception' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/naman72060/common-dp/build/thor_perception
+[0.509s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_perception' for CMake config files
+[0.509s] Level 1:colcon.colcon_core.shell:create_environment_hook('thor_perception', 'cmake_prefix_path')
+[0.510s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_perception/share/thor_perception/hook/cmake_prefix_path.ps1'
+[0.510s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naman72060/common-dp/install/thor_perception/share/thor_perception/hook/cmake_prefix_path.dsv'
+[0.511s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_perception/share/thor_perception/hook/cmake_prefix_path.sh'
+[0.512s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_perception/lib'
+[0.513s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_perception/bin'
+[0.513s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_perception/lib/pkgconfig/thor_perception.pc'
+[0.514s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_perception/lib/python3.10/site-packages'
+[0.514s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_perception/bin'
+[0.515s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_perception/share/thor_perception/package.ps1'
+[0.517s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/naman72060/common-dp/install/thor_perception/share/thor_perception/package.dsv'
+[0.518s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_perception/share/thor_perception/package.sh'
+[0.519s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_perception/share/thor_perception/package.bash'
+[0.519s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_perception/share/thor_perception/package.zsh'
+[0.520s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/naman72060/common-dp/install/thor_perception/share/colcon-core/packages/thor_perception)
+[0.521s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(thor_perception)
+[0.521s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_perception' for CMake module files
+[0.522s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_perception' for CMake config files
+[0.522s] Level 1:colcon.colcon_core.shell:create_environment_hook('thor_perception', 'cmake_prefix_path')
+[0.523s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_perception/share/thor_perception/hook/cmake_prefix_path.ps1'
+[0.523s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naman72060/common-dp/install/thor_perception/share/thor_perception/hook/cmake_prefix_path.dsv'
+[0.524s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_perception/share/thor_perception/hook/cmake_prefix_path.sh'
+[0.524s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_perception/lib'
+[0.525s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_perception/bin'
+[0.525s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_perception/lib/pkgconfig/thor_perception.pc'
+[0.525s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_perception/lib/python3.10/site-packages'
+[0.525s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_perception/bin'
+[0.526s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_perception/share/thor_perception/package.ps1'
+[0.527s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/naman72060/common-dp/install/thor_perception/share/thor_perception/package.dsv'
+[0.527s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_perception/share/thor_perception/package.sh'
+[0.528s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_perception/share/thor_perception/package.bash'
+[0.528s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_perception/share/thor_perception/package.zsh'
+[0.529s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/naman72060/common-dp/install/thor_perception/share/colcon-core/packages/thor_perception)
+[0.530s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(thor_controller)
+[0.531s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_controller' for CMake module files
+[0.532s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/naman72060/common-dp/build/thor_controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/naman72060/common-dp/build/thor_controller
+[0.532s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_controller' for CMake config files
+[0.533s] Level 1:colcon.colcon_core.shell:create_environment_hook('thor_controller', 'cmake_prefix_path')
+[0.533s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_controller/share/thor_controller/hook/cmake_prefix_path.ps1'
+[0.534s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naman72060/common-dp/install/thor_controller/share/thor_controller/hook/cmake_prefix_path.dsv'
+[0.534s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_controller/share/thor_controller/hook/cmake_prefix_path.sh'
+[0.535s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_controller/lib'
+[0.535s] Level 1:colcon.colcon_core.shell:create_environment_hook('thor_controller', 'ld_library_path_lib')
+[0.535s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_controller/share/thor_controller/hook/ld_library_path_lib.ps1'
+[0.536s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naman72060/common-dp/install/thor_controller/share/thor_controller/hook/ld_library_path_lib.dsv'
+[0.537s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_controller/share/thor_controller/hook/ld_library_path_lib.sh'
+[0.537s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_controller/bin'
+[0.537s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_controller/lib/pkgconfig/thor_controller.pc'
+[0.538s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_controller/lib/python3.10/site-packages'
+[0.538s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_controller/bin'
+[0.538s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_controller/share/thor_controller/package.ps1'
+[0.539s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/naman72060/common-dp/install/thor_controller/share/thor_controller/package.dsv'
+[0.540s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_controller/share/thor_controller/package.sh'
+[0.540s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_controller/share/thor_controller/package.bash'
+[0.541s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_controller/share/thor_controller/package.zsh'
+[0.541s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/naman72060/common-dp/install/thor_controller/share/colcon-core/packages/thor_controller)
+[0.542s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(thor_controller)
+[0.542s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_controller' for CMake module files
+[0.543s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_controller' for CMake config files
+[0.543s] Level 1:colcon.colcon_core.shell:create_environment_hook('thor_controller', 'cmake_prefix_path')
+[0.544s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_controller/share/thor_controller/hook/cmake_prefix_path.ps1'
+[0.544s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naman72060/common-dp/install/thor_controller/share/thor_controller/hook/cmake_prefix_path.dsv'
+[0.545s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_controller/share/thor_controller/hook/cmake_prefix_path.sh'
+[0.545s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_controller/lib'
+[0.545s] Level 1:colcon.colcon_core.shell:create_environment_hook('thor_controller', 'ld_library_path_lib')
+[0.546s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_controller/share/thor_controller/hook/ld_library_path_lib.ps1'
+[0.546s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naman72060/common-dp/install/thor_controller/share/thor_controller/hook/ld_library_path_lib.dsv'
+[0.547s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_controller/share/thor_controller/hook/ld_library_path_lib.sh'
+[0.547s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_controller/bin'
+[0.547s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_controller/lib/pkgconfig/thor_controller.pc'
+[0.547s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_controller/lib/python3.10/site-packages'
+[0.548s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_controller/bin'
+[0.548s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_controller/share/thor_controller/package.ps1'
+[0.549s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/naman72060/common-dp/install/thor_controller/share/thor_controller/package.dsv'
+[0.550s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_controller/share/thor_controller/package.sh'
+[0.551s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_controller/share/thor_controller/package.bash'
+[0.551s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_controller/share/thor_controller/package.zsh'
+[0.552s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/naman72060/common-dp/install/thor_controller/share/colcon-core/packages/thor_controller)
+[0.552s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/naman72060/common-dp/src/thor_server' with build type 'ament_cmake'
+[0.553s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/naman72060/common-dp/src/thor_server'
+[0.553s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.553s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.559s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/naman72060/common-dp/build/thor_moveit' returned '0': CMAKE_PREFIX_PATH=/home/naman72060/common-dp/install/thor_urdf:/home/naman72060/common-dp/install/thor_bringup:/home/naman72060/common-dp/install/thor_moveit:/home/naman72060/common-dp/install/thor_teleop:/home/naman72060/common-dp/install/thor_joystick:/home/naman72060/common-dp/install/thor_server:/home/naman72060/common-dp/install/thor_perception:/home/naman72060/common-dp/install/thor_manipulation:/home/naman72060/common-dp/install/thor_controller:/opt/ros/humble /usr/bin/cmake --build /home/naman72060/common-dp/build/thor_moveit -- -j12 -l12
+[0.561s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/naman72060/common-dp/build/thor_moveit': CMAKE_PREFIX_PATH=/home/naman72060/common-dp/install/thor_urdf:/home/naman72060/common-dp/install/thor_bringup:/home/naman72060/common-dp/install/thor_moveit:/home/naman72060/common-dp/install/thor_teleop:/home/naman72060/common-dp/install/thor_joystick:/home/naman72060/common-dp/install/thor_server:/home/naman72060/common-dp/install/thor_perception:/home/naman72060/common-dp/install/thor_manipulation:/home/naman72060/common-dp/install/thor_controller:/opt/ros/humble /usr/bin/cmake --install /home/naman72060/common-dp/build/thor_moveit
+[0.566s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/naman72060/common-dp/build/thor_server': CMAKE_PREFIX_PATH=/home/naman72060/common-dp/install/thor_controller:/home/naman72060/common-dp/install/thor_bringup:/home/naman72060/common-dp/install/thor_moveit:/home/naman72060/common-dp/install/thor_urdf:/home/naman72060/common-dp/install/thor_teleop:/home/naman72060/common-dp/install/thor_joystick:/home/naman72060/common-dp/install/thor_server:/home/naman72060/common-dp/install/thor_perception:/home/naman72060/common-dp/install/thor_manipulation:/opt/ros/humble LD_LIBRARY_PATH=/home/naman72060/common-dp/install/thor_controller/lib:/home/naman72060/common-dp/install/thor_server/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/naman72060/common-dp/build/thor_server -- -j12 -l12
+[0.571s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(thor_moveit)
+[0.572s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_moveit' for CMake module files
+[0.573s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/naman72060/common-dp/build/thor_moveit' returned '0': CMAKE_PREFIX_PATH=/home/naman72060/common-dp/install/thor_urdf:/home/naman72060/common-dp/install/thor_bringup:/home/naman72060/common-dp/install/thor_moveit:/home/naman72060/common-dp/install/thor_teleop:/home/naman72060/common-dp/install/thor_joystick:/home/naman72060/common-dp/install/thor_server:/home/naman72060/common-dp/install/thor_perception:/home/naman72060/common-dp/install/thor_manipulation:/home/naman72060/common-dp/install/thor_controller:/opt/ros/humble /usr/bin/cmake --install /home/naman72060/common-dp/build/thor_moveit
+[0.573s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_moveit' for CMake config files
+[0.574s] Level 1:colcon.colcon_core.shell:create_environment_hook('thor_moveit', 'cmake_prefix_path')
+[0.574s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/hook/cmake_prefix_path.ps1'
+[0.575s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/hook/cmake_prefix_path.dsv'
+[0.575s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/hook/cmake_prefix_path.sh'
+[0.576s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_moveit/bin'
+[0.576s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_moveit/lib/pkgconfig/thor_moveit.pc'
+[0.576s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_moveit/lib/python3.10/site-packages'
+[0.577s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_moveit/bin'
+[0.577s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/package.ps1'
+[0.578s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/package.dsv'
+[0.578s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/package.sh'
+[0.579s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/package.bash'
+[0.579s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/package.zsh'
+[0.580s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/naman72060/common-dp/install/thor_moveit/share/colcon-core/packages/thor_moveit)
+[0.581s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(thor_moveit)
+[0.581s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_moveit' for CMake module files
+[0.581s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_moveit' for CMake config files
+[0.581s] Level 1:colcon.colcon_core.shell:create_environment_hook('thor_moveit', 'cmake_prefix_path')
+[0.581s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/hook/cmake_prefix_path.ps1'
+[0.582s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/hook/cmake_prefix_path.dsv'
+[0.582s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/hook/cmake_prefix_path.sh'
+[0.582s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_moveit/bin'
+[0.582s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_moveit/lib/pkgconfig/thor_moveit.pc'
+[0.582s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_moveit/lib/python3.10/site-packages'
+[0.582s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_moveit/bin'
+[0.583s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/package.ps1'
+[0.583s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/package.dsv'
+[0.583s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/package.sh'
+[0.584s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/package.bash'
+[0.584s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_moveit/share/thor_moveit/package.zsh'
+[0.584s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/naman72060/common-dp/install/thor_moveit/share/colcon-core/packages/thor_moveit)
+[0.742s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/naman72060/common-dp/build/thor_manipulation' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/naman72060/common-dp/build/thor_manipulation -- -j12 -l12
+[0.743s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/naman72060/common-dp/build/thor_manipulation': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/naman72060/common-dp/build/thor_manipulation
+[0.782s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(thor_manipulation)
+[0.783s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_manipulation' for CMake module files
+[0.783s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/naman72060/common-dp/build/thor_manipulation' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/naman72060/common-dp/build/thor_manipulation
+[0.784s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_manipulation' for CMake config files
+[0.784s] Level 1:colcon.colcon_core.shell:create_environment_hook('thor_manipulation', 'cmake_prefix_path')
+[0.784s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/hook/cmake_prefix_path.ps1'
+[0.785s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/hook/cmake_prefix_path.dsv'
+[0.785s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/hook/cmake_prefix_path.sh'
+[0.786s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_manipulation/lib'
+[0.786s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_manipulation/bin'
+[0.786s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_manipulation/lib/pkgconfig/thor_manipulation.pc'
+[0.787s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_manipulation/lib/python3.10/site-packages'
+[0.787s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_manipulation/bin'
+[0.787s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/package.ps1'
+[0.788s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/package.dsv'
+[0.788s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/package.sh'
+[0.789s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/package.bash'
+[0.789s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/package.zsh'
+[0.790s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/naman72060/common-dp/install/thor_manipulation/share/colcon-core/packages/thor_manipulation)
+[0.791s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(thor_manipulation)
+[0.791s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_manipulation' for CMake module files
+[0.792s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_manipulation' for CMake config files
+[0.792s] Level 1:colcon.colcon_core.shell:create_environment_hook('thor_manipulation', 'cmake_prefix_path')
+[0.792s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/hook/cmake_prefix_path.ps1'
+[0.793s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/hook/cmake_prefix_path.dsv'
+[0.793s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/hook/cmake_prefix_path.sh'
+[0.794s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_manipulation/lib'
+[0.794s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_manipulation/bin'
+[0.794s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_manipulation/lib/pkgconfig/thor_manipulation.pc'
+[0.795s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_manipulation/lib/python3.10/site-packages'
+[0.795s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_manipulation/bin'
+[0.795s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/package.ps1'
+[0.796s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/package.dsv'
+[0.797s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/package.sh'
+[0.797s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/package.bash'
+[0.798s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/package.zsh'
+[0.798s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/naman72060/common-dp/install/thor_manipulation/share/colcon-core/packages/thor_manipulation)
+[0.880s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/naman72060/common-dp/build/thor_server' returned '0': CMAKE_PREFIX_PATH=/home/naman72060/common-dp/install/thor_controller:/home/naman72060/common-dp/install/thor_bringup:/home/naman72060/common-dp/install/thor_moveit:/home/naman72060/common-dp/install/thor_urdf:/home/naman72060/common-dp/install/thor_teleop:/home/naman72060/common-dp/install/thor_joystick:/home/naman72060/common-dp/install/thor_server:/home/naman72060/common-dp/install/thor_perception:/home/naman72060/common-dp/install/thor_manipulation:/opt/ros/humble LD_LIBRARY_PATH=/home/naman72060/common-dp/install/thor_controller/lib:/home/naman72060/common-dp/install/thor_server/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/naman72060/common-dp/build/thor_server -- -j12 -l12
+[0.882s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/naman72060/common-dp/build/thor_server': CMAKE_PREFIX_PATH=/home/naman72060/common-dp/install/thor_controller:/home/naman72060/common-dp/install/thor_bringup:/home/naman72060/common-dp/install/thor_moveit:/home/naman72060/common-dp/install/thor_urdf:/home/naman72060/common-dp/install/thor_teleop:/home/naman72060/common-dp/install/thor_joystick:/home/naman72060/common-dp/install/thor_server:/home/naman72060/common-dp/install/thor_perception:/home/naman72060/common-dp/install/thor_manipulation:/opt/ros/humble LD_LIBRARY_PATH=/home/naman72060/common-dp/install/thor_controller/lib:/home/naman72060/common-dp/install/thor_server/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --install /home/naman72060/common-dp/build/thor_server
+[0.943s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(thor_server)
+[0.943s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_server' for CMake module files
+[0.944s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/naman72060/common-dp/build/thor_server' returned '0': CMAKE_PREFIX_PATH=/home/naman72060/common-dp/install/thor_controller:/home/naman72060/common-dp/install/thor_bringup:/home/naman72060/common-dp/install/thor_moveit:/home/naman72060/common-dp/install/thor_urdf:/home/naman72060/common-dp/install/thor_teleop:/home/naman72060/common-dp/install/thor_joystick:/home/naman72060/common-dp/install/thor_server:/home/naman72060/common-dp/install/thor_perception:/home/naman72060/common-dp/install/thor_manipulation:/opt/ros/humble LD_LIBRARY_PATH=/home/naman72060/common-dp/install/thor_controller/lib:/home/naman72060/common-dp/install/thor_server/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --install /home/naman72060/common-dp/build/thor_server
+[0.945s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_server' for CMake config files
+[0.945s] Level 1:colcon.colcon_core.shell:create_environment_hook('thor_server', 'cmake_prefix_path')
+[0.946s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_server/share/thor_server/hook/cmake_prefix_path.ps1'
+[0.946s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naman72060/common-dp/install/thor_server/share/thor_server/hook/cmake_prefix_path.dsv'
+[0.947s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_server/share/thor_server/hook/cmake_prefix_path.sh'
+[0.948s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_server/lib'
+[0.948s] Level 1:colcon.colcon_core.shell:create_environment_hook('thor_server', 'ld_library_path_lib')
+[0.948s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_server/share/thor_server/hook/ld_library_path_lib.ps1'
+[0.948s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naman72060/common-dp/install/thor_server/share/thor_server/hook/ld_library_path_lib.dsv'
+[0.948s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_server/share/thor_server/hook/ld_library_path_lib.sh'
+[0.949s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_server/bin'
+[0.949s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_server/lib/pkgconfig/thor_server.pc'
+[0.949s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_server/lib/python3.10/site-packages'
+[0.949s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_server/bin'
+[0.949s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_server/share/thor_server/package.ps1'
+[0.950s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/naman72060/common-dp/install/thor_server/share/thor_server/package.dsv'
+[0.950s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_server/share/thor_server/package.sh'
+[0.950s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_server/share/thor_server/package.bash'
+[0.950s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_server/share/thor_server/package.zsh'
+[0.951s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/naman72060/common-dp/install/thor_server/share/colcon-core/packages/thor_server)
+[0.951s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(thor_server)
+[0.951s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_server' for CMake module files
+[0.952s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_server' for CMake config files
+[0.952s] Level 1:colcon.colcon_core.shell:create_environment_hook('thor_server', 'cmake_prefix_path')
+[0.952s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_server/share/thor_server/hook/cmake_prefix_path.ps1'
+[0.952s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naman72060/common-dp/install/thor_server/share/thor_server/hook/cmake_prefix_path.dsv'
+[0.953s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_server/share/thor_server/hook/cmake_prefix_path.sh'
+[0.953s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_server/lib'
+[0.953s] Level 1:colcon.colcon_core.shell:create_environment_hook('thor_server', 'ld_library_path_lib')
+[0.953s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_server/share/thor_server/hook/ld_library_path_lib.ps1'
+[0.953s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naman72060/common-dp/install/thor_server/share/thor_server/hook/ld_library_path_lib.dsv'
+[0.954s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_server/share/thor_server/hook/ld_library_path_lib.sh'
+[0.954s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_server/bin'
+[0.954s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_server/lib/pkgconfig/thor_server.pc'
+[0.954s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_server/lib/python3.10/site-packages'
+[0.954s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_server/bin'
+[0.954s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_server/share/thor_server/package.ps1'
+[0.955s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/naman72060/common-dp/install/thor_server/share/thor_server/package.dsv'
+[0.955s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_server/share/thor_server/package.sh'
+[0.955s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_server/share/thor_server/package.bash'
+[0.955s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_server/share/thor_server/package.zsh'
+[0.956s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/naman72060/common-dp/install/thor_server/share/colcon-core/packages/thor_server)
+[0.956s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/naman72060/common-dp/src/thor_bringup' with build type 'ament_cmake'
+[0.956s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/naman72060/common-dp/src/thor_bringup'
+[0.956s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.956s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.960s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/naman72060/common-dp/src/thor_joystick' with build type 'ament_cmake'
+[0.960s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/naman72060/common-dp/src/thor_joystick'
+[0.961s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.961s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.971s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/naman72060/common-dp/build/thor_bringup': CMAKE_PREFIX_PATH=/home/naman72060/common-dp/install/thor_server:/home/naman72060/common-dp/install/thor_moveit:/home/naman72060/common-dp/install/thor_urdf:/home/naman72060/common-dp/install/thor_controller:/home/naman72060/common-dp/install/thor_bringup:/home/naman72060/common-dp/install/thor_teleop:/home/naman72060/common-dp/install/thor_joystick:/home/naman72060/common-dp/install/thor_perception:/home/naman72060/common-dp/install/thor_manipulation:/opt/ros/humble /usr/bin/cmake --build /home/naman72060/common-dp/build/thor_bringup -- -j12 -l12
+[0.977s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/naman72060/common-dp/build/thor_joystick': CMAKE_PREFIX_PATH=/home/naman72060/common-dp/install/thor_server:/home/naman72060/common-dp/install/thor_controller:/home/naman72060/common-dp/install/thor_bringup:/home/naman72060/common-dp/install/thor_moveit:/home/naman72060/common-dp/install/thor_urdf:/home/naman72060/common-dp/install/thor_teleop:/home/naman72060/common-dp/install/thor_joystick:/home/naman72060/common-dp/install/thor_perception:/home/naman72060/common-dp/install/thor_manipulation:/opt/ros/humble /usr/bin/cmake --build /home/naman72060/common-dp/build/thor_joystick -- -j12 -l12
+[1.016s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/naman72060/common-dp/build/thor_bringup' returned '0': CMAKE_PREFIX_PATH=/home/naman72060/common-dp/install/thor_server:/home/naman72060/common-dp/install/thor_moveit:/home/naman72060/common-dp/install/thor_urdf:/home/naman72060/common-dp/install/thor_controller:/home/naman72060/common-dp/install/thor_bringup:/home/naman72060/common-dp/install/thor_teleop:/home/naman72060/common-dp/install/thor_joystick:/home/naman72060/common-dp/install/thor_perception:/home/naman72060/common-dp/install/thor_manipulation:/opt/ros/humble /usr/bin/cmake --build /home/naman72060/common-dp/build/thor_bringup -- -j12 -l12
+[1.020s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/naman72060/common-dp/build/thor_bringup': CMAKE_PREFIX_PATH=/home/naman72060/common-dp/install/thor_server:/home/naman72060/common-dp/install/thor_moveit:/home/naman72060/common-dp/install/thor_urdf:/home/naman72060/common-dp/install/thor_controller:/home/naman72060/common-dp/install/thor_bringup:/home/naman72060/common-dp/install/thor_teleop:/home/naman72060/common-dp/install/thor_joystick:/home/naman72060/common-dp/install/thor_perception:/home/naman72060/common-dp/install/thor_manipulation:/opt/ros/humble /usr/bin/cmake --install /home/naman72060/common-dp/build/thor_bringup
+[1.044s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(thor_bringup)
+[1.045s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_bringup' for CMake module files
+[1.047s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/naman72060/common-dp/build/thor_bringup' returned '0': CMAKE_PREFIX_PATH=/home/naman72060/common-dp/install/thor_server:/home/naman72060/common-dp/install/thor_moveit:/home/naman72060/common-dp/install/thor_urdf:/home/naman72060/common-dp/install/thor_controller:/home/naman72060/common-dp/install/thor_bringup:/home/naman72060/common-dp/install/thor_teleop:/home/naman72060/common-dp/install/thor_joystick:/home/naman72060/common-dp/install/thor_perception:/home/naman72060/common-dp/install/thor_manipulation:/opt/ros/humble /usr/bin/cmake --install /home/naman72060/common-dp/build/thor_bringup
+[1.048s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_bringup' for CMake config files
+[1.048s] Level 1:colcon.colcon_core.shell:create_environment_hook('thor_bringup', 'cmake_prefix_path')
+[1.049s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_bringup/share/thor_bringup/hook/cmake_prefix_path.ps1'
+[1.050s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naman72060/common-dp/install/thor_bringup/share/thor_bringup/hook/cmake_prefix_path.dsv'
+[1.051s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_bringup/share/thor_bringup/hook/cmake_prefix_path.sh'
+[1.053s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_bringup/bin'
+[1.054s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_bringup/lib/pkgconfig/thor_bringup.pc'
+[1.054s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_bringup/lib/python3.10/site-packages'
+[1.055s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_bringup/bin'
+[1.056s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_bringup/share/thor_bringup/package.ps1'
+[1.057s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/naman72060/common-dp/install/thor_bringup/share/thor_bringup/package.dsv'
+[1.059s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_bringup/share/thor_bringup/package.sh'
+[1.061s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_bringup/share/thor_bringup/package.bash'
+[1.062s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_bringup/share/thor_bringup/package.zsh'
+[1.063s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/naman72060/common-dp/install/thor_bringup/share/colcon-core/packages/thor_bringup)
+[1.065s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(thor_bringup)
+[1.065s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_bringup' for CMake module files
+[1.065s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_bringup' for CMake config files
+[1.066s] Level 1:colcon.colcon_core.shell:create_environment_hook('thor_bringup', 'cmake_prefix_path')
+[1.066s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_bringup/share/thor_bringup/hook/cmake_prefix_path.ps1'
+[1.066s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naman72060/common-dp/install/thor_bringup/share/thor_bringup/hook/cmake_prefix_path.dsv'
+[1.067s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_bringup/share/thor_bringup/hook/cmake_prefix_path.sh'
+[1.067s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_bringup/bin'
+[1.067s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_bringup/lib/pkgconfig/thor_bringup.pc'
+[1.067s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_bringup/lib/python3.10/site-packages'
+[1.067s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_bringup/bin'
+[1.068s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_bringup/share/thor_bringup/package.ps1'
+[1.068s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/naman72060/common-dp/install/thor_bringup/share/thor_bringup/package.dsv'
+[1.068s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_bringup/share/thor_bringup/package.sh'
+[1.068s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_bringup/share/thor_bringup/package.bash'
+[1.069s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_bringup/share/thor_bringup/package.zsh'
+[1.069s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/naman72060/common-dp/install/thor_bringup/share/colcon-core/packages/thor_bringup)
+[1.081s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/naman72060/common-dp/build/thor_joystick' returned '0': CMAKE_PREFIX_PATH=/home/naman72060/common-dp/install/thor_server:/home/naman72060/common-dp/install/thor_controller:/home/naman72060/common-dp/install/thor_bringup:/home/naman72060/common-dp/install/thor_moveit:/home/naman72060/common-dp/install/thor_urdf:/home/naman72060/common-dp/install/thor_teleop:/home/naman72060/common-dp/install/thor_joystick:/home/naman72060/common-dp/install/thor_perception:/home/naman72060/common-dp/install/thor_manipulation:/opt/ros/humble /usr/bin/cmake --build /home/naman72060/common-dp/build/thor_joystick -- -j12 -l12
+[1.083s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/naman72060/common-dp/build/thor_joystick': CMAKE_PREFIX_PATH=/home/naman72060/common-dp/install/thor_server:/home/naman72060/common-dp/install/thor_controller:/home/naman72060/common-dp/install/thor_bringup:/home/naman72060/common-dp/install/thor_moveit:/home/naman72060/common-dp/install/thor_urdf:/home/naman72060/common-dp/install/thor_teleop:/home/naman72060/common-dp/install/thor_joystick:/home/naman72060/common-dp/install/thor_perception:/home/naman72060/common-dp/install/thor_manipulation:/opt/ros/humble /usr/bin/cmake --install /home/naman72060/common-dp/build/thor_joystick
+[1.094s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(thor_joystick)
+[1.095s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_joystick' for CMake module files
+[1.095s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/naman72060/common-dp/build/thor_joystick' returned '0': CMAKE_PREFIX_PATH=/home/naman72060/common-dp/install/thor_server:/home/naman72060/common-dp/install/thor_controller:/home/naman72060/common-dp/install/thor_bringup:/home/naman72060/common-dp/install/thor_moveit:/home/naman72060/common-dp/install/thor_urdf:/home/naman72060/common-dp/install/thor_teleop:/home/naman72060/common-dp/install/thor_joystick:/home/naman72060/common-dp/install/thor_perception:/home/naman72060/common-dp/install/thor_manipulation:/opt/ros/humble /usr/bin/cmake --install /home/naman72060/common-dp/build/thor_joystick
+[1.096s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_joystick' for CMake config files
+[1.096s] Level 1:colcon.colcon_core.shell:create_environment_hook('thor_joystick', 'cmake_prefix_path')
+[1.097s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_joystick/share/thor_joystick/hook/cmake_prefix_path.ps1'
+[1.097s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naman72060/common-dp/install/thor_joystick/share/thor_joystick/hook/cmake_prefix_path.dsv'
+[1.098s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_joystick/share/thor_joystick/hook/cmake_prefix_path.sh'
+[1.099s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_joystick/lib'
+[1.099s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_joystick/bin'
+[1.099s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_joystick/lib/pkgconfig/thor_joystick.pc'
+[1.099s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_joystick/lib/python3.10/site-packages'
+[1.099s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_joystick/bin'
+[1.100s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_joystick/share/thor_joystick/package.ps1'
+[1.101s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/naman72060/common-dp/install/thor_joystick/share/thor_joystick/package.dsv'
+[1.101s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_joystick/share/thor_joystick/package.sh'
+[1.102s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_joystick/share/thor_joystick/package.bash'
+[1.102s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_joystick/share/thor_joystick/package.zsh'
+[1.102s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/naman72060/common-dp/install/thor_joystick/share/colcon-core/packages/thor_joystick)
+[1.103s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(thor_joystick)
+[1.104s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_joystick' for CMake module files
+[1.104s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_joystick' for CMake config files
+[1.104s] Level 1:colcon.colcon_core.shell:create_environment_hook('thor_joystick', 'cmake_prefix_path')
+[1.105s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_joystick/share/thor_joystick/hook/cmake_prefix_path.ps1'
+[1.105s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/naman72060/common-dp/install/thor_joystick/share/thor_joystick/hook/cmake_prefix_path.dsv'
+[1.106s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/naman72060/common-dp/install/thor_joystick/share/thor_joystick/hook/cmake_prefix_path.sh'
+[1.106s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_joystick/lib'
+[1.106s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_joystick/bin'
+[1.106s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_joystick/lib/pkgconfig/thor_joystick.pc'
+[1.107s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_joystick/lib/python3.10/site-packages'
+[1.107s] Level 1:colcon.colcon_core.environment:checking '/home/naman72060/common-dp/install/thor_joystick/bin'
+[1.107s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_joystick/share/thor_joystick/package.ps1'
+[1.108s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/naman72060/common-dp/install/thor_joystick/share/thor_joystick/package.dsv'
+[1.108s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_joystick/share/thor_joystick/package.sh'
+[1.108s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_joystick/share/thor_joystick/package.bash'
+[1.109s] INFO:colcon.colcon_core.shell:Creating package script '/home/naman72060/common-dp/install/thor_joystick/share/thor_joystick/package.zsh'
+[1.109s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/naman72060/common-dp/install/thor_joystick/share/colcon-core/packages/thor_joystick)
+[1.109s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[1.110s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[1.110s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[1.110s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[1.116s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[1.116s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[1.116s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[1.133s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[1.134s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/naman72060/common-dp/install/local_setup.ps1'
+[1.135s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/naman72060/common-dp/install/_local_setup_util_ps1.py'
+[1.135s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/naman72060/common-dp/install/setup.ps1'
+[1.137s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/naman72060/common-dp/install/local_setup.sh'
+[1.138s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/naman72060/common-dp/install/_local_setup_util_sh.py'
+[1.139s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/naman72060/common-dp/install/setup.sh'
+[1.141s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/naman72060/common-dp/install/local_setup.bash'
+[1.142s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/naman72060/common-dp/install/setup.bash'
+[1.143s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/naman72060/common-dp/install/local_setup.zsh'
+[1.144s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/naman72060/common-dp/install/setup.zsh'

@@ -1,10 +1,10 @@
 {
   "package_name": "thor_server",
-  "output_dir": "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_server/rosidl_typesupport_c/thor_server",
+  "output_dir": "/home/naman72060/common-dp/build/thor_server/rosidl_typesupport_c/thor_server",
   "template_dir": "/opt/ros/humble/share/rosidl_typesupport_c/resource",
   "idl_tuples": [
-    "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_server/rosidl_adapter/thor_server:action/JointTask.idl",
-    "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_server/rosidl_adapter/thor_server:action/PoseTask.idl"
+    "/home/naman72060/common-dp/build/thor_server/rosidl_adapter/thor_server:action/JointTask.idl",
+    "/home/naman72060/common-dp/build/thor_server/rosidl_adapter/thor_server:action/PoseTask.idl"
   ],
   "ros_interface_dependencies": [
     "action_msgs:/opt/ros/humble/share/action_msgs/msg/GoalInfo.idl",
@@ -22,8 +22,8 @@
     "/opt/ros/humble/share/rosidl_typesupport_c/resource/idl__type_support.cpp.em",
     "/opt/ros/humble/share/rosidl_typesupport_c/resource/msg__type_support.cpp.em",
     "/opt/ros/humble/share/rosidl_typesupport_c/resource/srv__type_support.cpp.em",
-    "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_server/rosidl_adapter/thor_server/action/JointTask.idl",
-    "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_server/rosidl_adapter/thor_server/action/PoseTask.idl",
+    "/home/naman72060/common-dp/build/thor_server/rosidl_adapter/thor_server/action/JointTask.idl",
+    "/home/naman72060/common-dp/build/thor_server/rosidl_adapter/thor_server/action/PoseTask.idl",
     "/opt/ros/humble/share/action_msgs/msg/GoalInfo.idl",
     "/opt/ros/humble/share/action_msgs/msg/GoalStatus.idl",
     "/opt/ros/humble/share/action_msgs/msg/GoalStatusArray.idl",

@@ -1,4 +1,0 @@
-Invoking command in '/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_manipulation': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_manipulation -- -j16 -l16
-Invoked command in '/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_manipulation' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_manipulation -- -j16 -l16
-Invoking command in '/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_manipulation': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_manipulation
-Invoked command in '/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_manipulation' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_manipulation

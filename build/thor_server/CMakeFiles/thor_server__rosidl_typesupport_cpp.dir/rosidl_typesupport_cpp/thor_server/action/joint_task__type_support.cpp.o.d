@@ -1,5 +1,5 @@
 CMakeFiles/thor_server__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/thor_server/action/joint_task__type_support.cpp.o: \
- /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_server/rosidl_typesupport_cpp/thor_server/action/joint_task__type_support.cpp \
+ /home/naman72060/common-dp/build/thor_server/rosidl_typesupport_cpp/thor_server/action/joint_task__type_support.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/11/cstddef \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -15,7 +15,7 @@ CMakeFiles/thor_server__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/thor_s
  /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/message_type_support_struct.h \
  /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/visibility_control.h \
  /opt/ros/humble/include/rosidl_typesupport_interface/rosidl_typesupport_interface/macros.h \
- /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_server/rosidl_generator_cpp/thor_server/action/detail/joint_task__struct.hpp \
+ /home/naman72060/common-dp/build/thor_server/rosidl_generator_cpp/thor_server/action/detail/joint_task__struct.hpp \
  /usr/include/c++/11/algorithm /usr/include/c++/11/utility \
  /usr/include/c++/11/bits/stl_relops.h \
  /usr/include/c++/11/bits/stl_pair.h /usr/include/c++/11/bits/move.h \

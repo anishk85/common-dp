@@ -1,0 +1,22 @@
+[0.018s] Invoking command in '/home/naman72060/common-dp/build/thor_teleop': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/naman72060/common-dp/build/thor_teleop -- -j12 -l12
+[0.069s] Invoked command in '/home/naman72060/common-dp/build/thor_teleop' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/naman72060/common-dp/build/thor_teleop -- -j12 -l12
+[0.070s] Invoking command in '/home/naman72060/common-dp/build/thor_teleop': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/naman72060/common-dp/build/thor_teleop
+[0.086s] -- Install configuration: ""
+[0.086s] -- Installing: /home/naman72060/common-dp/install/thor_teleop/lib/thor_teleop/teleop_joint_control.py
+[0.088s] -- Up-to-date: /home/naman72060/common-dp/install/thor_teleop/lib/thor_teleop/teleop_pose_control.py
+[0.088s] -- Up-to-date: /home/naman72060/common-dp/install/thor_teleop/share/ament_index/resource_index/package_run_dependencies/thor_teleop
+[0.089s] -- Up-to-date: /home/naman72060/common-dp/install/thor_teleop/share/ament_index/resource_index/parent_prefix_path/thor_teleop
+[0.089s] -- Up-to-date: /home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/environment/ament_prefix_path.sh
+[0.089s] -- Up-to-date: /home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/environment/ament_prefix_path.dsv
+[0.089s] -- Up-to-date: /home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/environment/path.sh
+[0.089s] -- Up-to-date: /home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/environment/path.dsv
+[0.089s] -- Up-to-date: /home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/local_setup.bash
+[0.089s] -- Up-to-date: /home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/local_setup.sh
+[0.089s] -- Up-to-date: /home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/local_setup.zsh
+[0.089s] -- Up-to-date: /home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/local_setup.dsv
+[0.090s] -- Installing: /home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/package.dsv
+[0.090s] -- Up-to-date: /home/naman72060/common-dp/install/thor_teleop/share/ament_index/resource_index/packages/thor_teleop
+[0.090s] -- Up-to-date: /home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/cmake/thor_teleopConfig.cmake
+[0.090s] -- Up-to-date: /home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/cmake/thor_teleopConfig-version.cmake
+[0.090s] -- Up-to-date: /home/naman72060/common-dp/install/thor_teleop/share/thor_teleop/package.xml
+[0.123s] Invoked command in '/home/naman72060/common-dp/build/thor_teleop' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/naman72060/common-dp/build/thor_teleop

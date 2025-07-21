@@ -1,0 +1,52 @@
+[0.021s] Invoking command in '/home/naman72060/common-dp/build/thor_manipulation': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/naman72060/common-dp/build/thor_manipulation -- -j12 -l12
+[0.121s] Built target ament_cmake_python_copy_thor_manipulation
+[0.417s] running egg_info
+[0.419s] writing thor_manipulation.egg-info/PKG-INFO
+[0.419s] writing dependency_links to thor_manipulation.egg-info/dependency_links.txt
+[0.419s] writing top-level names to thor_manipulation.egg-info/top_level.txt
+[0.422s] reading manifest file 'thor_manipulation.egg-info/SOURCES.txt'
+[0.423s] writing manifest file 'thor_manipulation.egg-info/SOURCES.txt'
+[0.461s] Built target ament_cmake_python_build_thor_manipulation_egg
+[0.475s] Invoked command in '/home/naman72060/common-dp/build/thor_manipulation' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/naman72060/common-dp/build/thor_manipulation -- -j12 -l12
+[0.476s] Invoking command in '/home/naman72060/common-dp/build/thor_manipulation': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/naman72060/common-dp/build/thor_manipulation
+[0.483s] -- Install configuration: ""
+[0.483s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/environment/pythonpath.sh
+[0.484s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/environment/pythonpath.dsv
+[0.484s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/local/lib/python3.10/dist-packages/thor_manipulation-0.1.0-py3.10.egg-info
+[0.484s] -- Installing: /home/naman72060/common-dp/install/thor_manipulation/local/lib/python3.10/dist-packages/thor_manipulation-0.1.0-py3.10.egg-info/SOURCES.txt
+[0.484s] -- Installing: /home/naman72060/common-dp/install/thor_manipulation/local/lib/python3.10/dist-packages/thor_manipulation-0.1.0-py3.10.egg-info/PKG-INFO
+[0.484s] -- Installing: /home/naman72060/common-dp/install/thor_manipulation/local/lib/python3.10/dist-packages/thor_manipulation-0.1.0-py3.10.egg-info/top_level.txt
+[0.484s] -- Installing: /home/naman72060/common-dp/install/thor_manipulation/local/lib/python3.10/dist-packages/thor_manipulation-0.1.0-py3.10.egg-info/dependency_links.txt
+[0.484s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/local/lib/python3.10/dist-packages/thor_manipulation
+[0.484s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/local/lib/python3.10/dist-packages/thor_manipulation/__init__.py
+[0.512s] Listing '/home/naman72060/common-dp/install/thor_manipulation/local/lib/python3.10/dist-packages/thor_manipulation'...
+[0.515s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/lib/thor_manipulation/pick_place_node
+[0.515s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/lib/thor_manipulation/pick_place_task_constructor
+[0.515s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/lib/thor_manipulation/thor_task_constructor_demo
+[0.515s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/lib/thor_manipulation/control_interface
+[0.515s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/lib/thor_manipulation/task_coordinator_node
+[0.516s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/lib/thor_manipulation/object_detector
+[0.516s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/lib/thor_manipulation/enhanced_pick_place_node
+[0.516s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/lib/thor_manipulation/simple_command_interface
+[0.516s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/launch
+[0.516s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/launch/pick_place.launch.py
+[0.516s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/config
+[0.516s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/config/mtc.rviz
+[0.516s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/config/electromagnet_controller.cpp
+[0.516s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/config/sensors.yaml
+[0.517s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/ament_index/resource_index/package_run_dependencies/thor_manipulation
+[0.517s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/ament_index/resource_index/parent_prefix_path/thor_manipulation
+[0.517s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/environment/ament_prefix_path.sh
+[0.517s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/environment/ament_prefix_path.dsv
+[0.517s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/environment/path.sh
+[0.517s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/environment/path.dsv
+[0.518s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/local_setup.bash
+[0.518s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/local_setup.sh
+[0.518s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/local_setup.zsh
+[0.518s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/local_setup.dsv
+[0.518s] -- Installing: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/package.dsv
+[0.518s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/ament_index/resource_index/packages/thor_manipulation
+[0.518s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/cmake/thor_manipulationConfig.cmake
+[0.518s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/cmake/thor_manipulationConfig-version.cmake
+[0.519s] -- Up-to-date: /home/naman72060/common-dp/install/thor_manipulation/share/thor_manipulation/package.xml
+[0.519s] Invoked command in '/home/naman72060/common-dp/build/thor_manipulation' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/naman72060/common-dp/build/thor_manipulation

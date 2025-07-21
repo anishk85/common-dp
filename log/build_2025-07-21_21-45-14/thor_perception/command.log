@@ -1,0 +1,6 @@
+Invoking command in '/home/naman72060/common-dp/build/thor_perception': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/naman72060/common-dp/src/thor_perception -DCMAKE_INSTALL_PREFIX=/home/naman72060/common-dp/install/thor_perception
+Invoked command in '/home/naman72060/common-dp/build/thor_perception' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/naman72060/common-dp/src/thor_perception -DCMAKE_INSTALL_PREFIX=/home/naman72060/common-dp/install/thor_perception
+Invoking command in '/home/naman72060/common-dp/build/thor_perception': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/naman72060/common-dp/build/thor_perception -- -j12 -l12
+Invoked command in '/home/naman72060/common-dp/build/thor_perception' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/naman72060/common-dp/build/thor_perception -- -j12 -l12
+Invoking command in '/home/naman72060/common-dp/build/thor_perception': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/naman72060/common-dp/build/thor_perception
+Invoked command in '/home/naman72060/common-dp/build/thor_perception' returned '1': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/naman72060/common-dp/build/thor_perception

@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_joystick
+CMAKE_SOURCE_DIR = /home/naman72060/common-dp/src/thor_joystick
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_joystick
+CMAKE_BINARY_DIR = /home/naman72060/common-dp/build/thor_joystick
 
 # Utility rule file for thor_joystick_uninstall.
 
@@ -67,7 +67,7 @@ include CMakeFiles/thor_joystick_uninstall.dir/compiler_depend.make
 include CMakeFiles/thor_joystick_uninstall.dir/progress.make
 
 CMakeFiles/thor_joystick_uninstall:
-	/usr/bin/cmake -P /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_joystick/ament_cmake_uninstall_target/ament_cmake_uninstall_target.cmake
+	/usr/bin/cmake -P /home/naman72060/common-dp/build/thor_joystick/ament_cmake_uninstall_target/ament_cmake_uninstall_target.cmake
 
 thor_joystick_uninstall: CMakeFiles/thor_joystick_uninstall
 thor_joystick_uninstall: CMakeFiles/thor_joystick_uninstall.dir/build.make
@@ -82,6 +82,6 @@ CMakeFiles/thor_joystick_uninstall.dir/clean:
 .PHONY : CMakeFiles/thor_joystick_uninstall.dir/clean
 
 CMakeFiles/thor_joystick_uninstall.dir/depend:
-	cd /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_joystick && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_joystick /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_joystick /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_joystick /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_joystick /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_joystick/CMakeFiles/thor_joystick_uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/naman72060/common-dp/build/thor_joystick && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/naman72060/common-dp/src/thor_joystick /home/naman72060/common-dp/src/thor_joystick /home/naman72060/common-dp/build/thor_joystick /home/naman72060/common-dp/build/thor_joystick /home/naman72060/common-dp/build/thor_joystick/CMakeFiles/thor_joystick_uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/thor_joystick_uninstall.dir/depend
 

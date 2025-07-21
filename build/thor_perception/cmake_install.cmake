@@ -1,8 +1,8 @@
-# Install script for directory: /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_perception
+# Install script for directory: /home/naman72060/common-dp/src/thor_perception
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/anish/dp_ws/Thor-ROS/ws_thor/install/thor_perception")
+  set(CMAKE_INSTALL_PREFIX "/home/naman72060/common-dp/install/thor_perception")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -44,38 +44,38 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/thor_perception" TYPE PROGRAM FILES
-    "/home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_perception/src/perception_node.py"
-    "/home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_perception/src/object_spawner.py"
-    "/home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_perception/src/pick_place_controller.py"
-    "/home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_perception/src/electromagnet_controller.py"
-    "/home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_perception/src/auto_spawn_trigger.py"
-    "/home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_perception/src/interactive_pick_place.py"
-    "/home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_perception/src/auto_object_spawner.py"
+    "/home/naman72060/common-dp/src/thor_perception/src/perception_node.py"
+    "/home/naman72060/common-dp/src/thor_perception/src/object_spawner.py"
+    "/home/naman72060/common-dp/src/thor_perception/src/pick_place_controller.py"
+    "/home/naman72060/common-dp/src/thor_perception/src/electromagnet_controller.py"
+    "/home/naman72060/common-dp/src/thor_perception/src/auto_spawn_trigger.py"
+    "/home/naman72060/common-dp/src/thor_perception/src/interactive_pick_place.py"
+    "/home/naman72060/common-dp/src/thor_perception/src/auto_object_spawner.py"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_perception" TYPE DIRECTORY FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_perception/launch")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_perception" TYPE DIRECTORY FILES "/home/naman72060/common-dp/src/thor_perception/launch")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_perception" TYPE DIRECTORY FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_perception/config")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_perception" TYPE DIRECTORY FILES "/home/naman72060/common-dp/src/thor_perception/config")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_perception" TYPE DIRECTORY FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_perception/worlds")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_perception" TYPE DIRECTORY FILES "/home/naman72060/common-dp/src/thor_perception/worlds")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_perception" TYPE DIRECTORY FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_perception/models")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_perception" TYPE DIRECTORY FILES "/home/naman72060/common-dp/src/thor_perception/models")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/package_run_dependencies" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/thor_perception")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/package_run_dependencies" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_perception/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/thor_perception")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/parent_prefix_path" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/thor_perception")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/parent_prefix_path" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_perception/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/thor_perception")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -83,7 +83,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_perception/environment" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception/ament_cmake_environment_hooks/ament_prefix_path.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_perception/environment" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_perception/ament_cmake_environment_hooks/ament_prefix_path.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -91,42 +91,42 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_perception/environment" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception/ament_cmake_environment_hooks/path.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_perception/environment" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_perception/ament_cmake_environment_hooks/path.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_perception" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception/ament_cmake_environment_hooks/local_setup.bash")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_perception" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_perception/ament_cmake_environment_hooks/local_setup.bash")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_perception" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception/ament_cmake_environment_hooks/local_setup.sh")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_perception" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_perception/ament_cmake_environment_hooks/local_setup.sh")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_perception" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception/ament_cmake_environment_hooks/local_setup.zsh")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_perception" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_perception/ament_cmake_environment_hooks/local_setup.zsh")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_perception" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception/ament_cmake_environment_hooks/local_setup.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_perception" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_perception/ament_cmake_environment_hooks/local_setup.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_perception" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception/ament_cmake_environment_hooks/package.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_perception" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_perception/ament_cmake_environment_hooks/package.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/packages" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception/ament_cmake_index/share/ament_index/resource_index/packages/thor_perception")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/packages" TYPE FILE FILES "/home/naman72060/common-dp/build/thor_perception/ament_cmake_index/share/ament_index/resource_index/packages/thor_perception")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_perception/cmake" TYPE FILE FILES
-    "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception/ament_cmake_core/thor_perceptionConfig.cmake"
-    "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception/ament_cmake_core/thor_perceptionConfig-version.cmake"
+    "/home/naman72060/common-dp/build/thor_perception/ament_cmake_core/thor_perceptionConfig.cmake"
+    "/home/naman72060/common-dp/build/thor_perception/ament_cmake_core/thor_perceptionConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_perception" TYPE FILE FILES "/home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_perception/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/thor_perception" TYPE FILE FILES "/home/naman72060/common-dp/src/thor_perception/package.xml")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -137,5 +137,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_perception/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/naman72060/common-dp/build/thor_perception/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

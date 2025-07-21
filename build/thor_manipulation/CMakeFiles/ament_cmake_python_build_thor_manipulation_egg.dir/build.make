@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_manipulation
+CMAKE_SOURCE_DIR = /home/naman72060/common-dp/src/thor_manipulation
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_manipulation
+CMAKE_BINARY_DIR = /home/naman72060/common-dp/build/thor_manipulation
 
 # Utility rule file for ament_cmake_python_build_thor_manipulation_egg.
 
@@ -67,7 +67,7 @@ include CMakeFiles/ament_cmake_python_build_thor_manipulation_egg.dir/compiler_d
 include CMakeFiles/ament_cmake_python_build_thor_manipulation_egg.dir/progress.make
 
 CMakeFiles/ament_cmake_python_build_thor_manipulation_egg:
-	cd /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_manipulation/ament_cmake_python/thor_manipulation && /usr/bin/python3 setup.py egg_info
+	cd /home/naman72060/common-dp/build/thor_manipulation/ament_cmake_python/thor_manipulation && /usr/bin/python3 setup.py egg_info
 
 ament_cmake_python_build_thor_manipulation_egg: CMakeFiles/ament_cmake_python_build_thor_manipulation_egg
 ament_cmake_python_build_thor_manipulation_egg: CMakeFiles/ament_cmake_python_build_thor_manipulation_egg.dir/build.make
@@ -82,6 +82,6 @@ CMakeFiles/ament_cmake_python_build_thor_manipulation_egg.dir/clean:
 .PHONY : CMakeFiles/ament_cmake_python_build_thor_manipulation_egg.dir/clean
 
 CMakeFiles/ament_cmake_python_build_thor_manipulation_egg.dir/depend:
-	cd /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_manipulation && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_manipulation /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_manipulation /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_manipulation /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_manipulation /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_manipulation/CMakeFiles/ament_cmake_python_build_thor_manipulation_egg.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/naman72060/common-dp/build/thor_manipulation && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/naman72060/common-dp/src/thor_manipulation /home/naman72060/common-dp/src/thor_manipulation /home/naman72060/common-dp/build/thor_manipulation /home/naman72060/common-dp/build/thor_manipulation /home/naman72060/common-dp/build/thor_manipulation/CMakeFiles/ament_cmake_python_build_thor_manipulation_egg.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ament_cmake_python_build_thor_manipulation_egg.dir/depend
 

@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_manipulation
+CMAKE_SOURCE_DIR = /home/naman72060/common-dp/src/thor_manipulation
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_manipulation
+CMAKE_BINARY_DIR = /home/naman72060/common-dp/build/thor_manipulation
 
 # Utility rule file for ament_cmake_python_copy_thor_manipulation.
 
@@ -67,7 +67,7 @@ include CMakeFiles/ament_cmake_python_copy_thor_manipulation.dir/compiler_depend
 include CMakeFiles/ament_cmake_python_copy_thor_manipulation.dir/progress.make
 
 CMakeFiles/ament_cmake_python_copy_thor_manipulation:
-	/usr/bin/cmake -E copy_directory /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_manipulation/thor_manipulation /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_manipulation/ament_cmake_python/thor_manipulation/thor_manipulation
+	/usr/bin/cmake -E copy_directory /home/naman72060/common-dp/src/thor_manipulation/thor_manipulation /home/naman72060/common-dp/build/thor_manipulation/ament_cmake_python/thor_manipulation/thor_manipulation
 
 ament_cmake_python_copy_thor_manipulation: CMakeFiles/ament_cmake_python_copy_thor_manipulation
 ament_cmake_python_copy_thor_manipulation: CMakeFiles/ament_cmake_python_copy_thor_manipulation.dir/build.make
@@ -82,6 +82,6 @@ CMakeFiles/ament_cmake_python_copy_thor_manipulation.dir/clean:
 .PHONY : CMakeFiles/ament_cmake_python_copy_thor_manipulation.dir/clean
 
 CMakeFiles/ament_cmake_python_copy_thor_manipulation.dir/depend:
-	cd /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_manipulation && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_manipulation /home/anish/dp_ws/Thor-ROS/ws_thor/src/thor_manipulation /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_manipulation /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_manipulation /home/anish/dp_ws/Thor-ROS/ws_thor/build/thor_manipulation/CMakeFiles/ament_cmake_python_copy_thor_manipulation.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/naman72060/common-dp/build/thor_manipulation && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/naman72060/common-dp/src/thor_manipulation /home/naman72060/common-dp/src/thor_manipulation /home/naman72060/common-dp/build/thor_manipulation /home/naman72060/common-dp/build/thor_manipulation /home/naman72060/common-dp/build/thor_manipulation/CMakeFiles/ament_cmake_python_copy_thor_manipulation.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ament_cmake_python_copy_thor_manipulation.dir/depend
 
