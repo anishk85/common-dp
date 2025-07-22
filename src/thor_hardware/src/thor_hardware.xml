@@ -1,0 +1,9 @@
+<library path="thor_arm_hardware_interface">
+  <class name="thor_hardware/ThorArmHardwareInterface"
+         type="thor_hardware::ThorArmHardwareInterface"
+         base_class_type="hardware_interface::SystemInterface">
+    <description>
+      Hardware interface for the Thor robot arm.
+    </description>
+  </class>
+</library>
