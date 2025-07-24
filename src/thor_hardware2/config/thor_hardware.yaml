@@ -1,0 +1,58 @@
+FILE: config/thor_hardware.yaml
+================================================================================
+controller_manager:
+  ros__parameters:
+    update_rate: 100  # Hz
+    
+    # Hardware interface
+    hardware_interface:
+      - thor_hardware2/ThorHardwareInterface
+    
+    # Controllers
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+      
+    thor_arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+      
+    thor_gripper_controller:
+      type: position_controllers/GripperActionController
+
+# Hardware interface parameters
+hardware:
+  serial_port: "/dev/ttyACM0"
+  baud_rate: 115200
+  timeout: 1000  # ms
+  
+  # Joint configuration
+  joints:
+    - base_joint
+    - shoulder_joint  
+    - elbow_joint
+    - wrist_pitch_joint
+    - wrist_roll_joint
+    - gripper_joint
+    
+  # Motor specifications (goBILDA 5203)
+  motor_specs:
+    max_velocity: 6.28  # rad/s
+    max_effort: 3.5     # Nm
+    encoder_cpr: 1440   # counts per revolution
+    
+  # Safety parameters
+  emergency_stop_enabled: true
+  position_limits:
+    base_joint: [-3.14, 3.14]
+    shoulder_joint: [-1.57, 1.57] 
+    elbow_joint: [-3.14, 3.14]
+    wrist_pitch_joint: [-3.14, 3.14]
+    wrist_roll_joint: [-1.57, 1.57]
+    gripper_joint: [0.0, 0.08]  # 8cm max opening
+    
+  velocity_limits:
+    base_joint: 3.14
+    shoulder_joint: 3.14
+    elbow_joint: 3.14
+    wrist_pitch_joint: 6.28
+    wrist_roll_joint: 6.28
+    gripper_joint: 0.5

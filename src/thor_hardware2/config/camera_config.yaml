@@ -1,0 +1,70 @@
+FILE: config/camera_config.yaml
+================================================================================
+# Camera configuration for Thor Hardware2
+cameras:
+  pi_camera_1:
+    type: "raspberry_pi"
+    device_id: 0
+    resolution:
+      width: 1920
+      height: 1080
+    framerate: 30
+    auto_exposure: true
+    exposure_time: 10000  # microseconds
+    iso: 100
+    brightness: 50
+    contrast: 0
+    saturation: 0
+    
+  pi_camera_2:
+    type: "raspberry_pi" 
+    device_id: 1
+    resolution:
+      width: 1920
+      height: 1080
+    framerate: 30
+    auto_exposure: true
+    exposure_time: 10000
+    iso: 100
+    brightness: 50
+    contrast: 0
+    saturation: 0
+    
+  usb_mobile_camera:
+    type: "usb"
+    device_path: "/dev/video0"
+    resolution:
+      width: 1280
+      height: 720
+    framerate: 30
+    auto_focus: false
+    focus: 0
+    brightness: 128
+    contrast: 128
+    saturation: 128
+    
+# Camera calibration data (populate after calibration)
+calibration:
+  pi_camera_1:
+    camera_matrix: [
+      [1000.0, 0.0, 960.0],
+      [0.0, 1000.0, 540.0], 
+      [0.0, 0.0, 1.0]
+    ]
+    distortion_coefficients: [0.0, 0.0, 0.0, 0.0, 0.0]
+    
+  pi_camera_2:
+    camera_matrix: [
+      [1000.0, 0.0, 960.0],
+      [0.0, 1000.0, 540.0],
+      [0.0, 0.0, 1.0]
+    ]
+    distortion_coefficients: [0.0, 0.0, 0.0, 0.0, 0.0]
+    
+  usb_mobile_camera:
+    camera_matrix: [
+      [800.0, 0.0, 640.0],
+      [0.0, 800.0, 360.0],
+      [0.0, 0.0, 1.0]
+    ]
+    distortion_coefficients: [0.0, 0.0, 0.0, 0.0, 0.0]

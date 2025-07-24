@@ -1,0 +1,7 @@
+<library path="libthor_hardware2">
+  <class name="thor_hardware2/ThorHardwareInterface" type="thor_hardware2::ThorHardwareInterface" base_class_type="hardware_interface::SystemInterface">
+    <description>
+      Hardware interface for Thor 6-DOF robotic arm with goBILDA 5203 motors and Arduino Mega controller
+    </description>
+  </class>
+</library>
